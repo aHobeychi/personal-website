@@ -1,0 +1,32 @@
+[
+  {
+    "name": "AWS Certified Developer – Associate",
+    "issuer": "AWS",
+    "dateReceived": "2025-02-03",
+    "url": "https://www.credly.com/badges/bc17c4a5-cad1-4011-8c45-92e81532fef5/public_url"
+  },
+  {
+    "name": "AWS Certified Solutions Architect – Associate",
+    "issuer": "AWS",
+    "dateReceived": "2024-08-06",
+    "url": "https://www.credly.com/badges/8e6a35e4-dde9-465d-a9ba-32316c283413/public_url"
+  },
+  {
+    "name": "AWS Certified Cloud Practitioner",
+    "issuer": "AWS",
+    "dateReceived": "2024-02-20",
+    "url": "https://www.credly.com/badges/7b6dec18-a434-41ee-905f-5eba170ab990/public_url"
+  },
+  {
+    "name": "Microsoft Certified: Azure Fundamentals",
+    "issuer": "Microsoft",
+    "dateReceived": "2022-03-28",
+    "url": "https://www.credly.com/badges/a6793f70-8fb4-40b3-9cea-197a457c55e8/public_url"
+  },
+  {
+    "name": "Scrum Developer Certified (SDC)",
+    "issuer": "Scrum.org",
+    "dateReceived": "2021-11-07",
+    "url": "https://www.credly.com/badges/2d97f683-de60-426c-85fc-8dcc963d9a6f/public_url"
+  }
+]

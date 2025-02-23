@@ -1,0 +1,32 @@
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+
+app = 'personal-website-ah'
+primary_region = 'yul'
+
+[build]
+dockerfile = 'build/docker/Dockerfile'
+
+[env]
+APP_ENV = 'production'
+PORT = '8080'
+
+[http_service]
+internal_port = 8080
+force_https = true
+auto_stop_machines = 'stop'
+auto_start_machines = true
+min_machines_running = 1
+processes = ['app']
+
+[[vm]]
+memory = '256mb'
+cpu_kind = 'shared'
+cpus = 1
+
+[[statics]]
+guest_path = '/app/app/assets'
+url_prefix = '/assets'
+
+[[statics]]
+guest_path = '/app/frontend/assets'
+url_prefix = '/frontend/assets'

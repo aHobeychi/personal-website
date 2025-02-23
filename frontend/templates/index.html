@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Alex Hobeychi's personal website showcasing projects, blog posts, and resume">
+  <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+</head>
+
+<body class="min-h-full flex flex-col bg-light-base dark:bg-dark-base dark:text-gray-00">
+  {{ template "header" . }}
+  {{ template "sidebar" . }}
+  <main id="content-section" class="flex-grow lg:ml-80 lg:px-20 p-6 rounded-lg dark:border-gray-700 mt-12 lg:mt-16">
+    {{ if eq .Content "resume" }}
+    {{ template "resume" . }}
+    {{ else if eq .Content "projects" }}
+    {{ template "projects" . }}
+    {{ else if eq .Content "blog-list" }}
+    {{ template "blog-list" . }}
+    {{ else if eq .Content "blog-content" }}
+    {{ template "blog-content" . }}
+    {{ else }}
+    {{ template "home" . }}
+    {{ end }}
+  </main>
+  {{ template "footer" . }}
+
+  <!-- Custom JavaScript files -->
+  <script src="/static/js/sidebar.js"></script>
+  <script src="/static/js/scroll-spy.js"></script>
+</body>
+</html>

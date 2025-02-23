@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Personal Website",
+    "description": "A modern portfolio website built with Go, HTMX, and Tailwind CSS. This project showcases a dynamic, lightweight website architecture with minimal JavaScript, deployed on Fly.io.",
+    "tags": [
+      "Go",
+      "HTMX",
+      "Tailwind CSS",
+      "Fly.io"
+    ],
+    "link": "https://github.com/aHobeychi/Personal-Website"
+  },
+  {
+    "name": "Go Compiler",
+    "description": "A procedural programming language compiler with C-like syntax, built from scratch using Go. It supports core language features such as arrays, loops, functions, and arithmetic operations, along with logical operators and ternary expressions. The compiler enforces strong type checking and variable declaration validation, providing clear error messages. It translates source code into a simplified RISC instruction set for efficient execution.",
+    "tags": [
+      "Go",
+      "Compiler Design"
+    ],
+    "link": "https://github.com/aHobeychi/Go-Compiler"
+  },
+  {
+    "name": "Satellite Imagery Processing",
+    "description": "A machine learning tool for analyzing Sentinel-2 satellite imagery. It applies clustering for area segmentation, supervised learning for pixel classification, and deep learning with ResNets for large-scale image categorization. Detailed results are available in *Results.pdf*.",
+    "tags": [
+      "Python",
+      "PyTorch",
+      "SentinelSat",
+      "GIS"
+    ],
+    "link": "https://github.com/aHobeychi/Satellite-Imagery"
+  }
+]

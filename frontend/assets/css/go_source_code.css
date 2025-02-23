@@ -1,0 +1,32 @@
+/* filepath: /Users/alexhobeychi/Documents/projects/personal-website/frontend/assets/css/go_source_code.css */
+/* Go Syntax Highlighting */
+.sourceCode .go .kw { color: #d7827e; font-weight: bold; } /* keyword (func, var, type, etc.) */
+.sourceCode .go .cf { color: #e5c890; font-weight: bold; } /* control flow (if, else, for, return) */
+.sourceCode .go .op { color: #a6d189; } /* operators (:=, ., <-, etc.) */
+.sourceCode .go .st { color: #a6d189; } /* string literals */
+.sourceCode .go .dv { color: #e5c890; } /* decimal values/numbers */
+.sourceCode .go .co { color: #acb0be; font-style: italic; } /* comments */
+.sourceCode .go .im { color: #8caaee; font-weight: bold; } /* imports */
+.sourceCode .go .bu { color: #8aadf4; } /* built-in functions */
+.sourceCode .go .fu { color: #8aadf4; } /* function calls */
+.sourceCode .go .va { color: #babbf1; } /* variables */
+.sourceCode .go .dt { color: #d7827e; } /* data types */
+.sourceCode .go .pp { color: #e78284; } /* preprocessor directives */
+.sourceCode .go .at { color: #8caaee; } /* annotations/struct tags */
+
+/* Dark theme overrides */
+@media(prefers-color-scheme: dark) {
+  .sourceCode .go .kw { color: #f38ba8; }
+  .sourceCode .go .cf { color: #f9e2af; }
+  .sourceCode .go .op { color: #a6e3a1; }
+  .sourceCode .go .st { color: #a6e3a1; }
+  .sourceCode .go .dv { color: #f9e2af; }
+  .sourceCode .go .co { color: #6c7086; }
+  .sourceCode .go .im { color: #89b4fa; }
+  .sourceCode .go .bu { color: #89b4fa; }
+  .sourceCode .go .fu { color: #89b4fa; }
+  .sourceCode .go .va { color: #cba6f7; }
+  .sourceCode .go .dt { color: #f38ba8; }
+  .sourceCode .go .pp { color: #f38ba8; }
+  .sourceCode .go .at { color: #89b4fa; }
+}

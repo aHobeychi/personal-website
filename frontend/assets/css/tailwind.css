@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
+
+@tailwind base;
+@tailwind utilities;
+
+/* Custom font size variables based on specified values */
+:root {
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1.125rem; /* Increased base font size */
+  --font-size-xl: 1.375rem;
+  --font-size-2xl: 1.75rem;
+  --font-size-3xl: 2.25rem;
+  --font-size-4xl: 3rem;
+  --font-size-5xl: 4rem;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-family-heading: 'Inter Tight', sans-serif;
+  --font-family-body: 'Source Serif 4', serif;
+  --content-width: 52rem;
+}
+
+/* Article styling with dark mode support */
+article {
+    font-family: var(--font-family-body);
+    line-height: 1.8; /* Increased for readability */
+    color: rgba(0, 0, 0, 0.84);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    /* max-width: var(--content-width); */
+    margin: 0 auto; /* Center content */
+    padding: 0 1rem;
+}
+
+/* Adding scroll-margin-top to all headers to account for fixed navbar */
+article h1, article h2, article h3, article h4, article h5, article h6 {
+    scroll-margin-top: 4.5rem; /* Adjust this value to match your navbar height */
+    line-height: 1.25;
+    font-family: var(--font-family-heading);
+    letter-spacing: -0.02em;
+}
+
+article h1 {
+    margin: 3rem 0 1.5rem;
+    color: rgba(0, 0, 0, 0.84);
+    text-align: left; 
+    font-size: clamp(var(--font-size-3xl), 3vw + 1rem, 3.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+}
+
+article .sourceCode {
+    display: block;
+}
+
+article h2 {
+    font-size: var(--font-size-2xl);
+    margin: 2rem 0 1.2rem;
+    color: rgba(0, 0, 0, 0.84);
+}
+
+article h3 {
+    font-size: var(--font-size-xl);
+    margin: 1.8rem 0 1rem;
+    color: rgba(0, 0, 0, 0.84);
+}
+
+article h4 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin: 1.5rem 0 1rem;
+    color: rgba(0, 0, 0, 0.84);
+}
+
+article p {
+    color: rgba(0, 0, 0, 0.84);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    font-size: var(--font-size-base);
+}
+
+article ul, article ol {
+    color: rgba(0, 0, 0, 0.84);
+    padding-left: 0;
+    margin-bottom: 2rem;
+    font-size: var(--font-size-base);
+    counter-reset: list-counter;
+}
+
+article ul li {
+    list-style-type: none;
+    margin-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.8;
+    position: relative;
+}
+
+article ul li::before {
+    content: "";
+    position: absolute;
+    left: -1.5rem;
+    top: 0.75rem;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.68);
+}
+
+article ol li {
+    list-style-type: none;
+    margin-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.8;
+    position: relative;
+    counter-increment: list-counter;
+}
+
+article ol li::before {
+    content: counter(list-counter) ".";
+    position: absolute;
+    left: -1.5rem;
+    color: rgba(0, 0, 0, 0.68);
+    font-weight: 500;
+}
+
+article hr {
+    margin: 3rem auto;
+    border: none;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.15);
+    width: 40%;
+}
+
+article pre {
+    margin: 2rem 0;
+    padding: 1.25rem;
+    overflow-x: auto;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.84);
+    border: none;
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+article code {
+    font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+    padding: 2px 5px;
+    color: black;
+    font-size: 1.0em;
+    border: 0;
+}
+
+article blockquote {
+    border-left: 3px solid rgba(0, 0, 0, 0.84);
+    padding: 0.1em 0 0.1em 1.2rem;
+    margin: 2rem 0;
+    background-color: transparent;
+    font-style: normal;
+    color: rgba(0, 0, 0, 0.68);
+}
+
+article blockquote p {
+    color: rgba(0, 0, 0, 0.68);
+    font-size: calc(var(--font-size-base) * 1.1);
+    line-height: 1.6;
+    font-style: italic;
+}
+
+article table {
+    width: 100%;
+    margin-bottom: 2rem;
+    border-collapse: collapse;
+    font-size: var(--font-size-base);
+}
+
+article table th,
+article table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    text-align: left;
+}
+
+article table th {
+    font-weight: 600;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+}
+
+article table tr:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+article img {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem auto;
+    display: block;
+    border-radius: 3px;
+}
+
+article figure {
+    margin: 2rem 0;
+}
+
+article figcaption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.68);
+    margin-top: 0.5rem;
+    font-family: var(--font-family-body);
+    font-style: italic;
+}
+
+article a {
+    color: #000;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.4);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+
+article a:hover {
+    text-decoration-color: rgba(0, 0, 0, 0.9);
+}
+
+.blog-toc {
+    margin: 0 0;
+    padding: 1.25rem;
+    font-family: var(--font-family-heading);
+    border-radius: 3px;
+}
+
+.blog-toc h2 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: rgba(0, 0, 0, 0.84);
+    letter-spacing: -0.02em;
+}
+
+.blog-toc .toc-list {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.blog-toc .toc-list li {
+    list-style-type: none;
+    margin-left: 0;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    position: relative;
+    font-size: var(--font-size-sm);
+}
+
+.blog-toc .toc-list li a {
+    color: rgba(0, 0, 0, 0.7);
+    text-decoration: none;
+    padding: 0.25rem 0;
+    display: inline-block;
+    transition: all 0.2s;
+    position: relative;
+    padding-left: 0.5rem;
+    font-size: 0.95rem;
+    min-width: 100%;
+    font-weight: 400;
+}
+
+.blog-toc .toc-list li a::before {
+    position: absolute;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.blog-toc .toc-list li .active {
+    min-width: 100%;
+    color: rgba(0, 0, 0, 0.9);
+    border-left: 2px solid rgba(0, 0, 0, 0.8);
+    font-weight: 500;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.blog-toc .toc-list li a:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    color: rgba(0, 0, 0, 0.9);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    article {
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    article h1, article h2, article h3, article h4, article h5, article h6 {
+        color: rgba(255, 255, 255, 0.95);
+    }
+    
+    article p, article ul, article ol {
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    article ul li::before {
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+    
+    article ol li::before {
+        color: rgba(255, 255, 255, 0.6);
+    }
+    
+    article hr {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    article pre {
+        background-color: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    article code {
+        background-color: #1e293b;
+        color: #e5e7eb;
+        border: 0;
+    }
+    
+    article blockquote {
+        background-color: #1f2937;
+        color: #d1d5db;
+    }
+    
+    article table th,
+    article table td {
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    article table tr:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    article a {
+        color: #fff;
+        text-decoration-color: rgba(255, 255, 255, 0.4);
+    }
+    
+    article a:hover {
+        text-decoration-color: rgba(255, 255, 255, 0.9);
+    }
+    
+    article figcaption {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .blog-toc {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .blog-toc h2 {
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .blog-toc .toc-list li a {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .blog-toc .toc-list li a::before {
+        color: rgba(255, 255, 255, 0.4);
+    }
+    
+    .blog-toc .toc-list li .active {
+        color: rgba(255, 255, 255, 0.95);
+        border-left-color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .blog-toc .toc-list li a:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.95);
+    }
+}

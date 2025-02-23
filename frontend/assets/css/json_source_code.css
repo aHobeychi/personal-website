@@ -1,0 +1,15 @@
+/* JSON Syntax Highlighting */
+.sourceCode .json .dt { color: #d7827e; font-weight: bold; } /* key */
+.sourceCode .json .st { color: #a6d189; } /* string */
+.sourceCode .json .dv { color: #e5c890; } /* number */
+.sourceCode .json .ot { color: #8caaee; } /* object punctuation */
+.sourceCode .json .co { color: #acb0be; font-style: italic; } /* comment */
+
+/* Dark theme overrides */
+@media(prefers-color-scheme: dark) {
+  .sourceCode .json .dt { color: #f38ba8; }
+  .sourceCode .json .st { color: #a6e3a1; }
+  .sourceCode .json .dv { color: #f9e2af; }
+  .sourceCode .json .ot { color: #89b4fa; }
+  .sourceCode .json .co { color: #6c7086; }
+}

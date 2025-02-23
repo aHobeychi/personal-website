@@ -1,0 +1,70 @@
+<h1
+id="building-my-personal-website-with-go-htmx-and-tailwindcss">Building
+My Personal Website with Go, HTMX, and TailwindCSS</h1>
+<p>A personal website is more than a digital résumé—it’s a space to
+showcase work and experiment with technology. I built mine to be fast,
+minimal, and developer-friendly, using <strong>Go (standard library
+only)</strong> for the backend, <strong>HTMX</strong> for interactivity,
+and <strong>TailwindCSS</strong> for styling.</p>
+<h2 id="stack-overview">Stack Overview</h2>
+<ul>
+<li><strong>Go</strong>: Using only the <code>net/http</code> package,
+the backend remains lightweight, performant, and dependency-free.</li>
+<li><strong>HTMX</strong>: Enables dynamic content loading via HTML
+attributes—no need for JavaScript frameworks.</li>
+<li><strong>TailwindCSS</strong>: Provides utility-first styling with
+minimal custom CSS.</li>
+</ul>
+<h2 id="project-structure">Project Structure</h2>
+<p>Key directories:</p>
+<ul>
+<li><code>cmd/</code>: Entry point (<code>main.go</code>)</li>
+<li><code>internal/</code>: Core logic—handlers, caching, config,
+parsing</li>
+<li><code>frontend/</code>: Assets, templates, JSON catalogs, Markdown
+content</li>
+<li><code>app/</code>: Compiled output</li>
+<li><code>build/</code>: Scripts and Docker/CI setup</li>
+</ul>
+<h2 id="backend-design">Backend Design</h2>
+<p>Handlers serve full pages or partial fragments depending on the
+<code>HX-Request</code> header. Configuration is loaded from JSON files
+based on <code>APP_ENV</code>. A TTL-based caching layer minimizes
+redundant file reads.</p>
+<h2 id="frontend-architecture">Frontend Architecture</h2>
+<p>Templates use a layout-based structure with shared components
+(<code>navbar</code>, <code>footer</code>, etc.) rendered using Go’s
+<code>html/template</code>. TailwindCSS is compiled from source for
+optimized output. HTMX powers partial updates—for example, loading blog
+content without reloading the entire page.</p>
+<h2 id="content-system">Content System</h2>
+<p>Content is stored in Markdown or JSON under
+<code>frontend/catalog/</code> and
+<code>frontend/content/blog/markdown/</code>. On startup, Go parsers
+load and cache content. A preprocessor generates blog TOCs from Markdown
+headings for enhanced in-page navigation.</p>
+<h2 id="development-workflow">Development Workflow</h2>
+<p>The script <code>run-server.sh</code> uses <code>nodemon</code> to
+watch Go, HTML, CSS, JS, and JSON files for changes, automatically
+restarting the server. Assets are minified and compressed via utility
+scripts orchestrated by the <code>Makefile</code>.</p>
+<h2 id="deployment-with-fly.io">Deployment with Fly.io</h2>
+<p>Deployment is managed with Fly.io using <code>fly.toml</code> and a
+Docker-based workflow. Fly.io handles TLS, scaling, health checks, and
+static asset serving. Deployment is as simple as:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fly</span> deploy</span></code></pre></div>
+<h2 id="enhanced-ui-features">Enhanced UI Features</h2>
+<p>Custom JavaScript improves UX:</p>
+<ul>
+<li><strong>Sidebar Navigation</strong>: Responsive and mobile-friendly,
+preserving state during HTMX interactions.</li>
+<li><strong>Scroll Spy</strong>: Highlights blog TOC sections based on
+scroll position using the Intersection Observer API.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>This site demonstrates how a performant, modern web experience can be
+built using simple, powerful tools. Go provides a robust backend, HTMX
+enables interactivity without bloat, and TailwindCSS ensures a clean,
+responsive UI. Future enhancements may include CMS integration, search,
+or localization.</p>

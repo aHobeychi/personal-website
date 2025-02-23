@@ -1,0 +1,15 @@
+[
+  {
+    "id": "Personal-Website",
+    "title": "Building my Personal Website With Go, Htmx and TailwindCSS",
+    "description": "A high-level walkthrough of how I built a fast, minimal, and fully customizable personal website using Go, HTMX, and TailwindCSS without external frameworks.",
+    "tags": [
+      "Go",
+      "Htmx",
+      "Fly.io",
+      "TailwindCSS"
+    ],
+    "publishedDate": "2025-04-20",
+    "externalLink": ""
+  }
+]

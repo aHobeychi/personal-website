@@ -1,0 +1,11 @@
+# flyctl launch added from .gitignore
+**/tmp
+**/.gitignore
+**/bin
+**/.DS_STORE
+**/node_modules
+**/package-lock.json
+**/TODO.md
+**/app/personalwebsite
+**/.vscode
+fly.toml
