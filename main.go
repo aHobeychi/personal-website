@@ -37,7 +37,7 @@ func main() {
 	r.Static("/static", "./static")
 
 	// Routes
-	r.GET("/", handler.IndexHandler)
+	r.GET("/", handler.HomeHandler)
 	r.GET("/home", handler.HomeHandler)
 	r.GET("/resume", handler.ResumeHandler)
 	r.GET("/project", handler.ProjectsHandler)

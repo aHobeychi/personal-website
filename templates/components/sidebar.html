@@ -1,11 +1,11 @@
 {{ define "sidebar" }}
 <aside id="logo-sidebar"
-    class="fixed top-0 left-0 z-50 w-80 h-screen pt-4 pl-20 transition-transform -translate-x-full border-r border-gray-200 sm:translate-x-0 dark:border-gray-700 dark-gray-bg"
+    class="fixed top-0 left-0 z-50 w-80 h-screen pt-4 pl-14 transition-transform -translate-x-full border-r border-gray-200 sm:translate-x-0 dark:border-gray-700 dark-gray-bg"
     aria-label="Sidebar">
     <!-- Added dark-gray-bg class -->
     <div class="h-full px-3 pb-4 overflow-y-auto dark-gray-bg">
         <!-- Added dark-gray-bg class -->
-    <a href="#" hx-get="/home" hx-target=".content-section" hx-indicator="#loading-spinner" class="flex items-center space-x-2 focus:border-sky-500">
+    <a href="#" hx-get="/home" hx-target=".content-section" hx-indicator="#loading-spinner" hx-push-url="true" class="flex items-center space-x-2 focus:border-sky-500">
         <h1 class="text-white text-2xl font-semibold mb-6 focus:border-sky-500">Alex Hobeychi</h1>
     </a>
         <ul class="space-y-2 font-medium">

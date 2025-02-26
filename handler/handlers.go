@@ -8,40 +8,42 @@ import (
 
 var HTMX_HEADER = "HX-Request"
 
-// Handlers
-func IndexHandler(c *gin.Context) {
-	c.HTML(http.StatusOK, "index.html", gin.H{
-		"Content": "index.html",
-		"Title":   "Home",
-	})
-}
-
 func ResumeHandler(c *gin.Context) {
-	c.HTML(http.StatusOK, "resume.html", gin.H{
-		"Title": "Resume",
-	})
+	if c.GetHeader(HTMX_HEADER) == "true" {
+		c.HTML(http.StatusOK, "resume", gin.H{})
+	} else {
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"Content": "resume",
+		})
+	}
 }
 
 func ProjectsHandler(c *gin.Context) {
 	if c.GetHeader(HTMX_HEADER) == "true" {
-		c.HTML(http.StatusOK, "projects.html", gin.H{
-			"Title": "Projects",
-		})
+		c.HTML(http.StatusOK, "projects", gin.H{})
 	} else {
-		c.HTML(http.StatusOK, "projects.html", gin.H{
-			"Title": "Page",
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"Content": "projects",
 		})
 	}
 }
 
 func ContactHandler(c *gin.Context) {
-	c.HTML(http.StatusOK, "contact.html", gin.H{
-		"Title": "Contact",
-	})
+	if c.GetHeader(HTMX_HEADER) == "true" {
+		c.HTML(http.StatusOK, "contact", gin.H{})
+	} else {
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"Content": "contact",
+		})
+	}
 }
 
 func HomeHandler(c *gin.Context) {
-	c.HTML(http.StatusOK, "home.html", gin.H{
-		"Title": "Contact",
-	})
+	if c.GetHeader(HTMX_HEADER) == "true" {
+		c.HTML(http.StatusOK, "home", gin.H{})
+	} else {
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"Content": "home",
+		})
+	}
 }
