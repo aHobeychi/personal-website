@@ -38,9 +38,9 @@ func main() {
 
 	// Routes
 	r.GET("/", handler.IndexHandler)
-	r.GET("/about", handler.AboutHandler)
+	r.GET("/home", handler.HomeHandler)
 	r.GET("/resume", handler.ResumeHandler)
-	r.GET("/projects", handler.ProjectsHandler)
+	r.GET("/project", handler.ProjectsHandler)
 	r.GET("/contact", handler.ContactHandler)
 
 	r.Run(":8080")

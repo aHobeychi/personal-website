@@ -6,38 +6,42 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var HTMX_HEADER = "HX-Request"
+
 // Handlers
 func IndexHandler(c *gin.Context) {
-	c.HTML(http.StatusOK, "base.html", gin.H{
+	c.HTML(http.StatusOK, "index.html", gin.H{
 		"Content": "index.html",
 		"Title":   "Home",
 	})
 }
 
-func AboutHandler(c *gin.Context) {
-	c.HTML(http.StatusOK, "base.html", gin.H{
-		"Content": "about.html",
-		"Title":   "About Me",
-	})
-}
-
 func ResumeHandler(c *gin.Context) {
-	c.HTML(http.StatusOK, "base.html", gin.H{
-		"Content": "resume.html",
-		"Title":   "Resume",
+	c.HTML(http.StatusOK, "resume.html", gin.H{
+		"Title": "Resume",
 	})
 }
 
 func ProjectsHandler(c *gin.Context) {
-	c.HTML(http.StatusOK, "base.html", gin.H{
-		"Content": "projects.html",
-		"Title":   "Projects",
-	})
+	if c.GetHeader(HTMX_HEADER) == "true" {
+		c.HTML(http.StatusOK, "projects.html", gin.H{
+			"Title": "Projects",
+		})
+	} else {
+		c.HTML(http.StatusOK, "projects.html", gin.H{
+			"Title": "Page",
+		})
+	}
 }
 
 func ContactHandler(c *gin.Context) {
-	c.HTML(http.StatusOK, "base.html", gin.H{
-		"Content": "contact.html",
-		"Title":   "Contact",
+	c.HTML(http.StatusOK, "contact.html", gin.H{
+		"Title": "Contact",
+	})
+}
+
+func HomeHandler(c *gin.Context) {
+	c.HTML(http.StatusOK, "home.html", gin.H{
+		"Title": "Contact",
 	})
 }

@@ -11,25 +11,19 @@
               </svg>    
            </button>
         </div>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  dark:border-gray-700 ">
-              <li>
-                <a href="#" class="block py-2 px-3 text-white rounded-sm  md:p-0 dark:text-white " aria-current="page">Home</a>
-              </li>
-              <li>
-                <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-white   dark:hover:text-white md:dark:hover:bg-transparent">About</a>
-              </li>
-              <li>
-                <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-white  dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
-              </li>
-              <li>
-                <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-white   dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
-              </li>
-              <li>
-                <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md md:p-0 dark:text-white  dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-              </li>
-            </ul>
+        <div class="hidden w-full md:block md:w-auto grid grid-cols-3 gap-4" id="navbar-default">
+        <div class="grid grid-cols-3 gap-4">
+          <div class="text-center">
+                <a href="#" hx-get="/project" hx-target=".content-section" hx-push-url="true" class="block py-2 px-2 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-white  dark:hover:text-white md:dark:hover:bg-transparent">Projects</a>
           </div>
+          <div class="text-center">
+                <a href="#" hx-get="/resume" hx-target=".content-section" hx-push-url="true" class="block py-2 px-2 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-white   dark:hover:text-white md:dark:hover:bg-transparent">About</a>
+          </div>
+          <div class="text-center">
+                <a href="#" hx-get="/contact" hx-target=".content-section" hx-push-url="true" class="block py-2 px-2 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md md:p-0 dark:text-white  dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+          </div>
+        </div>
+        </div>
       
       </div>
     </div>
