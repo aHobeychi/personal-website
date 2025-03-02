@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/static/css/style.css" rel="stylesheet">
+    <!-- Remove this comment before merging this Pull requst-->
     <link href="/static/css/colors.css" rel="stylesheet">
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,7 +15,7 @@
   <body class="md-gray-bg" >
     {{ template "header" . }}
     {{ template "sidebar" . }}
-  <section class="content-section">
+                                                <section class="content-section">
     {{ if eq .Content "resume" }}
         {{ template "resume" . }}
     {{ else if eq .Content "resume" }}
