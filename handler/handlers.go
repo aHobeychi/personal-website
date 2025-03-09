@@ -23,7 +23,7 @@ func ResumeHandler(c *gin.Context) {
 
 func ProjectsHandler(c *gin.Context) {
 
-	projects, err := parser.ParseProjects()
+	projects, err := parser.ParseProjects(3)
 
 	if err != nil {
 		logger.LogError("Error parsing projects: " + err.Error())

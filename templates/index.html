@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 
 <head>
   <meta charset="UTF-8">
@@ -12,10 +12,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="md-gray-bg">
+<body class="md-gray-bg min-h-full flex flex-col">
   {{ template "header" . }}
   {{ template "sidebar" . }}
-  <section class="content-section">
+  <main class="content-section flex-grow">
     {{ if eq .Content "resume" }}
     {{ template "resume" . }}
     {{ else if eq .Content "resume" }}
@@ -27,7 +27,7 @@
     {{ else }}
     {{ template "home" . }}
     {{ end }}
-  </section>
+  </main>
   {{ template "footer" . }}
 </body>
 
