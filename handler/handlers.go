@@ -58,11 +58,25 @@ func ContactHandler(c *gin.Context) {
 }
 
 func HomeHandler(c *gin.Context) {
+	// Get 3 projects for the home page
+	projects, err := parser.ParseProjects(3)
+
+	if err != nil {
+		logger.LogError("Error parsing projects: " + err.Error())
+		c.HTML(http.StatusInternalServerError, "error", gin.H{
+			"Message": "Error parsing projects",
+		})
+		return
+	}
+
 	if c.GetHeader(HTMX_HEADER) == "true" {
-		c.HTML(http.StatusOK, "home", gin.H{})
+		c.HTML(http.StatusOK, "home", gin.H{
+			"projects": projects,
+		})
 	} else {
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"Content": "home",
+			"Content":  "home",
+			"projects": projects,
 		})
 	}
 }
