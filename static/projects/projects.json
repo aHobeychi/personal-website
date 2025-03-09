@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "name": "Project SAMPLE",
+        "description": "Description of Project A",
+        "tags": [
+            "JavaScript",
+            "React",
+            "Node.js"
+        ],
+        "link": "https://github.com/taniarascia/accordion"
+    },
+    {
+        "id": 2,
+        "name": "Project B",
+        "description": "Description of Project B",
+        "tags": [
+            "Python",
+            "Django",
+            "REST"
+        ],
+        "link": "https://github.com/taniarascia/accordion"
+    },
+    {
+        "id": 3,
+        "name": "Project C",
+        "description": "Description of Project C",
+        "tags": [
+            "Java",
+            "Spring",
+            "Hibernate"
+        ],
+        "link": "https://github.com/taniarascia/accordion"
+    },
+    {
+        "id": 4,
+        "name": "Project D",
+        "description": "Description of Project D",
+        "tags": [
+            "C#",
+            "ASP.NET",
+            "Entity Framework"
+        ],
+        "link": "example.com"
+    },
+    {
+        "id": 5,
+        "name": "Project E",
+        "description": "Description of Project E",
+        "tags": [
+            "Ruby",
+            "Rails",
+            "PostgreSQL"
+        ],
+        "link": "example.com"
+    },
+    {
+        "id": 6,
+        "name": "Project F",
+        "description": "Description of Project F",
+        "tags": [
+            "PHP",
+            "Laravel",
+            "MySQL"
+        ],
+        "link": "example.com"
+    },
+    {
+        "id": 7,
+        "name": "Project G",
+        "description": "Description of Project G",
+        "tags": [
+            "Go",
+            "Gin",
+            "Gorm"
+        ],
+        "link": "example.com"
+    },
+    {
+        "id": 8,
+        "name": "Project H",
+        "description": "Description of Project H",
+        "tags": [
+            "Swift",
+            "iOS",
+            "CoreData"
+        ],
+        "link": "example.com"
+    },
+    {
+        "id": 9,
+        "name": "Project I",
+        "description": "Description of Project I",
+        "tags": [
+            "Kotlin",
+            "Android",
+            "Room"
+        ],
+        "link": "example.com"
+    },
+    {
+        "id": 10,
+        "name": "Project J",
+        "description": "Description of Project J",
+        "tags": [
+            "TypeScript",
+            "Angular",
+            "Firebase"
+        ],
+        "link": "example.com"
+    }
+]

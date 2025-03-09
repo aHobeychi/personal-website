@@ -3,6 +3,9 @@ package handler
 import (
 	"net/http"
 
+	"aHobeychi/personal-website/logger"
+	"aHobeychi/personal-website/parser"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -19,11 +22,27 @@ func ResumeHandler(c *gin.Context) {
 }
 
 func ProjectsHandler(c *gin.Context) {
+
+	projects, err := parser.ParseProjects()
+
+	if err != nil {
+		logger.LogError("Error parsing projects: " + err.Error())
+		c.HTML(http.StatusInternalServerError, "error", gin.H{
+			"Message": "Error parsing projects",
+		})
+		return
+	}
+
 	if c.GetHeader(HTMX_HEADER) == "true" {
-		c.HTML(http.StatusOK, "projects", gin.H{})
+
+		c.HTML(http.StatusOK, "projects", gin.H{
+			"projects": projects,
+		})
 	} else {
+
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"Content": "projects",
+			"Content":  "projects",
+			"projects": projects,
 		})
 	}
 }

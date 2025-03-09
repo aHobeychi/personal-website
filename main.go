@@ -2,11 +2,19 @@ package main
 
 import (
 	"aHobeychi/personal-website/handler"
+	"aHobeychi/personal-website/logger"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
+
+type Config struct {
+	SERVER_PORT string
+	CACHE_TTL   string
+	LOG_LEVEL   string
+}
 
 // returns an array of all html files under the templates folder
 func getHtmlFiles() []string {
@@ -42,10 +50,22 @@ func noCacheMiddleware() gin.HandlerFunc {
 }
 
 func main() {
-	r := gin.Default()
+
+	// Load configuration
+	config := getConfig()
+	// Set the log level based on the configuration
+	logger.SetLogLevel(config.LOG_LEVEL)
+
+	r := gin.New()
+
+	// Set Gin to release mode if not in debug
+	if !strings.EqualFold(config.LOG_LEVEL, "debug") {
+		gin.SetMode(gin.ReleaseMode)
+	}
 
 	// Apply no-cache middleware
 	r.Use(noCacheMiddleware())
+	r.Use(logger.CustomLoggerMiddleware())
 
 	// Load the html files form the dynamically generated html array
 	htmlFiles := getHtmlFiles()
@@ -61,5 +81,24 @@ func main() {
 	r.GET("/project", handler.ProjectsHandler)
 	r.GET("/contact", handler.ContactHandler)
 
-	r.Run(":8080")
+	r.Run(":" + config.SERVER_PORT)
+}
+
+// getConfig retrieves configuration values from environment variables or defaults
+// to predefined values. This function is useful for setting up application
+// configurations without hardcoding them in the source code.
+func getConfig() Config {
+
+	getEnv := func(key, defaultValue string) string {
+		if value, exists := os.LookupEnv(key); exists {
+			return value
+		}
+		return defaultValue
+	}
+
+	return Config{
+		SERVER_PORT: getEnv("SERVER_PORT", "8080"),
+		CACHE_TTL:   getEnv("CACHE_TTL", "60"),
+		LOG_LEVEL:   getEnv("LOG_LEVEL", "debug"),
+	}
 }
