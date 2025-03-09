@@ -26,14 +26,32 @@ func getHtmlFiles() []string {
 	return htmlFiles
 }
 
+// noCacheMiddleware sets headers to prevent caching for CSS files.
+// This middleware is useful during development to ensure the latest changes are always loaded.
+// Note: This middleware should be removed before deploying to production.
+func noCacheMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// Set headers to prevent caching for CSS files
+		if filepath.Ext(c.Request.URL.Path) == ".css" {
+			c.Header("Cache-Control", "no-cache, no-store, must-revalidate")
+			c.Header("Pragma", "no-cache")
+			c.Header("Expires", "0")
+		}
+		c.Next()
+	}
+}
+
 func main() {
 	r := gin.Default()
+
+	// Apply no-cache middleware
+	r.Use(noCacheMiddleware())
 
 	// Load the html files form the dynamically generated html array
 	htmlFiles := getHtmlFiles()
 	r.LoadHTMLFiles(htmlFiles...)
 
-	// Serve static files
+	// Explicitly set static file serving with proper path
 	r.Static("/static", "./static")
 
 	// Routes

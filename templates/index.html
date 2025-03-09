@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/static/css/style.css" rel="stylesheet">
-    <link href="/static/css/colors.css" rel="stylesheet">
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-  </head>
-  <!-- <body class="md-gray-bg" hx-get="/home" hx-trigger="load" hx-target=".content-section"> -->
-  <body class="md-gray-bg" >
-    {{ template "header" . }}
-    {{ template "sidebar" . }}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/css/colors.css" rel="stylesheet">
+  <link href="/static/css/styles.css" rel="stylesheet">
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="md-gray-bg">
+  {{ template "header" . }}
+  {{ template "sidebar" . }}
   <section class="content-section">
     {{ if eq .Content "resume" }}
-        {{ template "resume" . }}
+    {{ template "resume" . }}
     {{ else if eq .Content "resume" }}
-        {{ template "resume" . }}
+    {{ template "resume" . }}
     {{ else if eq .Content "projects" }}
-        {{ template "projects" . }}
+    {{ template "projects" . }}
     {{ else if eq .Content "contact" }}
-        {{ template "contact" . }}
+    {{ template "contact" . }}
     {{ else }}
-        {{ template "home" . }}
+    {{ template "home" . }}
     {{ end }}
   </section>
-  </body>
+</body>
+
 </html>
