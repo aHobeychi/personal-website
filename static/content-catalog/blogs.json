@@ -1,0 +1,134 @@
+[
+    {
+        "id": "sample-blog-1",
+        "title": "How to Use the New Features in the Latest Version of Our API",
+        "description": "Explore the new features and improvements in the latest version of our API, including enhanced performance and new endpoints.",
+        "tags": [
+            "API",
+            "New Features",
+            "Performance"
+        ],
+        "publishedDate": "2023-10-01",
+        "externalLink": "example.com/blog/how-to-use-new-features"
+    },
+    {
+        "id": "sample-blog-2",
+        "title": "Understanding RESTful APIs",
+        "description": "A comprehensive guide to understanding RESTful APIs and how to use them effectively.",
+        "tags": [
+            "API",
+            "REST",
+            "Guide"
+        ],
+        "publishedDate": "2023-09-15",
+        "externalLink": "example.com/blog/understanding-restful-apis"
+    },
+    {
+        "id": "sample-blog-3",
+        "title": "Top 10 Tips for Optimizing Your API",
+        "description": "Learn the top 10 tips for optimizing your API to ensure maximum performance and reliability.",
+        "tags": [
+            "API",
+            "Optimization",
+            "Performance"
+        ],
+        "publishedDate": "2023-08-30",
+        "externalLink": "example.com/blog/top-10-tips-for-optimizing-api"
+    },
+    {
+        "id": "sample-blog-4",
+        "title": "API Security Best Practices",
+        "description": "Discover the best practices for securing your API and protecting it from potential threats.",
+        "tags": [
+            "API",
+            "Security",
+            "Best Practices"
+        ],
+        "publishedDate": "2023-07-25",
+        "externalLink": "example.com/blog/api-security-best-practices"
+    },
+    {
+        "id": "sample-blog-5",
+        "title": "How to Build a RESTful API with Node.js",
+        "description": "Step-by-step guide on how to build a RESTful API using Node.js and Express.",
+        "tags": [
+            "API",
+            "Node.js",
+            "Tutorial"
+        ],
+        "publishedDate": "2023-06-20",
+        "externalLink": "example.com/blog/build-restful-api-with-nodejs"
+    },
+    {
+        "id": "sample-blog-6",
+        "title": "GraphQL vs REST: Which One to Choose?",
+        "description": "An in-depth comparison between GraphQL and REST to help you decide which one to use for your next project.",
+        "tags": [
+            "API",
+            "GraphQL",
+            "REST"
+        ],
+        "publishedDate": "2023-05-15",
+        "externalLink": "example.com/blog/graphql-vs-rest"
+    },
+    {
+        "id": "sample-blog-7",
+        "title": "API Versioning: Strategies and Best Practices",
+        "description": "Learn about different strategies and best practices for versioning your API.",
+        "tags": [
+            "API",
+            "Versioning",
+            "Best Practices"
+        ],
+        "publishedDate": "2023-04-10",
+        "externalLink": "example.com/blog/api-versioning-strategies"
+    },
+    {
+        "id": "sample-blog-8",
+        "title": "Building Scalable APIs with Microservices",
+        "description": "A guide to building scalable APIs using microservices architecture.",
+        "tags": [
+            "API",
+            "Microservices",
+            "Scalability"
+        ],
+        "publishedDate": "2023-03-05",
+        "externalLink": "example.com/blog/building-scalable-apis"
+    },
+    {
+        "id": "sample-blog-9",
+        "title": "API Documentation: Tools and Techniques",
+        "description": "Explore various tools and techniques for creating comprehensive API documentation.",
+        "tags": [
+            "API",
+            "Documentation",
+            "Tools"
+        ],
+        "publishedDate": "2023-02-01",
+        "externalLink": "example.com/blog/api-documentation-tools"
+    },
+    {
+        "id": "sample-blog-10",
+        "title": "Integrating Third-Party APIs: Best Practices",
+        "description": "Learn the best practices for integrating third-party APIs into your applications.",
+        "tags": [
+            "API",
+            "Integration",
+            "Best Practices"
+        ],
+        "publishedDate": "2023-01-15",
+        "externalLink": "example.com/blog/integrating-third-party-apis"
+    },
+    {
+        "id": "sample-blog-11",
+        "title": "API Rate Limiting: Techniques and Strategies",
+        "description": "Understand different techniques and strategies for implementing API rate limiting.",
+        "tags": [
+            "API",
+            "Rate Limiting",
+            "Techniques"
+        ],
+        "publishedDate": "2022-12-10",
+        "externalLink": "example.com/blog/api-rate-limiting"
+    }
+]

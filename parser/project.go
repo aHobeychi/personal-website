@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	PATH_TOWARDS_PROJECTS_JSON = "static/projects/projects.json"
+	PATH_TOWARDS_PROJECTS_JSON = "static/content-catalog/projects.json"
 	cache                      []models.Project
 	cacheOnce                  sync.Once
 	cacheErr                   error

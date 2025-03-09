@@ -1,0 +1,23 @@
+{{ define "navbar" }}
+<nav class="hidden w-full md:block md:w-auto grid grid-cols-4 gap-4" id="navbar-default">
+    <div class="grid grid-cols-4 gap-4">
+        <div class="text-center">
+            <a href="/" hx-get="/project" hx-target=".content-section" hx-push-url="true"
+                class="block py-2 px-2 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-white  dark:hover:text-white md:dark:hover:bg-transparent">Projects</a>
+        </div>
+        <div class="text-center">
+            <a href="/" hx-get="/blog" hx-target=".content-section" hx-push-url="true"
+                class="block py-2 px-2 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-white  dark:hover:text-white md:dark:hover:bg-transparent">Blog</a>
+        </div>
+        <div class="text-center">
+            <a href="/" hx-get="/resume" hx-target=".content-section" hx-push-url="true"
+                class="block py-2 px-2 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 dark:text-white   dark:hover:text-white md:dark:hover:bg-transparent">About
+                Me</a>
+        </div>
+        <div class="text-center">
+            <a href="/" hx-get="/contact" hx-target=".content-section" hx-push-url="true"
+                class="block py-2 px-2 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md md:p-0 dark:text-white  dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+        </div>
+    </div>
+</nav>
+{{ end }}

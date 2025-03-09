@@ -16,16 +16,22 @@
   {{ template "header" . }}
   {{ template "sidebar" . }}
   <main class="content-section flex-grow">
+    
     {{ if eq .Content "resume" }}
     {{ template "resume" . }}
-    {{ else if eq .Content "resume" }}
-    {{ template "resume" . }}
+    
     {{ else if eq .Content "projects" }}
     {{ template "projects" . }}
+    
+    {{ else if eq .Content "blog" }}
+    {{ template "blog" . }}
+    
     {{ else if eq .Content "contact" }}
     {{ template "contact" . }}
+    
     {{ else }}
     {{ template "home" . }}
+    
     {{ end }}
   </main>
   {{ template "footer" . }}
