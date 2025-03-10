@@ -1,7 +1,7 @@
 package models
 
 type Blog struct {
-	ID            string   `json:"id"`
+	Id            string   `json:"id"`
 	Title         string   `json:"title"`
 	Description   string   `json:"description"`
 	Tags          []string `json:"tags"`

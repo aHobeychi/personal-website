@@ -1,6 +1,6 @@
 [
     {
-        "id": "sample-blog-1",
+        "id": "sample",
         "title": "How to Use the New Features in the Latest Version of Our API",
         "description": "Explore the new features and improvements in the latest version of our API, including enhanced performance and new endpoints.",
         "tags": [
@@ -13,7 +13,7 @@
     },
     {
         "id": "sample-blog-2",
-        "title": "Understanding RESTful APIs",
+        "title": "Understanding RESTful APIs" ,
         "description": "A comprehensive guide to understanding RESTful APIs and how to use them effectively.",
         "tags": [
             "API",

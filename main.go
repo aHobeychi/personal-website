@@ -80,6 +80,7 @@ func main() {
 	r.GET("/resume", handler.ResumeHandler)
 	r.GET("/project", handler.ProjectsHandler)
 	r.GET("/blog", handler.BlogHandler)
+	r.GET("/blog/:id", handler.BlogDisplayHandler)
 	r.GET("/contact", handler.ContactHandler)
 
 	r.Run(":" + config.SERVER_PORT)

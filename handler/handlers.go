@@ -25,12 +25,17 @@ func ResumeHandler(c *gin.Context) {
 }
 
 func BlogHandler(c *gin.Context) {
+
+	blogs, _ := parser.ParseBlogs() // TODO: Add error handling
+
 	if c.GetHeader(HTMX_HEADER) == "true" {
 		c.HTML(http.StatusOK, "blog", gin.H{
+			"blogs":      blogs,
 			"ActivePage": "blog",
 		})
 	} else {
 		c.HTML(http.StatusOK, "index.html", gin.H{
+			"blogs":      blogs,
 			"Content":    "blog",
 			"ActivePage": "blog",
 		})
