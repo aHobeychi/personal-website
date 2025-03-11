@@ -16,7 +16,7 @@
       <section class="grid grid-cols-1 mb-3 home-sections">
          <div class="flex justify-between items-center pb-2">
             <h1 class="text-4xl text-gray-900 dark:text-white">My Projects</h1>
-            <a href="/" hx-get="/project" hx-target=".content-section" hx-swap="innerHTML show:window:top"  class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline">
+            <a href="/" hx-get="/project" hx-target=".content-section" hx-swap="innerHTML show:window:top"  class="inline-flex items-center font-medium text-gray-500 dark:text-gray-500 hover:underline">
                View More
                <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -59,8 +59,8 @@
       <!-- Blog section contain heading, subheading and links -->
       <section class="grid grid-cols-1 mb-4 home-sections">
          <div class="flex justify-between items-center pb-2">
-            <h1 class="text-4xl text-gray-900 dark:text-white">My Blog</h1>
-            <a href="/" hx-get="/blog" hx-target=".content-section" hx-swap="innerHTML show:window:top"  class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline">
+            <h1 class="text-4xl text-gray-900 dark:text-white">My Notes</h1>
+            <a href="/" hx-get="/blog" hx-target=".content-section" hx-swap="innerHTML show:window:top"  class="inline-flex items-center font-medium text-gray-500 dark:text-gray-500 hover:underline">
                View More
                <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -68,7 +68,7 @@
                </a>
          </div>
 
-         <p class="text-gray-500 dark:text-gray-400">Check out my latest posts</p>
+         <p class="text-gray-500 dark:text-gray-400 pb-4">Check out my latest posts</p>
 
          <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
             {{ range .blogs }}
