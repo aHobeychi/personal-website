@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="/static/css/colors.css" rel="stylesheet">
   <link href="/static/css/styles.css" rel="stylesheet">
+  <link href="/static/css/blogs.css" rel="stylesheet">
   <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
@@ -23,9 +24,12 @@
     {{ else if eq .Content "projects" }}
     {{ template "projects" . }}
     
-    {{ else if eq .Content "blog" }}
+    {{ else if eq .Content "blog-list" }}
     {{ template "blog" . }}
     
+    {{ else if eq .Content "blog-content" }}
+    {{ template "blog-content" . }}
+
     {{ else if eq .Content "contact" }}
     {{ template "contact" . }}
     

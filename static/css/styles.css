@@ -1,13 +1,3 @@
 .home-sections {
     padding-bottom: 30px;
 }
-
-.content-section {
-    min-height: 100%;
-    /* Removed fixed padding-bottom since we now use flexbox for sticky footer */
-}
-
-/* Make sure the html takes full height of the viewport */
-html {
-    height: 100%;
-}

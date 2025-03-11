@@ -12,7 +12,7 @@
         "externalLink": "example.com/blog/how-to-use-new-features"
     },
     {
-        "id": "sample-blog-2",
+        "id": "test",
         "title": "Understanding RESTful APIs" ,
         "description": "A comprehensive guide to understanding RESTful APIs and how to use them effectively.",
         "tags": [
@@ -24,7 +24,7 @@
         "externalLink": "example.com/blog/understanding-restful-apis"
     },
     {
-        "id": "sample-blog-3",
+        "id": "test",
         "title": "Top 10 Tips for Optimizing Your API",
         "description": "Learn the top 10 tips for optimizing your API to ensure maximum performance and reliability.",
         "tags": [

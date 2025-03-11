@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"html/template"
 	"net/http"
 
 	"aHobeychi/personal-website/logger"
@@ -24,19 +25,62 @@ func ResumeHandler(c *gin.Context) {
 	}
 }
 
-func BlogHandler(c *gin.Context) {
+func BlogContentHandler(c *gin.Context) {
+	blogId := c.Param("blogId")
 
+	// Get blog metadata to display title in breadcrumbs
+	blogs, _ := parser.ParseBlogs()
+	var blogTitle string = "Blog Post" // Default title if not found
+
+	// Find the blog with matching ID to get its title
+	for _, blog := range blogs {
+		if blog.Id == blogId {
+			blogTitle = blog.Title
+			break
+		}
+	}
+
+	// Parse the blog content from the file
+	content, err := parser.GetBlogHTMLContent(blogId)
+	if err != nil {
+		logger.LogError("Error parsing blog content: " + err.Error())
+		c.HTML(http.StatusInternalServerError, "error", gin.H{
+			"Message": "Error parsing blog content",
+		})
+		return
+	}
+
+	// Convert the HTML content string to template.HTML to prevent escaping
+	htmlContent := template.HTML(content)
+
+	if c.GetHeader(HTMX_HEADER) == "true" {
+		c.HTML(http.StatusOK, "blog-content", gin.H{
+			"ContentData": htmlContent,
+			"BlogTitle":   blogTitle,
+			"ActivePage":  "blog",
+		})
+	} else {
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"Content":     "blog-content",
+			"ContentData": htmlContent,
+			"BlogTitle":   blogTitle,
+			"ActivePage":  "blog",
+		})
+	}
+}
+
+func BlogHandler(c *gin.Context) {
 	blogs, _ := parser.ParseBlogs() // TODO: Add error handling
 
 	if c.GetHeader(HTMX_HEADER) == "true" {
-		c.HTML(http.StatusOK, "blog", gin.H{
+		c.HTML(http.StatusOK, "blog-list", gin.H{
 			"blogs":      blogs,
 			"ActivePage": "blog",
 		})
 	} else {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"blogs":      blogs,
-			"Content":    "blog",
+			"Content":    "blog-list",
 			"ActivePage": "blog",
 		})
 	}

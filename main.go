@@ -50,39 +50,31 @@ func noCacheMiddleware() gin.HandlerFunc {
 }
 
 func main() {
-
 	// Load configuration
 	config := getConfig()
 	// Set the log level based on the configuration
 	logger.SetLogLevel(config.LOG_LEVEL)
-
 	r := gin.New()
-
 	// Set Gin to release mode if not in debug
 	if !strings.EqualFold(config.LOG_LEVEL, "debug") {
 		gin.SetMode(gin.ReleaseMode)
 	}
-
 	// Apply no-cache middleware
 	r.Use(noCacheMiddleware())
 	r.Use(logger.CustomLoggerMiddleware())
-
 	// Load the html files form the dynamically generated html array
 	htmlFiles := getHtmlFiles()
 	r.LoadHTMLFiles(htmlFiles...)
-
 	// Explicitly set static file serving with proper path
 	r.Static("/static", "./static")
-
 	// Routes
 	r.GET("/", handler.HomeHandler)
 	r.GET("/home", handler.HomeHandler)
 	r.GET("/resume", handler.ResumeHandler)
 	r.GET("/project", handler.ProjectsHandler)
 	r.GET("/blog", handler.BlogHandler)
-	r.GET("/blog/:id", handler.BlogDisplayHandler)
+	r.GET("/blog/:blogId", handler.BlogContentHandler)
 	r.GET("/contact", handler.ContactHandler)
-
 	r.Run(":" + config.SERVER_PORT)
 }
 
@@ -90,17 +82,15 @@ func main() {
 // to predefined values. This function is useful for setting up application
 // configurations without hardcoding them in the source code.
 func getConfig() Config {
-
 	getEnv := func(key, defaultValue string) string {
 		if value, exists := os.LookupEnv(key); exists {
 			return value
 		}
 		return defaultValue
 	}
-
 	return Config{
 		SERVER_PORT: getEnv("SERVER_PORT", "8080"),
-		CACHE_TTL:   getEnv("CACHE_TTL", "60"),
+		CACHE_TTL:   getEnv("CACHE_TTL", "10m"),
 		LOG_LEVEL:   getEnv("LOG_LEVEL", "debug"),
 	}
 }

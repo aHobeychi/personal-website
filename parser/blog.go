@@ -42,3 +42,29 @@ func ParseBlogs(limit ...int) ([]models.Blog, error) {
 
 	return cache, nil
 }
+
+// GetBlogHTMLContent returns the HTML content of a blog post by its ID.
+// The returned string contains raw HTML that should be served with
+// content type "text/html" to be properly rendered in a browser.
+func GetBlogHTMLContent(blogId string) (string, error) {
+	// create formatted path from blogId
+	blogPath := "static/blog-posts/markdown/" + blogId + ".html"
+	file, err := os.Open(blogPath)
+	if err != nil {
+		logger.ErrorLogger.Println("Error opening file:", err)
+		return "", err
+	}
+	defer file.Close()
+
+	// read the file content
+	content, err := os.ReadFile(blogPath)
+	if err != nil {
+		logger.ErrorLogger.Println("Error reading file:", err)
+		return "", err
+	}
+	// convert content to string
+	contentString := string(content)
+	logger.DebugLogger.Printf("HTML content retrieved for blog ID: %s", blogId)
+
+	return contentString, nil
+}
