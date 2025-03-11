@@ -29,14 +29,19 @@ func BlogContentHandler(c *gin.Context) {
 	blogId := c.Param("blogId")
 
 	// Get blog metadata to display title in breadcrumbs
-	blogs, _ := parser.ParseBlogs()
+	blogs, err := parser.ParseBlogs()
 	var blogTitle string = "Blog Post" // Default title if not found
 
-	// Find the blog with matching ID to get its title
-	for _, blog := range blogs {
-		if blog.Id == blogId {
-			blogTitle = blog.Title
-			break
+	if err != nil {
+		logger.LogError("Error parsing blogs for metadata: " + err.Error())
+		// Continue with default title if we can't get blog metadata
+	} else {
+		// Find the blog with matching ID to get its title
+		for _, blog := range blogs {
+			if blog.Id == blogId {
+				blogTitle = blog.Title
+				break
+			}
 		}
 	}
 
@@ -44,8 +49,9 @@ func BlogContentHandler(c *gin.Context) {
 	content, err := parser.GetBlogHTMLContent(blogId)
 	if err != nil {
 		logger.LogError("Error parsing blog content: " + err.Error())
+		// Render standalone error page
 		c.HTML(http.StatusInternalServerError, "error", gin.H{
-			"Message": "Error parsing blog content",
+			"Message": "Error loading the blog post content.",
 		})
 		return
 	}
@@ -70,7 +76,15 @@ func BlogContentHandler(c *gin.Context) {
 }
 
 func BlogHandler(c *gin.Context) {
-	blogs, _ := parser.ParseBlogs() // TODO: Add error handling
+	blogs, err := parser.ParseBlogs() // Added error handling
+
+	if err != nil {
+		logger.LogError("Error parsing blogs: " + err.Error())
+		c.HTML(http.StatusInternalServerError, "error", gin.H{
+			"Message": "Error loading blog posts",
+		})
+		return
+	}
 
 	if c.GetHeader(HTMX_HEADER) == "true" {
 		c.HTML(http.StatusOK, "blog-list", gin.H{
@@ -87,25 +101,22 @@ func BlogHandler(c *gin.Context) {
 }
 
 func ProjectsHandler(c *gin.Context) {
-
 	projects, err := parser.ParseProjects()
 
 	if err != nil {
 		logger.LogError("Error parsing projects: " + err.Error())
 		c.HTML(http.StatusInternalServerError, "error", gin.H{
-			"Message": "Error parsing projects",
+			"Message": "We couldn't load the projects at this time. Please try again later.",
 		})
 		return
 	}
 
 	if c.GetHeader(HTMX_HEADER) == "true" {
-
 		c.HTML(http.StatusOK, "projects", gin.H{
 			"projects":   projects,
 			"ActivePage": "project",
 		})
 	} else {
-
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"Content":    "projects",
 			"projects":   projects,

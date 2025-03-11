@@ -1,6 +1,19 @@
 {{ define "blog" }}
-
-{{ template "blog-list" . }}
-{{ template "blog-content" . }}
-
+<title>Blog</title>
+<div class="p-4 sm:ml-80">
+    <div class="p-4 mx-16 rounded-lg dark:border-gray-700 mt-14">
+        <section class="grid grid-cols-1 mb-4 home-sections">
+            <h1 class="text-5xl text-gray-900 dark:text-white pb-2">Blog</h1>
+            <p class="text-gray-500 dark:text-gray-400">Check out what I've been writing</p>
+        </section>
+        
+        <!-- Blog content will be loaded here via HTMX if needed -->
+        <div id="blog-container">
+            <!-- Default shows blog list -->
+            {{ if .blogs }}
+                {{ template "blog-list" . }}
+            {{ end }}
+        </div>
+    </div>
+</div>
 {{ end }}

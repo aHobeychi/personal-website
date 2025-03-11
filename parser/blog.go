@@ -11,36 +11,32 @@ var (
 	PATH_TOWARDS_BLOG_JSON = "static/content-catalog/blogs.json"
 )
 
-// ParseProjects retrieves a list of projects, either from cache or from file
-// Uses a sync.Once to ensure the cache is populated only once between cache clear operations
-// Optional limit parameter controls the maximum number of projects returned
-// Returns a slice of Project models and any error encountered
+// ParseBlogs retrieves a list of blogs from file
+// Optional limit parameter controls the maximum number of blogs returned
+// Returns a slice of Blog models and any error encountered
 func ParseBlogs(limit ...int) ([]models.Blog, error) {
-
-	var cache []models.Blog
+	var blogs []models.Blog
 	file, err := os.Open(PATH_TOWARDS_BLOG_JSON)
 	if err != nil {
-		cacheErr = err
+		logger.ErrorLogger.Println("Error opening blog JSON file:", err)
 		return nil, err
 	}
 	defer file.Close()
 
-	err = json.NewDecoder(file).Decode(&cache)
+	err = json.NewDecoder(file).Decode(&blogs)
 	if err != nil {
-		cacheErr = err
-	}
-
-	logger.DebugLogger.Println("Cache populated, returning projects")
-
-	// print first object as json
-	jsonData, err := json.Marshal(cache[0])
-	if err != nil {
-		logger.ErrorLogger.Println("Error marshalling JSON:", err)
+		logger.ErrorLogger.Println("Error decoding blog JSON:", err)
 		return nil, err
 	}
-	logger.DebugLogger.Println(string(jsonData))
 
-	return cache, nil
+	logger.DebugLogger.Println("Blogs loaded successfully")
+
+	// Apply limit if specified
+	if len(limit) > 0 && limit[0] > 0 && limit[0] < len(blogs) {
+		return blogs[:limit[0]], nil
+	}
+
+	return blogs, nil
 }
 
 // GetBlogHTMLContent returns the HTML content of a blog post by its ID.
@@ -49,19 +45,14 @@ func ParseBlogs(limit ...int) ([]models.Blog, error) {
 func GetBlogHTMLContent(blogId string) (string, error) {
 	// create formatted path from blogId
 	blogPath := "static/blog-posts/markdown/" + blogId + ".html"
-	file, err := os.Open(blogPath)
-	if err != nil {
-		logger.ErrorLogger.Println("Error opening file:", err)
-		return "", err
-	}
-	defer file.Close()
 
-	// read the file content
+	// Read the file content directly
 	content, err := os.ReadFile(blogPath)
 	if err != nil {
-		logger.ErrorLogger.Println("Error reading file:", err)
+		logger.ErrorLogger.Println("Error reading blog content file:", err)
 		return "", err
 	}
+
 	// convert content to string
 	contentString := string(content)
 	logger.DebugLogger.Printf("HTML content retrieved for blog ID: %s", blogId)
