@@ -3,11 +3,9 @@ package main
 import (
 	"aHobeychi/personal-website/handler"
 	"aHobeychi/personal-website/logger"
+	"net/http"
 	"os"
 	"path/filepath"
-	"strings"
-
-	"github.com/gin-gonic/gin"
 )
 
 type Config struct {
@@ -37,45 +35,55 @@ func getHtmlFiles() []string {
 // noCacheMiddleware sets headers to prevent caching for CSS files.
 // This middleware is useful during development to ensure the latest changes are always loaded.
 // Note: This middleware should be removed before deploying to production.
-func noCacheMiddleware() gin.HandlerFunc {
-	return func(c *gin.Context) {
+func noCacheMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Set headers to prevent caching for CSS files
-		if filepath.Ext(c.Request.URL.Path) == ".css" {
-			c.Header("Cache-Control", "no-cache, no-store, must-revalidate")
-			c.Header("Pragma", "no-cache")
-			c.Header("Expires", "0")
+		if filepath.Ext(r.URL.Path) == ".css" {
+			w.Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")
+			w.Header().Set("Pragma", "no-cache")
+			w.Header().Set("Expires", "0")
 		}
-		c.Next()
-	}
+		next.ServeHTTP(w, r)
+	})
 }
 
 func main() {
 	// Load configuration
 	config := getConfig()
+
 	// Set the log level based on the configuration
 	logger.SetLogLevel(config.LOG_LEVEL)
-	r := gin.New()
-	// Set Gin to release mode if not in debug
-	if !strings.EqualFold(config.LOG_LEVEL, "debug") {
-		gin.SetMode(gin.ReleaseMode)
-	}
-	// Apply no-cache middleware
-	r.Use(noCacheMiddleware())
-	r.Use(logger.CustomLoggerMiddleware())
-	// Load the html files form the dynamically generated html array
+
+	// Parse all templates
 	htmlFiles := getHtmlFiles()
-	r.LoadHTMLFiles(htmlFiles...)
-	// Explicitly set static file serving with proper path
-	r.Static("/static", "./static")
+	handler.InitializeTemplates(htmlFiles)
+
+	// Create a new router using the standard library
+	mux := http.NewServeMux()
+
+	// Setup static file server
+	fileServer := http.FileServer(http.Dir("./static"))
+	mux.Handle("/static/", http.StripPrefix("/static/", fileServer))
+
 	// Routes
-	r.GET("/", handler.HomeHandler)
-	r.GET("/home", handler.HomeHandler)
-	r.GET("/resume", handler.ResumeHandler)
-	r.GET("/project", handler.ProjectsHandler)
-	r.GET("/blog", handler.BlogHandler)
-	r.GET("/blog/:blogId", handler.BlogContentHandler)
-	r.GET("/contact", handler.ContactHandler)
-	r.Run(":" + config.SERVER_PORT)
+	mux.HandleFunc("/", handler.ServeHomepage)
+	mux.HandleFunc("/home", handler.ServeHomepage)
+	mux.HandleFunc("/resume", handler.ServeResume)
+	mux.HandleFunc("/project", handler.ServeProjectsList)
+	mux.HandleFunc("/blog", handler.ServeBlogList)
+	mux.HandleFunc("/blog/", handler.ServeBlogPost) // Will handle /blog/{blogId} paths
+
+	// Apply middleware chain
+	var handler http.Handler = mux
+	handler = noCacheMiddleware(handler)
+	handler = logger.CustomLoggerMiddleware(handler)
+
+	// Start the server
+	logger.LogDebug("Server starting on port " + config.SERVER_PORT)
+	err := http.ListenAndServe(":"+config.SERVER_PORT, handler)
+	if err != nil {
+		logger.LogError("Server failed to start: " + err.Error())
+	}
 }
 
 // getConfig retrieves configuration values from environment variables or defaults
@@ -88,6 +96,7 @@ func getConfig() Config {
 		}
 		return defaultValue
 	}
+
 	return Config{
 		SERVER_PORT: getEnv("SERVER_PORT", "8080"),
 		CACHE_TTL:   getEnv("CACHE_TTL", "10m"),

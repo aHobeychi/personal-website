@@ -11,22 +11,22 @@ import (
 
 var (
 	PATH_TOWARDS_PROJECTS_JSON = "static/content-catalog/projects.json"
-	cache                      []models.Project
-	cacheOnce                  sync.Once
-	cacheErr                   error
-	cacheMutex                 sync.Mutex
-	cacheTicker                *time.Ticker
-	disableCache               bool
-	CACHE_TTL                  = 1 * time.Minute
+	projectCache               []models.Project
+	projectCacheOnce           sync.Once
+	projectCacheErr            error
+	projectCacheMutex          sync.Mutex
+	projectCacheTicker         *time.Ticker
+	projectDisableCache        bool
+	PROJECT_CACHE_TTL          = 10 * time.Minute
 )
 
 // init initializes the cache refresh mechanism
 // Sets up a ticker that clears the project cache at regular intervals
 // defined by CACHE_TTL
 func init() {
-	cacheTicker = time.NewTicker(CACHE_TTL)
+	projectCacheTicker = time.NewTicker(PROJECT_CACHE_TTL)
 	go func() {
-		for range cacheTicker.C {
+		for range projectCacheTicker.C {
 			logger.DebugLogger.Println("Clearing project cache")
 			clearCache()
 		}
@@ -37,18 +37,18 @@ func init() {
 // This forces the cache to be repopulated on the next request
 // Uses mutex locking to ensure thread safety
 func clearCache() {
-	cacheMutex.Lock()
-	defer cacheMutex.Unlock()
-	cache = nil
-	cacheOnce = sync.Once{}
-	cacheErr = nil
+	projectCacheMutex.Lock()
+	defer projectCacheMutex.Unlock()
+	projectCache = nil
+	projectCacheOnce = sync.Once{}
+	projectCacheErr = nil
 }
 
 // SetDisableCache allows toggling the caching mechanism on or off
 // When true, projects will always be read directly from file
 // When false, projects are cached and refreshed according to CACHE_TTL
 func SetDisableCache(flag bool) {
-	disableCache = flag
+	projectDisableCache = flag
 }
 
 // ParseProjects retrieves a list of projects, either from cache or from file
@@ -57,41 +57,41 @@ func SetDisableCache(flag bool) {
 // Returns a slice of Project models and any error encountered
 func ParseProjects(limit ...int) ([]models.Project, error) {
 
-	if disableCache {
+	if projectDisableCache {
 		logger.DebugLogger.Println("Cache disabled, reading projects from file")
 		return parseProjectsFromFile(limit...)
 	}
 
-	cacheOnce.Do(func() {
-		cacheMutex.Lock()
-		defer cacheMutex.Unlock()
+	projectCacheOnce.Do(func() {
+		projectCacheMutex.Lock()
+		defer projectCacheMutex.Unlock()
 		logger.DebugLogger.Println("Cache enabled, reading projects from file")
 
 		file, err := os.Open(PATH_TOWARDS_PROJECTS_JSON)
 		if err != nil {
-			cacheErr = err
+			projectCacheErr = err
 			return
 		}
 		defer file.Close()
 
-		err = json.NewDecoder(file).Decode(&cache)
+		err = json.NewDecoder(file).Decode(&projectCache)
 		if err != nil {
-			cacheErr = err
+			projectCacheErr = err
 		}
 	})
 
 	logger.DebugLogger.Println("Cache populated, returning projects")
 
-	if cacheErr != nil {
-		return nil, cacheErr
+	if projectCacheErr != nil {
+		return nil, projectCacheErr
 	}
 
 	// If a limit is provided, return only that number of projects
-	if len(limit) > 0 && limit[0] < len(cache) {
-		return cache[:limit[0]], nil
+	if len(limit) > 0 && limit[0] < len(projectCache) {
+		return projectCache[:limit[0]], nil
 	}
 
-	return cache, nil
+	return projectCache, nil
 }
 
 // parseProjectsFromFile reads the projects JSON file and decodes it into Project models

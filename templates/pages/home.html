@@ -10,65 +10,81 @@
             mature team worker and adaptable to all challenging situations. I am able to work well both in a team
             environment as well as using own initiative. I am able to work well under pressure and adhere to strict
             deadlines</p>
+      </section>
 
-         <div class="flex space-x-4">
-            <button class="px-4 py-2 font-semibold text-white bg-gray-500 rounded hover:bg-blue-700">About Me</button>
-            <button class="px-4 py-2 font-semibold text-white bg-gray-500 rounded hover:bg-green-700">Get in
-               Touch</button>
+      <!-- Projects section contain heading, subheading and links -->
+      <section class="grid grid-cols-1 mb-3 home-sections">
+         <div class="flex justify-between items-center pb-2">
+            <h1 class="text-4xl text-gray-900 dark:text-white">My Projects</h1>
+            <a href="/" hx-get="/project" hx-target=".content-section" hx-swap="innerHTML show:window:top"  class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline">
+               View More
+               <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+               </svg>
+               </a>
+         </div>
+         <p class="text-gray-500 dark:text-gray-400 mb-4">Check out what I've been building</p>
+
+         <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+            {{ range .projects }}
+            <div class="p-6 rounded-3xl shadow-md hover:shadow-lg transition-shadow duration-300 dark-gray-bg">
+               <div class="flex justify-between items-center">
+                  <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{{ .Name }}</h2>
+                  {{ if .Link }}
+                  <a href="{{ .Link }}" target="_blank" rel="noopener noreferrer"
+                     class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                           d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                     </svg>
+                  </a>
+                  {{ end }}
+               </div>
+               <p class="text-gray-700 dark:text-gray-300 mt-3 text-base">{{ .Description }}</p>
+               <div class="mt-2 ">
+                  {{ range .Tags }}
+                  <span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">
+                     {{.}}
+                  </span>
+
+      
+                  {{ end }}
+               </div>
+            </div>
+            {{ end }}
          </div>
       </section>
 
       <!-- Blog section contain heading, subheading and links -->
       <section class="grid grid-cols-1 mb-4 home-sections">
-         <h1 class="text-4xl text-gray-900 dark:text-white pb-2">My Blog</h2>
-            <p class="text-gray-500 dark:text-gray-400">Check out my latest posts</p>
-            <div id="view-more-projects-div" class="flex justify-center mt-6">
-               <a href="/" hx-get="/project" hx-target=".content-section" hx-swap="innerHTML show:window:top" hx-push-url="true"
-                  class="px-6 py-2 text-base font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-300">
-                  View More
+         <div class="flex justify-between items-center pb-2">
+            <h1 class="text-4xl text-gray-900 dark:text-white">My Blog</h1>
+            <a href="/" hx-get="/blog" hx-target=".content-section" hx-swap="innerHTML show:window:top"  class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline">
+               View More
+               <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+               </svg>
                </a>
-           </div>
-     </section>
+         </div>
 
-      <!-- Projects section contain heading, subheading and links -->
-      <section class="grid grid-cols-1 mb-4 home-sections">
-         <h1 class="text-4xl text-gray-900 dark:text-white pb-2">Projects</h2>
-            <p class="text-gray-500 dark:text-gray-400 mb-4">Check out what I've been building</p>
+         <p class="text-gray-500 dark:text-gray-400">Check out my latest posts</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
-               {{ range .projects }}
-               <div class="p-6 rounded-3xl shadow-md hover:shadow-lg transition-shadow duration-300 dark-gray-bg">
-                  <div class="flex justify-between items-center">
-                     <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{{ .Name }}</h2>
-                     {{ if .Link }}
-                     <a href="{{ .Link }}" target="_blank" rel="noopener noreferrer"
-                        class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                           stroke="currentColor">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                     </a>
-                     {{ end }}
-                  </div>
-                  <p class="text-gray-700 dark:text-gray-300 mt-3 text-base">{{ .Description }}</p>
-                  <div class="mt-6 ">
-                     {{ range .Tags }}
-                     <span
-                        class="inline-block bg-gray-200 text-gray-800 text-sm px-3 py-1 rounded-full dark:bg-gray-700 dark:text-gray-300 mr-2 mb-2">{{
-                        . }}</span>
-                     {{ end }}
-                  </div>
+         <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+            {{ range .blogs }}
+            <!-- Blog entry with clickable link -->
+            <a href="/blog/{{ .Id }}"
+               class="block p-2 rounded-3xl shadow-md hover:shadow-lg transition-shadow duration-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+               <div class="flex justify-between items-center">
+                  <p class="text-l font-bold text-gray-900 dark:text-white">{{ .Title }}</p>
+                  <p class="text-gray-700 dark:text-gray-300 text-base">{{ .PublishedDate }}</p>
                </div>
-               {{ end }}
-            </div>
-            <div id="view-more-projects-div" class="flex justify-center mt-6">
-                <a href="/" hx-get="/project" hx-target=".content-section" hx-swap="innerHTML show:window:top" hx-push-url="true"
-                   class="px-6 py-2 text-base font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-300">
-                   View More
-                </a>
-            </div>
+               <p class="text-gray-600 dark:text-gray-400 pt-1">{{ .Description }}</p>
+            </a>
+            {{ end }}
+         </div>
       </section>
+
    </div>
 </div>
 
