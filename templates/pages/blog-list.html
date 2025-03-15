@@ -8,15 +8,15 @@
         </section>
         <section class="grid grid-cols-1 md:grid-cols-1 gap-6">
             {{ range .blogs }}
-            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
+            <a href="/blog/{{ .Id }}" class="block bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
                 <div class="flex justify-between items-center">
                     <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200">{{ .Title }}</h3>
-                    <a href="/blog/{{ .Id }}" class="inline-flex items-center text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
+                    <span class="inline-flex items-center text-sm text-gray-500 dark:text-gray-400">
                         {{ .PublishedDate }}
-                    </a>
+                    </span>
                 </div>
                 <p class="text-gray-600 dark:text-gray-300 mt-2">{{ .Description }}</p>
-            </div>
+            </a>
             {{ end }}
         </section>
     </div>

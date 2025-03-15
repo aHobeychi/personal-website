@@ -30,9 +30,6 @@
     {{ else if eq .Content "blog-content" }}
     {{ template "blog-content" . }}
 
-    {{ else if eq .Content "contact" }}
-    {{ template "contact" . }}
-    
     {{ else }}
     {{ template "home" . }}
     
