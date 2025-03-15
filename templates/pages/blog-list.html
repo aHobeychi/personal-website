@@ -1,21 +1,25 @@
 {{ define "blog-list" }}
-<title>Blog</title>
+<title>Notes</title>
 <div class="p-4 sm:ml-80">
     <div class="p-4 mx-16 rounded-lg dark:border-gray-700 mt-14">
         <section class="grid grid-cols-1 mb-4 home-sections">
-            <h1 class="text-5xl text-gray-900 dark:text-white pb-2">Blog</h1>
-            <p class="text-gray-500 dark:text-gray-400">Check out what I've been building</p>
+            <h1 class="text-5xl text-gray-900 dark:text-white pb-2">Notes</h1>
+            <p class="text-gray-500 dark:text-gray-400">Check out what I've been writing</p>
         </section>
-        <section class="grid grid-cols-1 md:grid-cols-1">
+        <section class="grid grid-cols-1 md:grid-cols-1 gap-6">
             {{ range .blogs }}
-            <!-- Blog entry with clickable link -->
-            <a href="/blog/{{ .Id }}" class="block p-2 rounded-3xl shadow-md hover:shadow-lg transition-shadow duration-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+            <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md">
                 <div class="flex justify-between items-center">
-                    <p class="text-l font-bold text-gray-900 dark:text-white">{{ .Title }}</p>
-                    <p class="text-gray-700 dark:text-gray-300 text-base">{{ .PublishedDate }}</p>
+                    <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200">{{ .Title }}</h3>
+                    <a href="/blog/{{ .Id }}" class="inline-flex items-center text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">
+                        {{ .PublishedDate }}
+                        <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                    </a>
                 </div>
-                <p class="text-gray-600 dark:text-gray-400 pt-1">{{ .Description }}</p>
-            </a>
+                <p class="text-gray-600 dark:text-gray-300 mt-2">{{ .Description }}</p>
+            </div>
             {{ end }}
         </section>
     </div>
