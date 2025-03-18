@@ -1,112 +1,33 @@
 [
-    {
-        "id": 1,
-        "name": "Project SAMPLE",
-        "description": "Description of Project A",
-        "tags": [
-            "JavaScript",
-            "React",
-            "Node.js"
-        ],
-        "link": "https://github.com/taniarascia/accordion"
-    },
-    {
-        "id": 2,
-        "name": "Project B",
-        "description": "Description of Project B",
-        "tags": [
-            "Python",
-            "Django",
-            "REST"
-        ],
-        "link": "https://github.com/taniarascia/accordion"
-    },
-    {
-        "id": 3,
-        "name": "Project C",
-        "description": "Description of Project C",
-        "tags": [
-            "Java",
-            "Spring",
-            "Hibernate"
-        ],
-        "link": "https://github.com/taniarascia/accordion"
-    },
-    {
-        "id": 4,
-        "name": "Project D",
-        "description": "Description of Project D",
-        "tags": [
-            "C#",
-            "ASP.NET",
-            "Entity Framework"
-        ],
-        "link": "example.com"
-    },
-    {
-        "id": 5,
-        "name": "Project E",
-        "description": "Description of Project E",
-        "tags": [
-            "Ruby",
-            "Rails",
-            "PostgreSQL"
-        ],
-        "link": "example.com"
-    },
-    {
-        "id": 6,
-        "name": "Project F",
-        "description": "Description of Project F",
-        "tags": [
-            "PHP",
-            "Laravel",
-            "MySQL"
-        ],
-        "link": "example.com"
-    },
-    {
-        "id": 7,
-        "name": "Project G",
-        "description": "Description of Project G",
-        "tags": [
-            "Go",
-            "Gin",
-            "Gorm"
-        ],
-        "link": "example.com"
-    },
-    {
-        "id": 8,
-        "name": "Project H",
-        "description": "Description of Project H",
-        "tags": [
-            "Swift",
-            "iOS",
-            "CoreData"
-        ],
-        "link": "example.com"
-    },
-    {
-        "id": 9,
-        "name": "Project I",
-        "description": "Description of Project I",
-        "tags": [
-            "Kotlin",
-            "Android",
-            "Room"
-        ],
-        "link": "example.com"
-    },
-    {
-        "id": 10,
-        "name": "Project J",
-        "description": "Description of Project J",
-        "tags": [
-            "TypeScript",
-            "Angular",
-            "Firebase"
-        ],
-        "link": "example.com"
-    }
+  {
+    "name": "Personal Website",
+    "description": "A modern personal portfolio website built with Go, HTMX, and TailwindCSS. This project demonstrates a simple yet effective way to create a dynamic website with minimal JavaScript.",
+    "tags": [
+      "Go",
+      "HTMX",
+      "TailwindCSS",
+      "Fly.io"
+    ],
+    "link": "https://github.com/aHobeychi/Go-Compiler"
+  },
+  {
+    "name": "Go Compiler",
+    "description": "Go Compiler is a procedural programming language with a C-like syntax, designed and built from scratch using Go. It supports core language features such as arrays, loops, functions, and arithmetic operations. Logical operators and ternary expressions provide additional flexibility. The compiler ensures robust type checking and variable declaration validation, with clear error messaging. It translates source code into a simplified RISC instruction set, enabling efficient execution.",
+    "tags": [
+      "Go",
+      "Compiler Design"
+    ],
+    "link": "https://github.com/aHobeychi/Go-Compiler"
+  },
+  {
+    "name": "Satellite-Imagery",
+    "description": "The Satellite Image Processing, Clustering, and Classification Tool analyzes Sentinel-2 imagery using machine learning. It applies clustering for quick area overviews, supervised learning for pixel classification, and deep learning with ResNets to classify large satellite images. Full results can be found in the Results.pdf",
+    "tags": [
+      "Python",
+      "PyTorch",
+      "SentinelSat",
+      "GIS"
+    ],
+    "link": "https://github.com/aHobeychi/Satellite-Imagery"
+  }
 ]

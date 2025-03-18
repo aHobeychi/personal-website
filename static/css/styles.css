@@ -1,3 +1,9 @@
 .home-sections {
     padding-bottom: 30px;
 }
+
+aside {
+  ul {
+    list-style-type: none;
+  }
+}
