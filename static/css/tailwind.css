@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Article styling with dark mode support */
 article {
     font-family: 'Arial', sans-serif;

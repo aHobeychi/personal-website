@@ -4,38 +4,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="/static/css/colors.css" rel="stylesheet">
-  <link href="/static/css/styles.css" rel="stylesheet">
-  <link href="/static/css/blogs.css" rel="stylesheet">
-  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+  <script src="https://unpkg.com/htmx.org@2.0.4"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <script>
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
 </head>
 
-<body class="md-gray-bg min-h-full flex flex-col">
+<body class="min-h-full flex flex-col bg-light-base dark:bg-dark-base dark:text-gray-00">
   {{ template "header" . }}
   {{ template "sidebar" . }}
   <main class="content-section flex-grow">
-    
     {{ if eq .Content "resume" }}
     {{ template "resume" . }}
-    
     {{ else if eq .Content "projects" }}
     {{ template "projects" . }}
-    
     {{ else if eq .Content "blog-list" }}
     {{ template "blog-list" . }}
-    
     {{ else if eq .Content "blog-content" }}
     {{ template "blog-content" . }}
-
     {{ else }}
     {{ template "home" . }}
-    
     {{ end }}
   </main>
   {{ template "footer" . }}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var themeToggleBtn = document.getElementById('theme-toggle');
+      var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+      var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+      // Change the icons inside the button based on previous settings
+      if (localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        themeToggleLightIcon.classList.remove('hidden');
+      } else {
+        themeToggleDarkIcon.classList.remove('hidden');
+      }
+
+      // Add event listener for toggle button
+      themeToggleBtn.addEventListener('click', function () {
+        // Toggle icons
+        themeToggleDarkIcon.classList.toggle('hidden');
+        themeToggleLightIcon.classList.toggle('hidden');
+
+        // If is set in localStorage
+        if (localStorage.getItem('color-theme')) {
+          // If light, make dark and save in localStorage
+          if (localStorage.getItem('color-theme') === 'light') {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+          }
+        } else {
+          if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+          } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
