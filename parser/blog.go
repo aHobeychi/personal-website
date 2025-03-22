@@ -1,98 +1,41 @@
 package parser
 
 import (
+	"aHobeychi/personal-website/cache"
 	"aHobeychi/personal-website/logger"
 	"aHobeychi/personal-website/models"
-	"encoding/json"
 	"os"
-	"sync"
 	"time"
 )
 
-var (
+const (
 	PATH_TOWARDS_BLOG_JSON = "static/content-catalog/blogs.json"
 	PATH_TOWARDS_BLOG_HTML = "static/blog-posts/html/"
-	blogCache              []models.Blog
-	blogCacheOnce          sync.Once
-	blogCacheErr           error
-	blogCacheMutex         sync.Mutex
-	blogCacheTicker        *time.Ticker
-	blogDisableCache       bool
 	BLOG_CACHE_TTL         = 10 * time.Minute
 )
 
-// init initializes the blog cache refresh mechanism
-func init() {
-	blogCacheTicker = time.NewTicker(BLOG_CACHE_TTL)
-	go func() {
-		for range blogCacheTicker.C {
-			logger.DebugLogger.Println("Clearing blog cache")
-			clearBlogCache()
-		}
-	}()
-}
+// Global blogCache instance
+var blogCache *cache.Cache[models.Blog]
 
-// clearBlogCache removes all cached blogs and resets the cache state
-func clearBlogCache() {
-	blogCacheMutex.Lock()
-	defer blogCacheMutex.Unlock()
-	blogCache = nil
-	blogCacheOnce = sync.Once{}
-	blogCacheErr = nil
+func init() {
+	// Initialize the blog cache
+	blogCache = cache.NewCache[models.Blog](
+		PATH_TOWARDS_BLOG_JSON,
+		BLOG_CACHE_TTL,
+		"blog",
+	)
 }
 
 // SetDisableBlogCache allows toggling the blog caching mechanism on or off
 func SetDisableBlogCache(flag bool) {
-	blogDisableCache = flag
+	blogCache.SetDisabled(flag)
 }
 
 // ParseBlogs retrieves a list of blogs, either from cache or from file
+// Optional limit parameter controls the maximum number of blogs returned
+// Returns a slice of Blog models and any error encountered
 func ParseBlogs(limit ...int) ([]models.Blog, error) {
-	if blogDisableCache {
-		logger.DebugLogger.Println("Blog cache disabled, reading blogs from file")
-		return parseBlogsFromFile(limit...)
-	}
-	blogCacheOnce.Do(func() {
-		blogCacheMutex.Lock()
-		defer blogCacheMutex.Unlock()
-		logger.DebugLogger.Println("Blog cache enabled, reading blogs from file")
-		file, err := os.Open(PATH_TOWARDS_BLOG_JSON)
-		if err != nil {
-			blogCacheErr = err
-			return
-		}
-		defer file.Close()
-		err = json.NewDecoder(file).Decode(&blogCache)
-		if err != nil {
-			blogCacheErr = err
-		}
-	})
-	logger.DebugLogger.Println("Blog cache populated, returning blogs")
-	if blogCacheErr != nil {
-		return nil, blogCacheErr
-	}
-	if len(limit) > 0 && limit[0] < len(blogCache) {
-		return blogCache[:limit[0]], nil
-	}
-	return blogCache, nil
-}
-
-// parseBlogsFromFile reads the blogs JSON file and decodes it into Blog models
-func parseBlogsFromFile(limit ...int) ([]models.Blog, error) {
-	file, err := os.Open(PATH_TOWARDS_BLOG_JSON)
-	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
-	var blogs []models.Blog
-	err = json.NewDecoder(file).Decode(&blogs)
-	if err != nil {
-		return nil, err
-	}
-	if len(limit) > 0 && limit[0] < len(blogs) {
-		return blogs[:limit[0]], nil
-	}
-	return blogs, nil
+	return blogCache.Get(limit...)
 }
 
 // GetBlogHTMLContent returns the HTML content of a blog post by its ID.

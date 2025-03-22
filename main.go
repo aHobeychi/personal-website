@@ -10,7 +10,6 @@ import (
 
 type Config struct {
 	SERVER_PORT string
-	CACHE_TTL   string
 	LOG_LEVEL   string
 }
 
@@ -99,7 +98,6 @@ func getConfig() Config {
 
 	return Config{
 		SERVER_PORT: getEnv("SERVER_PORT", "8080"),
-		CACHE_TTL:   getEnv("CACHE_TTL", "10m"),
 		LOG_LEVEL:   getEnv("LOG_LEVEL", "debug"),
 	}
 }
