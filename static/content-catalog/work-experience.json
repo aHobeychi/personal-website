@@ -1,0 +1,26 @@
+[
+  {
+    "jobTitle": "Sample job title",
+    "companyName": "Sample company name",
+    "description": "Sample job description",
+    "startDate": "Oct 2023",
+    "endDate": "Nov 2024",
+    "tags": [
+      "Spring",
+      "Java",
+      "HTML"
+    ]
+  },
+  {
+    "jobTitle": "Sample job title",
+    "companyName": "Sample company name",
+    "description": "Sample job description",
+    "startDate": "Oct 2023",
+    "endDate": "Nov 2024",
+    "tags": [
+      "Spring",
+      "Java",
+      "HTML"
+    ]
+  }
+]

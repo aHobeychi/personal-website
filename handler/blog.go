@@ -29,7 +29,6 @@ func ServeBlogList(w http.ResponseWriter, r *http.Request) {
 
 // ServeBlogPost handles rendering the content of a specific blog post
 func ServeBlogPost(w http.ResponseWriter, r *http.Request) {
-
 	// Make sure the path is in the format /blog/{blogId}
 	if r.URL.Path == "/blog/" || r.URL.Path == "/blog" {
 		http.Redirect(w, r, "/blog", http.StatusSeeOther)
@@ -41,7 +40,7 @@ func ServeBlogPost(w http.ResponseWriter, r *http.Request) {
 
 	// Get blog metadata to display title in breadcrumbs
 	blogs, err := parser.ParseBlogs()
-	var blogTitle string = "Blog Post" // Default title if not found
+	blogTitle := "Blog Post" // Default title if not found
 
 	if err != nil {
 		logger.LogError("Error parsing blogs for metadata: " + err.Error())

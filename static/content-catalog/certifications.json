@@ -1,27 +1,37 @@
 [
   {
-    "name": "",
+    "name": "Certified Developer – Associate",
+    "issuer": "Amazon Web Services",
     "dateReceived": "2025-03-16",
-    "imageLink": ""
+    "imageURL": "",
+    "credlyURL": "https://www.credly.com/badges/12345678-1234-1234-1234-123456789012/public_url"
   },
   {
-    "name": "",
+    "name": "Certified Solutions Architect – Associate",
+    "issuer": "Amazon Web Services",
     "dateReceived": "2025-03-16",
-    "imageLink": ""
+    "imageURL": "",
+    "credlyURL": "https://www.credly.com/badges/12345678-1234-1234-1234-123456789012/public_url"
   },
   {
-    "name": "",
+    "name": "Certified Cloud Practitioner",
+    "issuer": "Amazon Web Services",
     "dateReceived": "2025-03-16",
-    "imageLink": ""
+    "imageURL": "",
+    "credlyURL": "https://www.credly.com/badges/12345678-1234-1234-1234-123456789012/public_url"
   },
   {
-    "name": "",
+    "name": "Certified Scrum Developer",
+    "issuer": "Scrum.org",
     "dateReceived": "2025-03-16",
-    "imageLink": ""
+    "imageURL": "",
+    "credlyURL": "https://www.credly.com/badges/12345678-1234-1234-1234-123456789012/public_url"
   },
   {
-    "name": "",
+    "name": "Azure Fundamentals",
+    "issuer": "Microsoft",
     "dateReceived": "2025-03-16",
-    "imageLink": ""
+    "imageURL": "",
+    "credlyURL": "https://www.credly.com/badges/12345678-1234-1234-1234-123456789012/public_url"
   }
 ]
