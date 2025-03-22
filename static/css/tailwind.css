@@ -9,11 +9,6 @@ article {
     color: #333; /* Default text color for light mode */
 }
 
-/* Dark mode text color */
-.dark article {
-    color: #e1e1e1;
-}
-
 article h1 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
@@ -35,24 +30,13 @@ article h3 {
     color: #374151;
 }
 
-/* Dark mode headings */
-.dark article h1 {
-    color: #f3f4f6;
-}
-
-.dark article h2 {
-    color: #e5e7eb;
-}
-
-.dark article h3 {
-    color: #d1d5db;
-}
-
 article p {
+    color: #374151; /* Dark gray for light mode */
     margin-bottom: 1.5rem;
 }
 
 article ul, article ol {
+    color: #374151;
     padding-left: 20px;
     margin-bottom: 1.5rem;
 }
@@ -76,40 +60,26 @@ article hr {
     background-color: #e5e7eb; /* Light gray for light mode */
 }
 
-.dark article hr {
-    background-color: #4b5563; /* Darker gray for dark mode */
-}
-
 /* Code blocks */
 article pre {
     margin: 1.5rem 0;
     padding: 15px;
     overflow-x: auto;
     border-radius: 5px;
-    background-color: #f3f4f6; /* Light gray bg for light mode */
-    color: #1f2937; /* Dark text for light mode */
+    background-color: #f8f9fa;
+    color: #374151;
     border: 1px solid #e5e7eb;
-}
-
-.dark article pre {
-    background-color: #1f2937; /* Dark bg for dark mode */
-    color: #f9fafb; /* Light text for dark mode */
-    border-color: #374151;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    line-height: 1.4;
 }
 
 /* Inline code */
 article code {
-    font-family: 'Courier New', monospace;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
     padding: 2px 5px;
-    border-radius: 3px;
-    background-color: #f3f4f6; /* Light gray bg for light mode */
-    color: #1f2937; /* Dark text for light mode */
+    color: #0f172a;
     font-size: 0.9em;
-}
-
-.dark article code {
-    background-color: #1f2937; /* Dark bg for dark mode */
-    color: #f9fafb; /* Light text for dark mode */
+    border: 0;
 }
 
 /* Blockquotes */
@@ -120,11 +90,6 @@ article blockquote {
     background-color: #f3f4f6; /* Light gray for light mode */
     font-style: italic;
     color: #4b5563;
-}
-
-.dark article blockquote {
-    background-color: #1f2937; /* Dark background for dark mode */
-    color: #d1d5db; /* Light text for dark mode */
 }
 
 /* Tables */
@@ -145,31 +110,14 @@ article table th {
     font-weight: 600;
 }
 
-.dark article table th,
-.dark article table td {
-    border-color: #4b5563;
-}
-
-.dark article table th {
-    background-color: #1f2937;
-}
-
 /* Links */
 article a {
-    color: #3b82f6;
+    color: #2563eb;
     text-decoration: underline;
 }
 
 article a:hover {
-    color: #2563eb;
-}
-
-.dark article a {
-    color: #60a5fa;
-}
-
-.dark article a:hover {
-    color: #93c5fd;
+    color: #1d4ed8;
 }
 
 /* Images */
@@ -178,4 +126,66 @@ article img {
     height: auto;
     margin: 1.5rem 0;
     border-radius: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+    article h1 {
+        color: #f3f4f6;
+    }
+
+    article h2 {
+        color: #e5e7eb;
+    }
+
+    article h3 {
+        color: #d1d5db;
+    }
+
+    article p {
+        color: #e5e7eb;
+    }
+
+    article ul,
+    article ol {
+        color: #e5e7eb;
+    }
+
+    article hr {
+        background-color: #4b5563;
+    }
+
+    article pre {
+        background-color: #1e293b;
+        color: #f3f4f6;
+        border-color: #374151;
+    }
+
+    article code {
+        background-color: #1e293b;
+        color: #e5e7eb;
+        border: 0;
+
+    }
+
+    article blockquote {
+        background-color: #1f2937;
+        color: #d1d5db;
+    }
+
+    article table th,
+    article table td {
+        border-color: #4b5563;
+    }
+
+    article table th {
+        background-color: #1f2937;
+    }
+
+    article a {
+        color: #60a5fa;
+    }
+
+    article a:hover {
+        color: #93c5fd;
+    }
 }
