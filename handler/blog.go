@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"net/http"
 	"path/filepath"
+	"strings"
 )
 
 // ServeBlogList handles the blog list page
@@ -44,9 +45,19 @@ func ServeBlogContent(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Determine the source page by checking the Referer header
+	sourcePage := "notes" // Default to "notes"
+	referer := GetRefererPage(r)
+	if referer != "" {
+		if strings.Contains(referer, "/home") {
+			sourcePage = "home"
+		}
+	}
+
 	data := PageData{
 		"BlogTitle":   blog.Title,
 		"ContentData": template.HTML(contentData), // Convert to template.HTML to prevent escaping
+		"SourcePage":  sourcePage,                 // Add source page information
 	}
 
 	// RenderTemplate already checks for HTMX headers and renders appropriately

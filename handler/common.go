@@ -44,3 +44,10 @@ func RenderTemplate(w http.ResponseWriter, r *http.Request, templateName string,
 		}
 	}
 }
+
+// GetRefererPage determines the source page based on the Referer header
+// If the Referer header is empty or does not match known pages, it defaults to nil"
+func GetRefererPage(r *http.Request) string {
+	// Determine the source page by checking the Referer header
+	return r.Header.Get("Referer")
+}
