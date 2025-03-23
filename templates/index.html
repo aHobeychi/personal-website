@@ -6,12 +6,13 @@
   <script src="https://unpkg.com/htmx.org@2.0.4"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   <link rel="stylesheet" href="/static/css/styles.css">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
 </head>
 
 <body class="min-h-full flex flex-col bg-light-base dark:bg-dark-base dark:text-gray-00">
   {{ template "header" . }}
   {{ template "sidebar" . }}
-  <main class="content-section flex-grow">
+  <main id="content-section" class="flex-grow">
     {{ if eq .Content "resume" }}
     {{ template "resume" . }}
     {{ else if eq .Content "projects" }}

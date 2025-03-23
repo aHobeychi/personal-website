@@ -70,7 +70,7 @@ func main() {
 	mux.HandleFunc("/resume", handler.ServeResume)
 	mux.HandleFunc("/project", handler.ServeProjectsList)
 	mux.HandleFunc("/blog", handler.ServeBlogList)
-	mux.HandleFunc("/blog/", handler.ServeBlogPost) // Will handle /blog/{blogId} paths
+	mux.HandleFunc("/blog/", handler.ServeBlogContent)
 
 	// Apply middleware chain
 	var handler http.Handler = mux

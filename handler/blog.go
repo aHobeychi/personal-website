@@ -1,74 +1,60 @@
 package handler
 
 import (
-	"aHobeychi/personal-website/logger"
 	"aHobeychi/personal-website/parser"
 	"html/template"
 	"net/http"
-	"strings"
+	"path/filepath"
 )
 
-// ServeBlogList handles the blog listing page
+// ServeBlogList handles the blog list page
 func ServeBlogList(w http.ResponseWriter, r *http.Request) {
 	// The ServeMux ensures this handler is only called for the exact path "/blog"
 	// so we don't need to check r.URL.Path here
 
 	blogs, err := parser.ParseBlogs()
 	if err != nil {
-		logger.LogError("Error parsing blogs: " + err.Error())
+		http.Error(w, "Error loading blog data", http.StatusInternalServerError)
 		return
 	}
 
 	data := PageData{
-		"blogs":      blogs,
-		"ActivePage": "blog",
+		"blogs": blogs,
 	}
 
+	// RenderTemplate already checks for HTMX headers and renders appropriately
 	RenderTemplate(w, r, "blog-list", data)
 }
 
-// ServeBlogPost handles rendering the content of a specific blog post
-func ServeBlogPost(w http.ResponseWriter, r *http.Request) {
-	// Make sure the path is in the format /blog/{blogId}
-	if r.URL.Path == "/blog/" || r.URL.Path == "/blog" {
-		http.Redirect(w, r, "/blog", http.StatusSeeOther)
+// ServeBlogContent handles rendering a specific blog post
+func ServeBlogContent(w http.ResponseWriter, r *http.Request) {
+
+	// Extract blog ID from URL path using the existing helper function
+	id := extractBlogIDFromPath(r.URL.Path)
+
+	blog, err := parser.GetBlogByID(id)
+	if err != nil {
+		http.Error(w, "Blog not found", http.StatusNotFound)
 		return
 	}
 
-	// Extract blogId from URL path
-	blogId := strings.TrimPrefix(r.URL.Path, "/blog/")
-
-	// Get blog metadata to display title in breadcrumbs
-	blogs, err := parser.ParseBlogs()
-	blogTitle := "Blog Post" // Default title if not found
-
+	contentData, err := parser.GetBlogHTMLContent(blog.Id)
 	if err != nil {
-		logger.LogError("Error parsing blogs for metadata: " + err.Error())
-		// Continue with default title if we can't get blog metadata
-	} else {
-		// Find the blog with matching ID to get its title
-		for _, blog := range blogs {
-			if blog.Id == blogId {
-				blogTitle = blog.Title
-				break
-			}
-		}
-	}
-
-	// Parse the blog content from the file
-	content, err := parser.GetBlogHTMLContent(blogId)
-	if err != nil {
-		logger.LogError("Error parsing blog content: " + err.Error())
+		http.Error(w, "Failed to load blog content", http.StatusInternalServerError)
 		return
 	}
-
-	// Convert the HTML content string to template.HTML to prevent escaping
-	htmlContent := template.HTML(content)
 
 	data := PageData{
-		"ContentData": htmlContent,
-		"BlogTitle":   blogTitle,
-		"ActivePage":  "blog",
+		"BlogTitle":   blog.Title,
+		"ContentData": template.HTML(contentData), // Convert to template.HTML to prevent escaping
 	}
+
+	// RenderTemplate already checks for HTMX headers and renders appropriately
 	RenderTemplate(w, r, "blog-content", data)
+}
+
+// ExtractBlogIDFromPath extracts the blog ID from the URL path
+func extractBlogIDFromPath(path string) string {
+	// Extracts the last segment from a URL path like "/blog/my-blog-post"
+	return filepath.Base(path)
 }

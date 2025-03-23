@@ -18,8 +18,7 @@ func ServeProjectsList(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data := PageData{
-		"projects":   projects,
-		"ActivePage": "project",
+		"projects": projects,
 	}
 	RenderTemplate(w, r, "projects", data)
 }

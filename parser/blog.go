@@ -50,3 +50,18 @@ func GetBlogHTMLContent(blogId string) (string, error) {
 	logger.DebugLogger.Printf("HTML content retrieved for blog ID: %s", blogId)
 	return contentString, nil
 }
+
+func GetBlogByID(id string) (models.Blog, error) {
+	blogs, err := ParseBlogs()
+	if err != nil {
+		return models.Blog{}, err
+	}
+
+	for _, blog := range blogs {
+		if blog.Id == id {
+			return blog, nil
+		}
+	}
+
+	return models.Blog{}, os.ErrNotExist
+}

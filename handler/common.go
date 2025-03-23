@@ -3,7 +3,6 @@ package handler
 import (
 	"html/template"
 	"net/http"
-	"path/filepath"
 )
 
 // HTMX_HEADER is the header name that HTMX sends to indicate an HTMX request
@@ -44,10 +43,4 @@ func RenderTemplate(w http.ResponseWriter, r *http.Request, templateName string,
 			http.Error(w, "Error rendering template: "+err.Error(), http.StatusInternalServerError)
 		}
 	}
-}
-
-// ExtractBlogIDFromPath extracts the blog ID from the URL path
-func ExtractBlogIDFromPath(path string) string {
-	// Extracts the last segment from a URL path like "/blog/my-blog-post"
-	return filepath.Base(path)
 }

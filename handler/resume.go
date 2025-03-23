@@ -25,7 +25,6 @@ func ServeResume(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data := PageData{
-		"ActivePage":     "resume",
 		"WorkExperience": workExperience,
 		"Certifications": certifications,
 	}

@@ -64,17 +64,19 @@
             <h2 class="text-4xl mb-4 text-gray-800 dark:text-white">Certifications</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {{ range .Certifications }}
-                <div class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md h-full">
+                <div class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md h-40 flex flex-col">
                     <div class="flex justify-between items-start">
                         <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200">{{ .Name }}</h3>
                         <span class="text-sm text-gray-500 dark:text-gray-400">{{ .DateReceived }}</span>
                     </div>
-                    <h4 class="text-lg text-blue-600 dark:text-blue-400 mt-1">{{ .Issuer }}</h4>
                     {{ if .ImageURL }}
-                    <div class="mt-3">
+                    <div class="mt-3 flex-grow">
                         <img src="{{ .ImageURL }}" alt="{{ .Name }} Certificate" class="max-h-24 object-contain">
                     </div>
+                    {{ else }}
+                    <div class="flex-grow"></div>
                     {{ end }}
+                    <h4 class="text-lg text-blue-600 dark:text-blue-400 mt-auto">{{ .Issuer }}</h4>
                 </div>
                 {{ end }}
             </div>

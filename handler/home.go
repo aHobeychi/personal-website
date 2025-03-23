@@ -25,9 +25,8 @@ func ServeHomepage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data := PageData{
-		"projects":   projects,
-		"blogs":      blogs,
-		"ActivePage": "home",
+		"projects": projects,
+		"blogs":    blogs,
 	}
 	RenderTemplate(w, r, "home", data)
 }

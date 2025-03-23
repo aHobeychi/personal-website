@@ -8,7 +8,11 @@
         </section>
         <section class="grid grid-cols-1 md:grid-cols-1 gap-6">
             {{ range .blogs }}
-            <a href="/blog/{{ .Id }}" class="block dark:bg-dark-card  bg-light-card p-4 rounded-lg shadow-md">
+            <div class="block dark:bg-dark-card bg-light-card p-4 rounded-lg shadow-md cursor-pointer"
+                 hx-get="/blog/{{ .Id }}" 
+                 hx-target="#content-section" 
+                 hx-push-url="true"
+                 hx-swap="innerHTML">
                 <div class="flex justify-between items-center">
                     <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200">{{ .Title }}</h3>
                     <span class="inline-flex items-center text-sm text-gray-500 dark:text-gray-400">
@@ -16,7 +20,7 @@
                     </span>
                 </div>
                 <p class="text-gray-600 dark:text-gray-300 mt-2">{{ .Description }}</p>
-            </a>
+            </div>
             {{ end }}
         </section>
     </div>
