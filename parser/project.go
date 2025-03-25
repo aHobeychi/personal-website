@@ -8,7 +8,7 @@ import (
 
 const (
 	PATH_TOWARDS_PROJECTS_JSON = "static/content-catalog/projects.json"
-	PROJECT_CACHE_TTL          = 1 * time.Minute
+	PROJECT_CACHE_TTL          = 60 * time.Minute
 )
 
 // Global projectCache instance

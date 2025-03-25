@@ -8,7 +8,6 @@ import (
 
 // ServeHomepage handles the home page
 func ServeHomepage(w http.ResponseWriter, r *http.Request) {
-
 	// Get 3 projects for the home page
 
 	projects, projects_err := parser.ParseProjects(3)

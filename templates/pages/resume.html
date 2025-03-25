@@ -1,29 +1,22 @@
 {{ define "resume" }}
 <title>About Me</title>
-<div class="p-4 lg:ml-80">
-    <div class="p-4 mx-4 lg:mx-16 rounded-lg dark:border-gray-700 mt-14">
-        <!-- Bio Section -->
-        <section class="grid grid-cols-1 b-4 home-sections">
-            <h1 class="text-5xl text-gray-900 dark:text-white pb-2 lg:mt-0 mt-4">About Me</h1>
+   <div class="lg:ml-80 lg:px-12 p-6 rounded-lg dark:border-gray-700 mt-16">
+        <section class="grid grid-cols-1 mb-4">
+            <h1 class="text-5xl text-gray-900 dark:text-white pb-2">About Me</h1>
             <p class="text-gray-500 dark:text-gray-400">Learn a little about me</p>
         </section>
         <section class="mb-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <!-- Bio Description Column -->
                 <div class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md md:col-span-2">
-                    <h3 class="text-xl font-semibold mb-3 text-gray-700 dark:text-gray-200">My Background</h3>
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-                        I am a passionate software developer with expertise in web development and
-                        backend technologies. My journey in technology has equipped me with skills
-                        in Go, JavaScript, and various web frameworks. I believe in building efficient,
-                        scalable, and user-friendly applications that solve real-world problems.
-                    </p>
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed mt-3">
-                        When not coding, I enjoy exploring new technologies, contributing to open-source
-                        projects, and sharing knowledge with the developer community.
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        I am a bilingual (French and English) full-stack developer based in Montreal,
+                        holding a Bachelor’s degree in Computer Science from Concordia University. 
+                        With a deep passion for technology, I am constantly seeking new challenges
+                        and opportunities to expand my knowledge. I thrive on learning and applying
+                        innovative solutions to complex problems, and I am committed to staying 
+                        up-to-date with the latest advancements in the tech industry
                     </p>
                 </div>
-                <!-- Profile Picture Column -->
                 <div
                     class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md flex justify-center items-center md:col-span-2">
                     <div
@@ -81,6 +74,5 @@
                 {{ end }}
             </div>
         </section>
-    </div>
 </div>
 {{ end }}

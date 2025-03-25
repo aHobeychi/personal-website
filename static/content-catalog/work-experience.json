@@ -1,26 +1,56 @@
 [
   {
-    "jobTitle": "Sample job title",
-    "companyName": "Sample company name",
-    "description": "Sample job description",
-    "startDate": "Oct 2023",
-    "endDate": "Nov 2024",
+    "jobTitle": "Backend Cloud developer",
+    "companyName": "Wealth Management - Banking Client | CGI",
+    "description": "I am a bilingual (French and English) full-stack developer based in Montreal, holding a Bachelor’s degree in Computer Science from Concordia University. With a deep passion for technology, I am constantly seeking new challenges and opportunities to expand my knowledge. I thrive on learning and applying innovative solutions to complex problems, and I am committed to staying up-to-date with the latest advancements in the tech industry",
+    "startDate": "March 2025",
+    "endDate": "Current",
     "tags": [
-      "Spring",
-      "Java",
-      "HTML"
+      "Spring Batch",
+      "Python",
+      "Typescript",
+      "AWS"
     ]
   },
   {
-    "jobTitle": "Sample job title",
-    "companyName": "Sample company name",
-    "description": "Sample job description",
-    "startDate": "Oct 2023",
-    "endDate": "Nov 2024",
+    "jobTitle": "Backend Cloud Developer",
+    "companyName": "Customer Profiles - Banking Client | CGI",
+    "description": "",
+    "startDate": "March 2025",
+    "endDate": "Current",
     "tags": [
-      "Spring",
-      "Java",
-      "HTML"
+      "Spring Batch",
+      "Python",
+      "Typescript",
+      "AWS EKS",
+      "Okta"
+    ]
+  },
+  {
+    "jobTitle": "Fullstack Cloud Developer",
+    "companyName": "Financial Markets - Banking Client | CGI",
+    "description": "As a Full-Stack Cloud Developer in the Financial Markets division of a top Canadian bank, I processed large financial datasets using AWS Glue and automated tasks with AWS Lambda. I built real-time APIs with Spring WebFlux, created React dashboards used by 100+ analysts, and managed CI/CD pipelines with Jenkins and GitHub. Additionally, I optimized data storage and querying with PostgreSQL to ensure scalability and performance.",
+    "startDate": "March 2025",
+    "endDate": "Current",
+    "tags": [
+      "Spring WebFlux",
+      "React",
+      "PostgreSQL",
+      "Aws Lambda",
+      "Aws Glue",
+      "Aws EKS"
+    ]
+  },
+  {
+    "jobTitle": "Fullstack Cloud Developer",
+    "companyName": "CRM - Banking Client | CGI",
+    "description": "As a Full-Stack Developer on the API Team at a top Quebec financial institution, I developed event-driven microservices on Azure using Java 17, Spring Boot 3, and Spring Cloud. I integrated services with RabbitMQ, MQ-Series, and Azure Service Bus, and used Azure SQL Database and Redis for data storage and caching. I built Angular 16 applications, set up CI/CD pipelines with GitHub and Concourse, and maintained Swagger API documentation. Additionally, I applied design patterns like BFF, API gateways, and CQRS.",
+    "startDate": "March 2025",
+    "endDate": "Current",
+    "tags": [
+      "Spring Boot",
+      "Angular 15",
+      "Azure"
     ]
   }
 ]

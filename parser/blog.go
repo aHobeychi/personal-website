@@ -11,7 +11,7 @@ import (
 const (
 	PATH_TOWARDS_BLOG_JSON = "static/content-catalog/blogs.json"
 	PATH_TOWARDS_BLOG_HTML = "static/blog-posts/html/"
-	BLOG_CACHE_TTL         = 10 * time.Minute
+	BLOG_CACHE_TTL         = 60 * time.Minute
 )
 
 // Global blogCache instance

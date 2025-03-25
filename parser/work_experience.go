@@ -8,7 +8,7 @@ import (
 
 const (
 	PATH_TOWARDS_WORK_EXPERIENCE = "static/content-catalog/work-experience.json"
-	WORK_EXPERIENCE_CACHE_TTL    = 10 * time.Minute
+	WORK_EXPERIENCE_CACHE_TTL    = 60 * time.Minute
 )
 
 // Global workExperienceCache instance

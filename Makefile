@@ -58,7 +58,7 @@ gen:
 	fi
 
 dev-server:
-	${SRC_DIR}/.run-server.sh
+	${SRC_DIR}/scripts/run-server.sh
 	
 gen-styles:
 	@echo "Generating minified css styles"

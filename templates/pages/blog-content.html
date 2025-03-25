@@ -1,9 +1,7 @@
 {{ define "blog-content" }}
 <title>{{ .BlogTitle }}</title>
-<div class="p-4 lg:ml-80">
-    <div class="p-4 mx-4 lg:mx-16 rounded-lg dark:border-gray-700 mt-14">
-        <!-- Breadcrumb Navigation -->
-        <nav class="flex mb-2" aria-label="Breadcrumb">
+   <div class="lg:ml-80 lg:p-12 p-6 rounded-lg dark:border-gray-700 mt-14 lg:mt-10">
+        <nav class="flex mb-2 mt-4 lg:mt-0" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2">
                 <li class="inline-flex items-center">
                     <a hx-get="{{ if eq .SourcePage "home" }}/home{{ else }}/blog{{ end }}" 
@@ -36,5 +34,4 @@
             {{ .ContentData }}
         </article>
     </div>
-</div>
 {{ end }}

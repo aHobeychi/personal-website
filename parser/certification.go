@@ -8,7 +8,7 @@ import (
 
 const (
 	PATH_TOWARDS_CERTIFICATIONS = "static/content-catalog/certifications.json"
-	CERTIFICATION_CACHE_TTL     = 10 * time.Minute
+	CERTIFICATION_CACHE_TTL     = 60 * time.Minute
 )
 
 // Global certificationCache instance
