@@ -62,7 +62,7 @@ dev-server:
 	
 gen-styles:
 	@echo "Generating minified css styles"
-	minify -b ${SRC_DIR}/static/css/*.css -o ${SRC_DIR}/static/css/styles-min.css
+	minify -b ${SRC_DIR}/static/css/*.css -o ${SRC_DIR}/static/css/styles.css
 
 # Help message
 help:

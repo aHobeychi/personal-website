@@ -8,6 +8,10 @@ module.exports = {
     ],
     theme: {
       extend: {
+        fontFamily: {
+          'sans': ['Roboto', 'sans-serif'],
+          'mono': ['Consolas', 'Monaco', 'Courier New', 'monospace'],
+        },
         colors: {
           primary: {
             light: "#6366F1",  
