@@ -14,7 +14,6 @@ const (
 	BLOG_CACHE_TTL         = 60 * time.Minute
 )
 
-// Global blogCache instance
 var blogCache *cache.Cache[models.Blog]
 
 func init() {

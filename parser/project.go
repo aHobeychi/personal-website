@@ -11,7 +11,6 @@ const (
 	PROJECT_CACHE_TTL          = 60 * time.Minute
 )
 
-// Global projectCache instance
 var projectCache *cache.Cache[models.Project]
 
 func init() {

@@ -11,7 +11,6 @@ const (
 	WORK_EXPERIENCE_CACHE_TTL    = 60 * time.Minute
 )
 
-// Global workExperienceCache instance
 var workExperienceCache *cache.Cache[models.WorkExperience]
 
 func init() {

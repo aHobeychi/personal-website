@@ -1,10 +1,10 @@
 {{ define "home" }}
-<title>Home</title>
+<title>alexhobeychi.com</title>
    <div class="lg:ml-80 lg:px-12 p-6 rounded-lg dark:border-gray-700 mt-16">
       <section class="grid grid-cols-1 gap-4 mb-8">
          <h1 class="text-6xl dark:text-white lg:mt-0 mt-4">Hi I'm Alex</h1>
          <p class="dark:text-gray-300 font-thin">an enthusiastic, self-motivated forever learner able to adapt to challenging situations and
-            new technologies. I am a full-stack developer with a passion for building things.</p>
+            new technologies. I am a full-stack developer and consultant with a passion for building things.</p>
       </section>
 
       <!-- Projects section contain heading, subheading and links -->
@@ -12,7 +12,7 @@
          <div class="flex justify-between items-center pb-2">
             <h1 class="text-4xl text-gray-900 dark:text-white">My Projects</h1>
             <a hx-get="/project" hx-target="#content-section" hx-swap="innerHTML show:window:top"
-               class="inline-flex items-center font-medium text-gray-500 dark:text-gray-500 hover:underline">
+               class="inline-flex items-center font-medium text-gray-500 dark:text-gray-500 hover:underline cursor-pointer">
                View More
                <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                   fill="none" viewBox="0 0 14 10">
@@ -27,12 +27,12 @@
             {{ range .projects }}
             <!-- Project card with styling matching blog and resume cards -->
             <a href="{{ .Link }}" target="_blank" rel="noopener noreferrer"
-               class="block dark:bg-dark-card  bg-light-card p-4 rounded-lg shadow-md">
+               class="block dark:bg-dark-card  bg-light-card p-4 rounded-lg shadow-md hover:shadow-lg hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">
                <div class="flex justify-between items-center">
                   <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200">{{ .Name }}</h3>
                   {{ if .Link }}
                   <svg xmlns="http://www.w3.org/2000/svg"
-                     class="h-5 w-5 text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+                     class="h-5 w-5"
                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -56,7 +56,7 @@
          <div class="flex justify-between items-center pb-2">
             <h1 class="text-4xl text-gray-900 dark:text-white">My Notes</h1>
             <a hx-get="/blog" hx-target="#content-section" hx-swap="innerHTML show:window:top"
-               class="inline-flex items-center font-medium text-gray-500 dark:text-gray-500 hover:underline">
+               class="inline-flex items-center font-medium text-gray-500 dark:text-gray-500 hover:underline cursor-pointer">
                View More
                <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                   fill="none" viewBox="0 0 14 10">
@@ -70,7 +70,7 @@
 
          <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
             {{ range .blogs }}
-            <div class="block dark:bg-dark-card bg-light-card p-4 rounded-lg shadow-md cursor-pointer"
+            <div class="block dark:bg-dark-card bg-light-card p-4 rounded-lg shadow-md cursor-pointer hover:shadow-lg"
                  hx-get="/blog/{{ .Id }}" 
                  hx-target="#content-section" 
                  hx-push-url="true"

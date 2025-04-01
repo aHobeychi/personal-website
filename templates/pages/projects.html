@@ -1,5 +1,5 @@
 {{ define "projects" }}
-<title>Projects</title>
+<title>alexhobeychi.com</title>
    <div class="lg:ml-80 lg:px-12 p-6 rounded-lg dark:border-gray-700 mt-16">
       <section class="grid grid-cols-1 mb-4">
           <h1 class="text-5xl text-gray-900 dark:text-white pb-2 lg:mt-0 mt-4">Projects</h1>
@@ -7,18 +7,17 @@
       </section>
       <section class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6">
           {{ range .projects }}
-          <div class="dark:bg-dark-card bg-light-card p-4 rounded-lg shadow-md h-60 flex flex-col">
+      <a href="{{ .Link }}" target="_blank" rel="noopener noreferrer"
+                          class="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">
+          <div class="dark:bg-dark-card bg-light-card p-4 rounded-lg shadow-md h-60 flex flex-col hover:shadow-lg">
               <div class="flex justify-between items-center">
                   <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200 truncate">{{ .Name }}</h3>
                   {{ if .Link }}
-                  <a href="{{ .Link }}" target="_blank" rel="noopener noreferrer"
-                     class="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400">
                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                      </svg>
-                  </a>
                   {{ end }}
               </div>
               <div class="mt-2 flex-grow">
@@ -32,6 +31,7 @@
                   {{ end }}
               </div>
           </div>
+                  </a>
           {{ end }}
       </section>
 </div>

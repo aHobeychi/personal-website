@@ -1,5 +1,5 @@
 {{ define "resume" }}
-<title>About Me</title>
+<title>alexhobeychi.com</title>
 <div class="lg:ml-80 lg:px-12 p-6 rounded-lg dark:border-gray-700 mt-16">
     <section class="grid grid-cols-1 mb-4">
         <h1 class="text-5xl text-gray-900 dark:text-white pb-2 lg:mt-0 mt-4">About Me</h1>
@@ -8,8 +8,8 @@
     <section class="mb-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md md:col-span-2">
-                <p class="text-gray-700 dark:text-gray-200 text-lg leading-relaxed font-thin">
-                    I am a bilingual (French and English) full-stack developer based in Montreal,
+                <p class="text-gray-700 dark:text-gray-200 text-lg leading-relaxed">
+                    I am a bilingual (French and English) full-stack developer and consultant based in Montreal,
                     holding a Bachelor’s degree in Computer Science from Concordia University.
                     With a deep passion for technology, I am constantly seeking new challenges
                     and opportunities to expand my knowledge. I thrive on learning and applying
@@ -60,7 +60,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {{ range .Certifications }}
             <a href="{{ .Url }}" target="_blank" rel="noopener noreferrer" class="no-underline">
-                <div class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md flex flex-col min-h-[150px]">
+                <div class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md flex flex-col min-h-[150px] hover:shadow-lg">
                     <div class="flex justify-between items-start">
                         <h3
                             class="text-xl font-semibold text-gray-700 dark:text-gray-200 line-clamp-2 max-w-[75%] min-h-[3.0rem]">

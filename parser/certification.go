@@ -11,7 +11,6 @@ const (
 	CERTIFICATION_CACHE_TTL     = 60 * time.Minute
 )
 
-// Global certificationCache instance
 var certificationCache *cache.Cache[models.Certification]
 
 func init() {

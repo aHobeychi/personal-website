@@ -1,10 +1,10 @@
 {{ define "sidebar" }}
 <aside id="logo-sidebar"
-    class="fixed top-0 left-0 z-50 w-80 h-screen duration-300 pt-4 pl-8 transition-transform -translate-x-full border-r border-gray-200 lg:translate-x-0 dark:border-gray-700 dark:bg-dark-secondary bg-light-secondary"
+    class="fixed top-0 left-0 z-50 w-80 h-screen duration-300 pt-4 pl-8 transition-transform -translate-x-full lg:translate-x-0 dark:bg-dark-secondary bg-light-secondary"
     aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto ">
-    <a href="#" hx-get="/home" hx-target="#content-section" hx-indicator="#loading-spinner" hx-push-url="true" hx-swap="innerHTML show:window:top"
-    class="flex items-center space-x-2 focus:border-sky-500 select-none">
+    <a hx-get="/home" hx-target="#content-section" hx-indicator="#loading-spinner" hx-push-url="true" hx-swap="innerHTML show:window:top"
+    class="flex items-center space-x-2 focus:border-sky-500 select-none cursor-pointer">
         <h1 class="dark:text-white text-4xl  mb-6 focus:border-sky-500 ">Alex Hobeychi</h1>
     </a>
         <ul class="space-y-2 font-medium">
@@ -41,8 +41,8 @@
             </li>
             <li>
                 <h1 class="dark:text-white pb-4 text-lg">About Me</h1>
-                <p class="text-gray-600 rounded-lg dark:text-gray-300 font-thin">
-                    I'm a full stack software developer with expertise in building modern web applications. Bilingual in both English and French, I bring a diverse perspective to my development work.
+                <p class="text-gray-600 rounded-lg dark:text-gray-300">
+                    I'm <a hx-get="/resume" hx-target="#content-section" hx-indicator="#loading-spinner" hx-push-url="true" hx-swap="innerHTML show:window:top" class="font-medium text-blue-600 dark:text-blue-400 hover:no-underline cursor-pointer">Alex</a> a full stack software developer and consultant with expertise in building modern web applications and cloud technologies. Bilingual in both English and French, I bring a diverse perspective to my development work.
                 </p>
             </li>
             <li>
