@@ -1,56 +1,60 @@
 [
   {
-    "jobTitle": "Backend Cloud developer",
+    "jobTitle": "Backend Cloud Developer",
     "companyName": "Wealth Management - Banking Client | CGI",
-    "description": "I am a bilingual (French and English) full-stack developer based in Montreal, holding a Bachelor’s degree in Computer Science from Concordia University. With a deep passion for technology, I am constantly seeking new challenges and opportunities to expand my knowledge. I thrive on learning and applying innovative solutions to complex problems, and I am committed to staying up-to-date with the latest advancements in the tech industry",
+    "description": "Developed and deployed APIs using Spring Boot, AWS, Docker, and EKS to aggregate customer asset and liability data from multiple business domains. Built CI/CD pipelines with Jenkins and implemented automated testing using Cucumber and Postman to ensure system reliability.",
     "startDate": "March 2025",
     "endDate": "Current",
     "tags": [
       "Spring Batch",
       "Python",
-      "Typescript",
-      "AWS"
+      "TypeScript",
+      "AWS Batch",
+      "AWS DynamoDB"
     ]
   },
   {
     "jobTitle": "Backend Cloud Developer",
     "companyName": "Customer Profiles - Banking Client | CGI",
-    "description": "",
+    "description": "Developed and deployed APIs using Spring Boot, AWS, Docker, and EKS to manage customer profile data across multiple systems. Built CI/CD pipelines with Jenkins and implemented automated testing using Cucumber and Postman to ensure system reliability.",
     "startDate": "March 2025",
     "endDate": "Current",
     "tags": [
-      "Spring Batch",
-      "Python",
-      "Typescript",
+      "Spring Boot",
+      "Cucumber",
       "AWS EKS",
+      "Jenkins",
       "Okta"
     ]
   },
   {
-    "jobTitle": "Fullstack Cloud Developer",
+    "jobTitle": "Full-Stack Cloud Developer",
     "companyName": "Financial Markets - Banking Client | CGI",
-    "description": "As a Full-Stack Cloud Developer in the Financial Markets division of a top Canadian bank, I processed large financial datasets using AWS Glue and automated tasks with AWS Lambda. I built real-time APIs with Spring WebFlux, created React dashboards used by 100+ analysts, and managed CI/CD pipelines with Jenkins and GitHub. Additionally, I optimized data storage and querying with PostgreSQL to ensure scalability and performance.",
+    "description": "Processed large financial datasets using AWS Glue and automated tasks with AWS Lambda. Built real-time APIs with Spring WebFlux, developed React dashboards used by 100+ analysts, and managed CI/CD pipelines with Jenkins and GitHub. Optimized data storage and querying with PostgreSQL to enhance scalability and performance.",
     "startDate": "March 2025",
     "endDate": "Current",
     "tags": [
       "Spring WebFlux",
       "React",
       "PostgreSQL",
-      "Aws Lambda",
-      "Aws Glue",
-      "Aws EKS"
+      "AWS Lambda",
+      "AWS Glue",
+      "AWS EKS"
     ]
   },
   {
-    "jobTitle": "Fullstack Cloud Developer",
-    "companyName": "CRM - Banking Client | CGI",
-    "description": "As a Full-Stack Developer on the API Team at a top Quebec financial institution, I developed event-driven microservices on Azure using Java 17, Spring Boot 3, and Spring Cloud. I integrated services with RabbitMQ, MQ-Series, and Azure Service Bus, and used Azure SQL Database and Redis for data storage and caching. I built Angular 16 applications, set up CI/CD pipelines with GitHub and Concourse, and maintained Swagger API documentation. Additionally, I applied design patterns like BFF, API gateways, and CQRS.",
+    "jobTitle": "Full-Stack Cloud Developer",
+    "companyName": "Data Migration/CRM - Banking Client | CGI",
+    "description": "Developed event-driven microservices on Azure using Java 17, Spring Boot 3, and Spring Cloud. Integrated services with RabbitMQ, MQ-Series, and Azure Service Bus, leveraging Azure SQL Database and Redis for data storage and caching. Built Angular 16 applications, set up CI/CD pipelines with GitHub and Concourse, and maintained Swagger API documentation. Applied design patterns such as BFF, API gateways, and CQRS.",
     "startDate": "March 2025",
     "endDate": "Current",
     "tags": [
       "Spring Boot",
-      "Angular 15",
-      "Azure"
+      "Angular 16",
+      "Azure",
+      "Azure SQL Database",
+      "Redis",
+      "RabbitMQ"
     ]
   }
 ]

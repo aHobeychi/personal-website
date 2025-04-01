@@ -1,18 +1,18 @@
 [
   {
     "name": "Personal Website",
-    "description": "A modern personal portfolio website built with Go, HTMX, and TailwindCSS. This project demonstrates a simple yet effective way to create a dynamic website with minimal JavaScript.",
+    "description": "A modern portfolio website built with Go, HTMX, and Tailwind CSS. This project showcases a dynamic, lightweight website architecture with minimal JavaScript, deployed on Fly.io.",
     "tags": [
       "Go",
       "HTMX",
-      "TailwindCSS",
+      "Tailwind CSS",
       "Fly.io"
     ],
-    "link": "https://github.com/aHobeychi/Go-Compiler"
+    "link": "https://github.com/aHobeychi/Personal-Website"
   },
   {
     "name": "Go Compiler",
-    "description": "Go Compiler is a procedural programming language with a C-like syntax, designed and built from scratch using Go. It supports core language features such as arrays, loops, functions, and arithmetic operations. Logical operators and ternary expressions provide additional flexibility. The compiler ensures robust type checking and variable declaration validation, with clear error messaging. It translates source code into a simplified RISC instruction set, enabling efficient execution.",
+    "description": "A procedural programming language compiler with C-like syntax, built from scratch using Go. It supports core language features such as arrays, loops, functions, and arithmetic operations, along with logical operators and ternary expressions. The compiler enforces strong type checking and variable declaration validation, providing clear error messages. It translates source code into a simplified RISC instruction set for efficient execution.",
     "tags": [
       "Go",
       "Compiler Design"
@@ -20,8 +20,8 @@
     "link": "https://github.com/aHobeychi/Go-Compiler"
   },
   {
-    "name": "Satellite-Imagery",
-    "description": "The Satellite Image Processing, Clustering, and Classification Tool analyzes Sentinel-2 imagery using machine learning. It applies clustering for quick area overviews, supervised learning for pixel classification, and deep learning with ResNets to classify large satellite images. Full results can be found in the Results.pdf",
+    "name": "Satellite Imagery Processing",
+    "description": "A machine learning tool for analyzing Sentinel-2 satellite imagery. It applies clustering for area segmentation, supervised learning for pixel classification, and deep learning with ResNets for large-scale image categorization. Detailed results are available in *Results.pdf*.",
     "tags": [
       "Python",
       "PyTorch",
