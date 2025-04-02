@@ -53,12 +53,12 @@ func main() {
 
 	// Set the log level based on the configuration
 	logger.SetLogLevel(config.LOG_LEVEL)
+	logger.LogDebug("Environment set to: " + config.ENV)
 
 	// Parse all templates
 	htmlPath := "templates"
 
 	if config.ENV == "prod" {
-		logger.LogDebug("Running in production mode")
 		htmlPath = "bin/html"
 	}
 
