@@ -20,6 +20,9 @@ run: build
 	@echo "Running $(APP_NAME)..."
 	./$(BUILD_DIR)/$(APP_NAME)
 
+prod:
+	export ENV=prod
+	
 # Clean build artifacts
 clean:
 	@echo "Cleaning build directory..."
@@ -58,6 +61,7 @@ gen:
 	fi
 
 dev-server:
+	export ENV=development
 	${SRC_DIR}/scripts/run-server.sh
 	
 gen-styles:

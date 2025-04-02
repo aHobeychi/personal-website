@@ -11,12 +11,13 @@ import (
 type Config struct {
 	SERVER_PORT string
 	LOG_LEVEL   string
+	ENV         string
 }
 
 // returns an array of all html files under the templates folder
-func getHtmlFiles() []string {
+func getHtmlFiles(path string) []string {
 	var htmlFiles []string
-	err := filepath.Walk("templates", func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
@@ -54,7 +55,14 @@ func main() {
 	logger.SetLogLevel(config.LOG_LEVEL)
 
 	// Parse all templates
-	htmlFiles := getHtmlFiles()
+	htmlPath := "templates"
+
+	if config.ENV == "prod" {
+		logger.LogDebug("Running in production mode")
+		htmlPath = "bin/html"
+	}
+
+	htmlFiles := getHtmlFiles(htmlPath)
 	handler.InitializeTemplates(htmlFiles)
 
 	// Create a new router using the standard library
@@ -74,7 +82,11 @@ func main() {
 
 	// Apply middleware chain
 	var handler http.Handler = mux
-	handler = noCacheMiddleware(handler)
+
+	if config.ENV == "prod" {
+		handler = noCacheMiddleware(handler)
+	}
+
 	handler = logger.CustomLoggerMiddleware(handler)
 
 	// Start the server
@@ -99,5 +111,6 @@ func getConfig() Config {
 	return Config{
 		SERVER_PORT: getEnv("SERVER_PORT", "8080"),
 		LOG_LEVEL:   getEnv("LOG_LEVEL", "debug"),
+		ENV:         getEnv("ENV", "development"),
 	}
 }
