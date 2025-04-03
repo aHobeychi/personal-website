@@ -64,7 +64,8 @@ dev-server:
 	export ENV=development
 	${SRC_DIR}/scripts/run-server.sh
 	
-gen-styles:
+minify:
+	./scripts/minify.sh
 	@echo "Generating minified css styles"
 	minify -b ${SRC_DIR}/static/css/*.css -o ${SRC_DIR}/static/css/styles.css
 

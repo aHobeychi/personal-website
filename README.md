@@ -20,21 +20,30 @@ A modern personal portfolio website built with Go, HTMX, and TailwindCSS. This p
 │   └── logger_middleware.go # Logging middleware for HTTP requests
 ├── models/
 │   ├── blog.go            # Data structures for blog posts
-│   └── project.go         # Data structures for projects
+│   ├── certification.go   # Data structures for certifications
+│   ├── project.go         # Data structures for projects
+│   └── work_experience.go # Data structures for work experience
 ├── parser/
 │   ├── blog.go            # JSON parsing for blog data
-│   └── project.go         # JSON parsing for project data
+│   ├── certification.go   # JSON parsing for certification data
+│   ├── project.go         # JSON parsing for project data
+│   └── work_experience.go # JSON parsing for work experience data
+├── cache/
+│   └── cache.go           # Generic caching mechanism for data
 ├── static/
 │   ├── blog-posts/
 │   │   ├── html/          # HTML blog posts
 │   │   └── markdown/      # Markdown blog posts
 │   ├── content-catalog/
 │   │   ├── blogs.json     # Blog data in JSON format
-│   │   └── projects.json  # Project data in JSON format
+│   │   ├── certifications.json # Certification data in JSON format
+│   │   ├── favorites.json # Favorites data in JSON format
+│   │   ├── projects.json  # Project data in JSON format
+│   │   └── work-experience.json # Work experience data in JSON format
 │   ├── css/
-│   │   ├── blogs.css      # Blog-specific styles
-│   │   ├── colors.css     # Color variables and theming
-│   │   └── styles.css     # Custom styles
+│   │   ├── tailwind.css   # Tailwind configuration
+│   │   └── styles.css     # Compiled styles
+│   ├── images/            # Image assets
 ├── templates/
 │   ├── index.html         # Main template layout
 │   ├── components/        # Reusable UI components
@@ -45,13 +54,16 @@ A modern personal portfolio website built with Go, HTMX, and TailwindCSS. This p
 │   ├── pages/             # Page-specific templates
 │   │   ├── blog-content.html
 │   │   ├── blog-list.html
-│   │   ├── blog.html
-│   │   ├── contact.html
 │   │   ├── home.html
 │   │   ├── projects.html
 │   │   └── resume.html
+├── scripts/
+│   ├── compress_image.sh  # Script for image compression
+│   ├── minify.sh          # Script for asset minification
+│   └── run-server.sh      # Development server script
 └── bin/
-    └── myapp              # Compiled binary
+    ├── myapp              # Compiled binary
+    └── html/              # Minified HTML templates
 ```
 
 ## Features
@@ -62,6 +74,7 @@ A modern personal portfolio website built with Go, HTMX, and TailwindCSS. This p
 - **Project Showcase**: Dynamically loads and displays projects from JSON
 - **Blog Integration**: Dynamically loads and displays blog posts from JSON and Markdown
 - **Live Reload**: Development environment with automatic rebuilding and reloading
+- **HTML Minification**: Both at build time and runtime for optimal performance
 
 ## How Blogs.json Works
 
@@ -125,7 +138,7 @@ The application uses the following environment variables:
 
 ### Live Reload with Nodemon
 
-The `.run-server.sh` script sets up a development environment with automatic rebuilding and reloading:
+The `scripts/run-server.sh` script sets up a development environment with automatic rebuilding and reloading:
 
 ```bash
 npx nodemon \
@@ -149,7 +162,7 @@ This script uses Nodemon to watch for changes in any file with the specified ext
 3. For development with live reload:
 
    ```bash
-   sh .run-server.sh
+   sh scripts/run-server.sh
    ```
 
 4. For production:

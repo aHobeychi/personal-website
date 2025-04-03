@@ -3,6 +3,7 @@
 # Define directories
 SOURCE_DIR="templates"
 OUTPUT_DIR="bin/html"
+SRC_DIR=../
 
 # Ensure output directory exists
 mkdir -p "$OUTPUT_DIR"
@@ -18,4 +19,4 @@ find "$SOURCE_DIR" -type f -name '*.html' | while read -r file; do
   echo "Minified: $file -> $OUTPUT_DIR/$filename"
 done
 
-echo "✅ Minification complete! Minified files are in $OUTPUT_DIR"
+echo "✅ Minification of html complete! Minified files are in $OUTPUT_DIR"
