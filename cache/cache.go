@@ -91,7 +91,7 @@ func (c *Cache[T]) Get(limit ...int) ([]T, error) {
 		}
 	})
 
-	logger.DebugLogger.Printf("%s cache populated, returning data", c.name)
+	logger.DebugLogger.Printf("%s cache already populated, returning data", c.name)
 
 	if c.err != nil {
 		return nil, c.err

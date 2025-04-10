@@ -1,16 +1,16 @@
 {{ define "resume" }}
-<title>alexhobeychi.com</title>
-<div class="lg:ml-80 lg:px-12 p-6 rounded-lg dark:border-gray-700 mt-16">
-    <section class="grid grid-cols-1 mb-4">
-        <h1 class="text-5xl text-gray-900 dark:text-white pb-2 lg:mt-0 mt-4">About Me</h1>
+<main id="main-content" role="main">
+  <div class="lg:ml-80 lg:px-12 p-6 rounded-lg dark:border-gray-700 mt-16">
+    <section class="grid grid-cols-1 mb-4" aria-labelledby="about-me-heading">
+        <h1 id="about-me-heading" class="text-5xl text-gray-900 dark:text-white pb-2 lg:mt-0 mt-4">About Me</h1>
         <p class="text-gray-500 dark:text-gray-400 font-thin">Learn a little about me</p>
     </section>
-    <section class="mb-8">
+    <section class="mb-8" aria-label="Personal introduction">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md md:col-span-2">
                 <p class="text-gray-700 dark:text-gray-200 text-lg leading-relaxed">
                     I am a bilingual (French and English) full-stack developer and consultant based in Montreal,
-                    holding a Bachelor’s degree in Computer Science from Concordia University.
+                    holding a Bachelor's degree in Computer Science from Concordia University.
                     With a deep passion for technology, I am constantly seeking new challenges
                     and opportunities to expand my knowledge. I thrive on learning and applying
                     innovative solutions to complex problems, and I am committed to staying
@@ -21,51 +21,50 @@
                 class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md flex justify-center items-center md:col-span-2">
                 <div
                     class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 mx-auto overflow-hidden rounded-full border-2 aspect-square">
-                    <img src="/static/images/headshot.png" alt="Profile Picture" class="w-full h-full object-cover"
+                    <img src="/static/images/headshot.png" alt="Alex Hobeychi - Professional headshot photograph" class="w-full h-full object-cover"
                         onerror="this.src='/static/images/headshot.webp'; this.onerror='';">
                 </div>
             </div>
-
+        </div>
     </section>
 
     <!-- Work Experience Section -->
-    <section class="mb-8">
-        <h2 class="text-4xl mb-4 text-gray-800 dark:text-white">Work Experience</h2>
+    <section class="mb-8" aria-labelledby="work-experience-heading">
+        <h2 id="work-experience-heading" class="text-4xl mb-4 text-gray-800 dark:text-white">Work Experience</h2>
         <div class="space-y-6">
             {{ range .WorkExperience }}
-            <div class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md">
-                <div class="flex justify-between items-start">
+            <article class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md">
+                <div class="flex justify-between items-start flex-wrap">
                     <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200">{{ .JobTitle }}</h3>
-                    <span class="text-sm text-gray-500 dark:text-gray-400">{{ .StartDate }} - {{ .EndDate }}</span>
+                    <span class="text-sm text-gray-700 dark:text-gray-300">{{ .StartDate }} - {{ .EndDate }}</span>
                 </div>
-                <h4 class="text-lg text-blue-600 dark:text-blue-400 mt-1">{{ .CompanyName }}</h4>
-                <p class="text-gray-600 dark:text-gray-300 mt-3">
+                <h4 class="text-lg text-blue-700 dark:text-blue-300 mt-1">{{ .CompanyName }}</h4>
+                <p class="text-gray-800 dark:text-gray-200 mt-3">
                     {{ .Description }}
                 </p>
-                <div class="mt-3 flex flex-wrap gap-2">
+                <div class="mt-3 flex flex-wrap gap-2" aria-label="Skills used">
                     {{ range .Tags }}
                     <span
-                        class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-xs text-gray-600 dark:text-gray-300 rounded">{{
+                        class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-xs text-gray-800 dark:text-gray-200 rounded">{{
                         . }}</span>
                     {{ end }}
                 </div>
-            </div>
+            </article>
             {{ end }}
         </div>
     </section>
 
     <!-- Certification Section -->
-    <section>
-        <h2 class="text-4xl mb-4 text-gray-800 dark:text-white">Certifications</h2>
+    <section aria-labelledby="certifications-heading">
+        <h2 id="certifications-heading" class="text-4xl mb-4 text-gray-800 dark:text-white">Certifications</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {{ range .Certifications }}
-            <a href="{{ .Url }}" target="_blank" rel="noopener noreferrer" class="no-underline">
-                <div class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md flex flex-col min-h-[150px] hover:shadow-lg">
+            <a href="{{ .Url }}" target="_blank" rel="noopener noreferrer" class="no-underline" aria-label="View {{ .Name }} certification from {{ .Issuer }}">
+                <div class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md flex flex-col min-h-[150px] hover:shadow-lg transition focus-visible:ring-2 focus-visible:ring-blue-500">
                     <div class="flex justify-between items-start">
-                        <h3
-                            class="text-xl font-semibold text-gray-700 dark:text-gray-200 line-clamp-2 max-w-[75%] min-h-[3.0rem]">
+                        <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200 line-clamp-2 max-w-[75%] min-h-[3.0rem]">
                             {{ .Name }}</h3>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap pl-2">{{ .DateReceived
+                        <span class="text-sm text-gray-700 dark:text-gray-300 whitespace-nowrap pl-2">{{ .DateReceived
                             }}</span>
                     </div>
                     <h4 class="text-lg text-blue-600 dark:text-blue-400 mt-auto truncate">{{ .Issuer }}</h4>
@@ -74,5 +73,6 @@
             {{ end }}
         </div>
     </section>
-</div>
+  </div>
+</main>
 {{ end }}
