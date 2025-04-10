@@ -1,0 +1,60 @@
+[
+  {
+    "jobTitle": "Backend Cloud Developer",
+    "companyName": "Wealth Management - Banking Client | CGI",
+    "description": "Developed and deployed APIs using Spring Boot, AWS, Docker, and EKS to aggregate customer asset and liability data from multiple business domains. Built CI/CD pipelines with Jenkins and implemented automated testing using Cucumber and Postman to ensure system reliability.",
+    "startDate": "March 2025",
+    "endDate": "Current",
+    "tags": [
+      "Spring Batch",
+      "Python",
+      "TypeScript",
+      "AWS Batch",
+      "AWS DynamoDB"
+    ]
+  },
+  {
+    "jobTitle": "Backend Cloud Developer",
+    "companyName": "Customer Profiles - Banking Client | CGI",
+    "description": "Developed and deployed APIs using Spring Boot, AWS, Docker, and EKS to manage customer profile data across multiple systems. Built CI/CD pipelines with Jenkins and implemented automated testing using Cucumber and Postman to ensure system reliability.",
+    "startDate": "October 2024",
+    "endDate": "March 2025",
+    "tags": [
+      "Spring Boot",
+      "Cucumber",
+      "AWS EKS",
+      "Jenkins",
+      "Okta"
+    ]
+  },
+  {
+    "jobTitle": "Full-Stack Cloud Developer",
+    "companyName": "Financial Markets - Banking Client | CGI",
+    "description": "Processed large financial datasets using AWS Glue and automated tasks with AWS Lambda. Built real-time APIs with Spring WebFlux, developed React dashboards used by 100+ analysts, and managed CI/CD pipelines with Jenkins and GitHub. Optimized data storage and querying with PostgreSQL to enhance scalability and performance.",
+    "startDate": "September 2023",
+    "endDate": "October 2024",
+    "tags": [
+      "Spring WebFlux",
+      "React 18",
+      "PostgreSQL",
+      "AWS Lambda",
+      "AWS Glue",
+      "AWS EKS"
+    ]
+  },
+  {
+    "jobTitle": "Full-Stack Cloud Developer",
+    "companyName": "Data Migration/CRM - Banking Client | CGI",
+    "description": "Developed event-driven microservices on Azure using Java 17, Spring Boot 3, and Spring Cloud. Integrated services with RabbitMQ, MQ-Series, and Azure Service Bus, leveraging Azure SQL Database and Redis for data storage and caching. Built Angular 16 applications, set up CI/CD pipelines with GitHub and Concourse, and maintained Swagger API documentation. Applied design patterns such as BFF, API gateways, and CQRS.",
+    "startDate": "November 2021",
+    "endDate": "July 2023",
+    "tags": [
+      "Spring Boot",
+      "Angular 16",
+      "Azure",
+      "Azure SQL Database",
+      "Redis",
+      "RabbitMQ"
+    ]
+  }
+]

@@ -1,19 +1,14 @@
 # Go parameters
-APP_NAME=myapp
-BUILD_DIR=bin
-SRC_DIR=.
+APP_NAME=personalwebsite
+BUILD_DIR=app
+SRC_DIR=cmd/server/
 PKG=$(SRC_DIR)/main.go
-MARKDOWN_DIR=static/blog-posts/markdown
-HTML_DIR=static/blog-posts/html
+MARKDOWN_DIR=frontend/content/blog/markdown
+HTML_DIR=frontend/content/blog/html
+SCRIPTS_DIR=build/scripts
 
 # Default target: Build the application
 all: build
-
-# Build the Go application
-build:
-	@echo "Building $(APP_NAME)..."
-	mkdir -p $(BUILD_DIR)
-	go build -o $(BUILD_DIR)/$(APP_NAME) $(PKG)
 
 # Run the application
 run: build
@@ -21,7 +16,11 @@ run: build
 	./$(BUILD_DIR)/$(APP_NAME)
 
 prod:
-	export ENV=prod
+	@echo "Minifying html & css files"
+	make minify
+	@echo "Building application"
+	go build -o $(BUILD_DIR)/$(APP_NAME) $(PKG)
+	export APP_ENV=production && $(BUILD_DIR)/$(APP_NAME)
 	
 # Clean build artifacts
 clean:
@@ -55,19 +54,25 @@ gen:
 		mkdir -p $(HTML_DIR); \
 		for file in $(MARKDOWN_DIR)/*.md; do \
 			filename=$$(basename $$file .md); \
-			pandoc $$file -o $(HTML_DIR)/$$filename.html; \
+			pandoc $$file -o $(HTML_DIR)/content/$$filename.html; \
 		done; \
 		echo "Conversion complete."; \
 	fi
 
 dev-server:
 	export ENV=development
-	${SRC_DIR}/scripts/run-server.sh
+	build/scripts/run-server.sh
 	
 minify:
-	./scripts/minify.sh
+	./${SCRIPTS_DIR}/minify.sh
 	@echo "Generating minified css styles"
-	minify -b ${SRC_DIR}/static/css/*.css -o ${SRC_DIR}/static/css/styles.css
+	minify -b frontend/assets/css/*.css -o frontend/assets/css/styles.css
+
+
+build:
+	@echo "Creating build directory..."
+	mkdir -p $(BUILD_DIR)
+	go build -o $(BUILD_DIR)/$(APP_NAME) $(PKG)
 
 # Help message
 help:

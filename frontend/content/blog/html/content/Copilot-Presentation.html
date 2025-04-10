@@ -1,0 +1,55 @@
+<h2 id="introduction">Introduction</h2>
+<h2 id="edit-and-agents">Edit and Agents</h2>
+<p>Show the API, that it’s working and call for the share price of CGI
+Change the api calls from callbacks to async await</p>
+<pre class="text"><code>Update the api calls to use async/await instead of callbacks</code></pre>
+<p>Generate Todo App using Claude 3.7</p>
+<pre class="text"><code>I wan&#39;t a desktop webapp to manage a todo list. It needs to be written using VueJS </code></pre>
+<p>Use image to modify the app. Doesn’t work with Sonnet 3.7, switch to
+GPT 4o</p>
+<p>Go back and show adding test to copilot demo</p>
+<pre class="tesxt"><code>Can test this application using unit tests, add the necessary dependencies and mocks and run me through it</code></pre>
+<h2 id="extensions">Extensions</h2>
+<ul>
+<li>Show Market Place, talk about different available extensions:
+Docker, Mermaid, StackOverflow, SonarQube</li>
+<li>Demo mermaid example</li>
+<li>Show Models Extensions</li>
+</ul>
+<h2 id="models">Models</h2>
+<ul>
+<li>Allows for different Models</li>
+</ul>
+<h2 id="cli">Cli</h2>
+<ul>
+<li>Two main features
+<ul>
+<li>Suggest</li>
+<li>Explain</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> copilot </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> copilot suggest <span class="st">&quot;create a python environment with numpy and pandas&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> copilot explain <span class="st">&quot;curl&quot;</span></span></code></pre></div>
+<p>Use with Extensions, ex: Models</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> models</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> models list</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> models run Phi-3-mini-4k-instruct <span class="st">&quot;Create me a python virtual environment containing numpy and pandas&quot;</span></span></code></pre></div>
+<p>Important to note that It’s like any CLI tool, they can be chained
+together using the pipe command</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-n</span> 10 <span class="kw">|</span> <span class="ex">gh</span> models run Phi-3-mini-4k-instruct <span class="st">&quot;can you summarize this last few commits</span></span></code></pre></div>
+<p>Alias, you can setup alias to prevent yourself from writing the whole
+text command out ghce/ghcs</p>
+<p>Demo for the pull request, From main branch create a new branch:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> copilot-demo</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push </span></code></pre></div>
+<p>Go back to main</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ghcs</span> undo the last 25 commits, and push the branch to github</span></code></pre></div>
+<h2 id="pull-request">Pull Request</h2>
+<p>Go back to our Gatling demo, navigate to github create a PR and</p>

@@ -2,8 +2,8 @@
 module.exports = {
   darkMode: 'media', // Changed from 'class' to 'media' for system preference based dark mode
   content: [
-    "./templates/**/*.{html,js}",
-    "./static/**/*.{html,js}",
+    "./frontend/templates/**/*.{html,js}",
+    "./frontend/assets/css/**/*.{html,js}",
     "./node_modules/flowbite/**/*.js"
   ],
   theme: {
