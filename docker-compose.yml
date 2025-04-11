@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  personal-website:
+    build:
+      context: .
+      dockerfile: build/docker/Dockerfile
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    environment:
+      - APP_ENV=production
+      - SERVER_PORT=8080
+    volumes:
+      # Mount the config directory for easy updates without rebuilding
+      - ./config:/app/config:ro

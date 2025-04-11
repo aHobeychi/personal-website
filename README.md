@@ -7,63 +7,90 @@ A modern personal portfolio website built with Go, HTMX, and TailwindCSS. This p
 ```text
 ├── go.mod                 # Go module definition and dependencies
 ├── go.sum                 # Go module checksums
-├── main.go                # Application entry point and setup
 ├── Makefile               # Makefile for build automation
-├── handler/
-│   ├── blog.go            # Blog route handlers
-│   ├── common.go          # Common handlers and utilities
-│   ├── home.go            # Home route handlers
-│   ├── projects.go        # Projects route handlers
-│   └── resume.go          # Resume route handlers
-├── logger/
-│   ├── logger.go          # Custom logging functionality
-│   └── logger_middleware.go # Logging middleware for HTTP requests
-├── models/
-│   ├── blog.go            # Data structures for blog posts
-│   ├── certification.go   # Data structures for certifications
-│   ├── project.go         # Data structures for projects
-│   └── work_experience.go # Data structures for work experience
-├── parser/
-│   ├── blog.go            # JSON parsing for blog data
-│   ├── certification.go   # JSON parsing for certification data
-│   ├── project.go         # JSON parsing for project data
-│   └── work_experience.go # JSON parsing for work experience data
-├── cache/
-│   └── cache.go           # Generic caching mechanism for data
-├── static/
-│   ├── blog-posts/
-│   │   ├── html/          # HTML blog posts
-│   │   └── markdown/      # Markdown blog posts
-│   ├── content-catalog/
-│   │   ├── blogs.json     # Blog data in JSON format
-│   │   ├── certifications.json # Certification data in JSON format
-│   │   ├── favorites.json # Favorites data in JSON format
-│   │   ├── projects.json  # Project data in JSON format
-│   │   └── work-experience.json # Work experience data in JSON format
-│   ├── css/
-│   │   ├── tailwind.css   # Tailwind configuration
-│   │   └── styles.css     # Compiled styles
-│   ├── images/            # Image assets
-├── templates/
-│   ├── index.html         # Main template layout
-│   ├── components/        # Reusable UI components
-│   │   ├── footer.html
-│   │   ├── header.html
-│   │   ├── navbar.html
-│   │   └── sidebar.html
-│   ├── pages/             # Page-specific templates
-│   │   ├── blog-content.html
-│   │   ├── blog-list.html
-│   │   ├── home.html
-│   │   ├── projects.html
-│   │   └── resume.html
-├── scripts/
-│   ├── compress_image.sh  # Script for image compression
-│   ├── minify.sh          # Script for asset minification
-│   └── run-server.sh      # Development server script
-└── bin/
-    ├── myapp              # Compiled binary
-    └── html/              # Minified HTML templates
+├── package.json           # Node.js dependencies
+├── tailwind.config.js     # TailwindCSS configuration
+├── app/                   # Application binary and server templates
+│   ├── personalwebsite    # Compiled application binary
+│   ├── html/              # Compiled HTML templates
+│       ├── blog/          # Compiled blog HTML files
+│       ├── templates/     # Compiled template files
+│       ├── toc/           # Compiled table of contents files
+├── build/                 # Build-related resources
+│   ├── ci/                # Continuous Integration configuration
+│   ├── docker/            # Docker configuration
+│   │   └── Dockerfile     # Docker build definition
+│   ├── scripts/           # Build and utility scripts
+│       ├── compress_image.sh  # Script for image compression
+│       ├── minify.sh      # Script for asset minification
+│       └── run-server.sh  # Development server script
+├── cmd/                   # Application entrypoints
+│   └── server/            # Server entry point
+│       └── main.go        # Main application entry point
+├── config/                # Configuration files
+│   ├── development.json   # Development environment configuration
+│   └── production.json    # Production environment configuration
+├── frontend/              # Frontend assets and content
+│   ├── assets/            # Frontend static assets
+│   │   ├── css/           # CSS stylesheets
+│   │   │   ├── styles.css # Compiled styles
+│   │   │   └── tailwind.css # Tailwind configuration
+│   │   ├── images/        # Image assets
+│   ├── catalog/           # Content catalog in JSON format
+│   │   ├── blogs.json     # Blog data
+│   │   ├── certifications.json # Certification data
+│   │   ├── favorites.json # Favorites data
+│   │   ├── projects.json  # Project data
+│   │   └── work-experience.json # Work experience data
+│   ├── content/           # Content files
+│   │   └── blog/          # Blog content
+│   │       ├── html/      # Generated HTML blog content
+│   │       │   ├── content/  # HTML content files
+│   │       │   └── table-of-contents/ # Table of contents files
+│   │       └── markdown/  # Source markdown files
+│   ├── templates/         # HTML templates
+│       ├── index.html     # Main template layout
+│       ├── components/    # Reusable UI components
+│       │   ├── footer.html
+│       │   ├── header.html
+│       │   ├── navbar.html
+│       │   └── sidebar.html
+│       ├── pages/         # Page-specific templates
+│           ├── blog-content.html
+│           ├── blog-list.html
+│           ├── home.html
+│           ├── projects.html
+│           └── resume.html
+├── internal/              # Internal application packages
+│   ├── cache/             # Caching mechanisms
+│   │   └── cache.go       # Generic caching functionality
+│   ├── config/            # Configuration handling
+│   │   └── config.go      # Configuration loading and processing
+│   ├── domain/            # Domain models
+│   │   ├── blog.go        # Blog domain models
+│   │   ├── certification.go # Certification models
+│   │   ├── project.go     # Project models
+│   │   └── work_experience.go # Work experience models
+│   ├── handler/           # HTTP request handlers
+│   │   ├── blog.go        # Blog route handlers
+│   │   ├── common.go      # Common handler utilities
+│   │   ├── home.go        # Home route handlers
+│   │   ├── projects.go    # Projects route handlers
+│   │   └── resume.go      # Resume route handlers
+│   ├── parser/            # Data parsing utilities
+│   │   ├── blog_provider.go # Blog provider interface
+│   │   ├── blog.go        # Blog data parsing
+│   │   ├── certification.go # Certification data parsing
+│   │   ├── project.go     # Project data parsing
+│   │   └── work_experience.go # Work experience parsing
+│   ├── preprocessor/      # Content preprocessing
+│   │   └── table_of_contents.go # Table of contents generation
+│   └── util/              # Utility packages
+│       ├── logger/        # Logging utilities
+│       │   ├── logger.go  # Logging configuration
+│       │   └── logger_middleware.go # HTTP logging middleware
+│       └── middleware/    # HTTP middleware
+│           └── no_cache.go # Cache control middleware
 ```
 
 ## Features
@@ -78,7 +105,7 @@ A modern personal portfolio website built with Go, HTMX, and TailwindCSS. This p
 
 ## How Blogs.json Works
 
-The `blogs.json` file in the `static/content-catalog/` directory stores information about your blog posts. Each blog entry contains:
+The `blogs.json` file in the `frontend/catalog/` directory stores information about your blog posts. Each blog entry contains:
 
 - `id`: Unique identifier for the blog post
 - `title`: Blog post title
@@ -98,7 +125,7 @@ Example:
 }
 ```
 
-The `parser/blog.go` module handles loading and caching this data, with the following features:
+The `internal/parser/blog.go` module handles loading and caching this data, with the following features:
 
 - Implements caching to reduce file I/O operations
 - Supports configurable cache TTL (Time To Live)
@@ -124,28 +151,80 @@ The handlers check for the `HX-Request` header to determine if a request is comi
 
 The project also uses Flowbite components to enhance the UI.
 
+## Configuration System
+
+The application now uses a robust configuration system with environment-specific JSON files located in the `config/` directory:
+
+- `development.json`: Configuration for development environments
+- `production.json`: Configuration for production environments
+
+### Configuration Structure
+
+The configuration files follow this structure:
+
+```json
+{
+  "server": {
+    "port": 8080,
+    "host": "localhost"
+  },
+  "logging": {
+    "level": "debug"
+  },
+  "caching": {
+    "ttl": 60
+  },
+  "content": {
+    "catalogPath": "./frontend/catalog",
+    "templatesPath": "./frontend/templates"
+  }
+}
+```
+
+The application automatically loads the appropriate configuration file based on the `APP_ENV` environment variable (defaults to "development" if not specified).
+
+### Accessing Configuration
+
+The configuration is loaded and managed by the `internal/config/config.go` module, which provides a clean API for accessing configuration values throughout the application.
+
+## Content Preprocessing
+
+The application now includes a preprocessing system located in `internal/preprocessor/` that transforms content before serving:
+
+### Table of Contents Generator
+
+The `table_of_contents.go` preprocessor automatically generates table of contents for blog posts by:
+
+1. Parsing Markdown files from `frontend/content/blog/markdown/`
+2. Extracting headings and creating a hierarchical structure
+3. Generating HTML table of contents files in `frontend/content/blog/html/table-of-contents/`
+4. These table of contents files are then injected into blog content when viewed
+
+This enhances navigation within blog posts without requiring JavaScript for generation.
+
 ## Environment Variables
 
 The application uses the following environment variables:
 
-| Variable     | Default | Description                               |
-|-------------|---------|-------------------------------------------|
-| SERVER_PORT | "8080"  | The port the web server will listen on    |
-| CACHE_TTL   | "60"    | Cache time-to-live in seconds             |
-| LOG_LEVEL   | "debug" | Logging level (debug, info, warn, error)  |
+| Variable     | Default       | Description                               |
+|-------------|---------------|-------------------------------------------|
+| APP_ENV     | "development" | Environment to run the application in     |
+| SERVER_PORT | "8080"        | The port the web server will listen on    |
+| CACHE_TTL   | "60"          | Cache time-to-live in seconds             |
+| LOG_LEVEL   | "debug"       | Logging level (debug, info, warn, error)  |
 
 ## Development
 
 ### Live Reload with Nodemon
 
-The `scripts/run-server.sh` script sets up a development environment with automatic rebuilding and reloading:
+The `build/scripts/run-server.sh` script sets up a development environment with automatic rebuilding and reloading:
 
 ```bash
 npx nodemon \
   --watch "**" \
   --ext "go,html,js,json,css" \
   --signal SIGTERM \
-  --exec "go run ${PWD}/main.go"
+  --exec "go run ${PWD}/cmd/server/main.go"
 ```
 
 This script uses Nodemon to watch for changes in any file with the specified extensions and restarts the Go application when changes are detected.
@@ -162,18 +241,18 @@ This script uses Nodemon to watch for changes in any file with the specified ext
 3. For development with live reload:
 
    ```bash
-   sh scripts/run-server.sh
+   sh build/scripts/run-server.sh
    ```
 
 4. For production:
 
    ```bash
-   go run main.go
+   go run cmd/server/main.go
    ```
 
 ## Handlers
 
-The application has the following route handlers defined in `handler/`:
+The application has the following route handlers defined in `internal/handler/`:
 
 - `HomeHandler`: Serves the homepage with up to 3 featured projects
 - `ResumeHandler`: Serves the resume page

@@ -1,43 +1,50 @@
-# Start with a Go base image
-FROM golang:1.23-alpine as builder
+# Build stage
+FROM golang:1.24-alpine AS builder
 
 # Set working directory
 WORKDIR /app
 
-# Copy go.mod and go.sum files first for better caching
+# Install dependencies for building
+RUN apk add --no-cache gcc musl-dev
+
+# Copy go mod and sum files
 COPY go.mod ./
-# COPY go.sum ./ (uncomment if you have a go.sum file)
 
 # Download dependencies
 RUN go mod download
 
-# Copy the rest of the application
+# Copy the source code
 COPY . .
 
 # Build the application
-RUN CGO_ENABLED=0 GOOS=linux go build -o /app/bin/personal-website .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags="-w -s" -o personalwebsite ./cmd/server/main.go
 
-# Use a minimal alpine image for the final image
+# Runtime stage
 FROM alpine:3.18
 
-# Install ca-certificates for HTTPS requests
-RUN apk --no-cache add ca-certificates
-
+# Set working directory
 WORKDIR /app
 
-# Copy the binary from the builder stage
-COPY --from=builder /app/bin/personal-website /app/personal-website
+# Set production environment variable
+ENV APP_ENV=production
 
-# Copy templates and static files which are required at runtime
-COPY --from=builder /app/templates /app/templates
-COPY --from=builder /app/static /app/static
+# Install runtime dependencies
+RUN apk --no-cache add ca-certificates tzdata
 
-# Expose the port the app runs on
+# Copy the binary from builder stage
+COPY --from=builder /app/personalwebsite /app/personalwebsite
+
+# Copy necessary files
+COPY --from=builder /app/config/production.json /app/config/production.json
+COPY --from=builder /app/frontend /app/frontend
+
+# Create app directory for outputs
+RUN mkdir -p /app/app/html/blog
+RUN mkdir -p /app/app/html/templates
+RUN mkdir -p /app/app/html/toc
+
+# Expose port
 EXPOSE 8080
 
-# Set environment variables
-ENV SERVER_PORT=8080
-ENV LOG_LEVEL=info
-
-# Command to run when the container starts
-CMD ["/app/personal-website"]
+# Run the application
+CMD ["/app/personalwebsite"]

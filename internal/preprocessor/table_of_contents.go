@@ -40,7 +40,7 @@ func GenerateTableOfContents(htmlContent string) (string, error) {
 	buffer.WriteString("<ul class=\"toc-list\">")
 
 	// Track the current heading level to create proper nesting
-	var currentLevel int = 0
+	currentLevel := 0
 
 	// Process each heading
 	for i, header := range headers {
@@ -68,7 +68,6 @@ func GenerateTableOfContents(htmlContent string) (string, error) {
 		// Adjust nesting based on heading level
 		if i == 0 {
 			// First heading
-			currentLevel = level
 		} else if level > currentLevel {
 			// Going deeper in nesting
 			for j := 0; j < level-currentLevel; j++ {
@@ -112,10 +111,7 @@ func GenerateAndSaveTableOfContents(blog Blog, content string) error {
 	}
 
 	// Create the table of contents HTML wrapper
-	tocHTML := fmt.Sprintf(`<div class="blog-toc">
-	<h2>Table of Contents</h2>
-	%s
-</div>`, toc)
+	tocHTML := fmt.Sprintf(`<div class="blog-toc"><h2>Table of Contents</h2>%s</div>`, toc)
 
 	// Ensure the directory exists
 	err = os.MkdirAll(PATH_TOWARDS_TOC_HTML, 0755)

@@ -10,18 +10,37 @@ SCRIPTS_DIR=build/scripts
 # Default target: Build the application
 all: build
 
+# Build the application
+build:
+	@echo "Creating build directory..."
+	mkdir -p $(BUILD_DIR)
+	go build -o $(BUILD_DIR)/$(APP_NAME) $(PKG)
+
 # Run the application
 run: build
 	@echo "Running $(APP_NAME)..."
 	./$(BUILD_DIR)/$(APP_NAME)
 
+# Production build and run
 prod:
-	@echo "Minifying html & css files"
+	@echo "Checking for Markdown files..."
+	@if [ -z "$$(ls -A $(MARKDOWN_DIR)/*.md 2>/dev/null)" ]; then \
+		echo "No Markdown files found. Skipping conversion."; \
+	else \
+		echo "Generating HTML from Markdown..."; \
+		mkdir -p $(HTML_DIR); \
+		for file in $(MARKDOWN_DIR)/*.md; do \
+			filename=$$(basename $$file .md); \
+			pandoc $$file -o $(HTML_DIR)/content/$$filename.html; \
+		done; \
+		echo "Conversion complete."; \
+	fi
+	@echo "Minifying HTML & CSS files..."
 	make minify
-	@echo "Building application"
+	@echo "Building application..."
 	go build -o $(BUILD_DIR)/$(APP_NAME) $(PKG)
-	export APP_ENV=production && $(BUILD_DIR)/$(APP_NAME)
-	
+	export APP_ENV=production && ./$(BUILD_DIR)/$(APP_NAME)
+
 # Clean build artifacts
 clean:
 	@echo "Cleaning build directory..."
@@ -42,9 +61,7 @@ lint:
 	@echo "Linting code..."
 	golangci-lint run
 
-# Build and run
-dev: fmt lint test build run
-
+# Generate HTML from Markdown files
 gen:
 	@echo "Checking for Markdown files..."
 	@if [ -z "$$(ls -A $(MARKDOWN_DIR)/*.md 2>/dev/null)" ]; then \
@@ -59,20 +76,19 @@ gen:
 		echo "Conversion complete."; \
 	fi
 
-dev-server:
-	export ENV=development
-	build/scripts/run-server.sh
-	
+# Minify CSS and HTML files
 minify:
+	@echo "Running minification scripts..."
 	./${SCRIPTS_DIR}/minify.sh
-	@echo "Generating minified css styles"
+	@echo "Generating minified CSS styles..."
 	minify -b frontend/assets/css/*.css -o frontend/assets/css/styles.css
 
+# Development workflow
+dev: fmt lint test build run
 
-build:
-	@echo "Creating build directory..."
-	mkdir -p $(BUILD_DIR)
-	go build -o $(BUILD_DIR)/$(APP_NAME) $(PKG)
+# Run the development server
+dev-server:
+	export ENV=development && build/scripts/run-server.sh
 
 # Help message
 help:
@@ -82,11 +98,13 @@ help:
 	@echo "  all        Build the application (default)"
 	@echo "  build      Compile the application"
 	@echo "  run        Run the application"
+	@echo "  prod       Build and run the application in production mode"
 	@echo "  clean      Remove build artifacts"
 	@echo "  test       Run unit tests"
 	@echo "  fmt        Format the code"
 	@echo "  lint       Run linting"
-	@echo "  dev        Run all steps: format, lint, test, build, and run"
-	@echo "  help       Show this help message"
 	@echo "  gen        Generate HTML from Markdown files"
+	@echo "  minify     Minify CSS and HTML files"
+	@echo "  dev        Run all steps: format, lint, test, build, and run"
 	@echo "  dev-server Run the development server"
+	@echo "  help       Show this help message"
