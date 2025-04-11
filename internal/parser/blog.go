@@ -66,7 +66,7 @@ func GetBlogByID(id string) (models.Blog, error) {
 
 // GetBlogTableOfContents returns the pre-generated table of contents HTML for a blog post
 func GetBlogTableOfContents(blogId string) (string, error) {
-	tocPath := config.Get().Paths.TocHTML + blogId + "-toc.html"
+	tocPath := config.Get().Paths.TocHTML + "/" + blogId + "-toc.html"
 	content, err := os.ReadFile(tocPath)
 	if err != nil {
 		logger.ErrorLogger.Println("Error reading blog table of contents file:", err)

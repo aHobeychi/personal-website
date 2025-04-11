@@ -56,6 +56,7 @@ func ServeBlogContent(w http.ResponseWriter, r *http.Request) {
 
 	data := PageData{
 		"BlogTitle":   blog.Title,
+		"BlogID":      blog.Id,
 		"ContentData": template.HTML(contentData), // Convert to template.HTML to prevent escaping
 		"SourcePage":  sourcePage,                 // Add source page information
 	}
