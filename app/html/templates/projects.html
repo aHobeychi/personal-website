@@ -3,4 +3,4 @@
 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentcolor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6A2 2 0 004 8v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
 {{ end }}</div><div class="mt-2 flex-grow"><p class="text-gray-600 dark:text-gray-300 line-clamp-5">{{ .Description }}</div><div class="mt-3 flex flex-wrap gap-2">{{ range .Tags }}
 <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-xs text-gray-600 dark:text-gray-300 rounded">{{.}}
-</span>{{ end }}</div></div></a>{{ end }}</section></div>{{ end }}
+</span>{{ end }}</div></div></a>{{ end }}</section></div>{{ template "sidebar-bio" . }}</div>{{ end }}

@@ -1,5 +1,11 @@
 {{ define "blog-content" }}
 <title>{{ .BlogTitle }}</title>
+    <div class="hidden"
+        hx-get="/blog/{{ .BlogID }}/table-of-contents"
+        hx-trigger="load once"
+        hx-target="#variable-sidebar-container"
+        hx-push-url="false"
+    ></div>
    <div class="lg:ml-80 lg:p-12 p-6 rounded-lg dark:border-gray-700 mt-14 lg:mt-10">
         <nav class="flex mb-2 mt-4 lg:mt-0" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2">
