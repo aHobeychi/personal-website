@@ -82,6 +82,7 @@ minify:
 	./${SCRIPTS_DIR}/minify.sh
 	@echo "Generating minified CSS styles..."
 	minify -b frontend/assets/css/*.css -o frontend/assets/css/styles.css
+	minify -b frontend/assets/css/*.css -o app/assets/css/styles.css
 
 # Development workflow
 dev: fmt lint test build run

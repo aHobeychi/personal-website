@@ -41,9 +41,7 @@ func GenerateTableOfContents() {
 }
 
 func main() {
-
 	config, err := config.Load()
-
 	if err != nil {
 		logger.LogError("Failed to load configuration: " + err.Error())
 		return

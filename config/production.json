@@ -7,13 +7,14 @@
   },
   "paths": {
     "templates": "app/html/templates",
-    "assetFiles": "frontend/assets",
+    "assetFiles": "app/assets",
     "blogHTML": "app/html/blog",
     "tocHTML": "app/html/toc",
     "projectsJSON": "frontend/catalog/projects.json",
     "blogsJSON": "frontend/catalog/blogs.json",
     "workExperienceJSON": "frontend/catalog/work-experience.json",
-    "certificationsJSON": "frontend/catalog/certifications.json"  },
+    "certificationsJSON": "frontend/catalog/certifications.json"
+  },
   "features": {
     "cacheEnabled": true,
     "debugMode": false
