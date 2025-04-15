@@ -1,9 +1,9 @@
 {{ define "projects" }}
 <title>alexhobeychi.com</title>
-<section class="grid grid-cols-1 mb-4">
+<header class="grid grid-cols-1 mb-4">
     <h1 class="text-5xl text-gray-900 dark:text-white pb-2 lg:mt-0 mt-4">Projects</h1>
     <p class="text-gray-500 dark:text-gray-400 font-thin">Check out what I've been building</p>
-</section>
+</header>
 <section class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6">
     {{ range .projects }}
     <a href="{{ .Link }}" target="_blank" rel="noopener noreferrer"

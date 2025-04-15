@@ -4,7 +4,7 @@ module.exports = {
   content: [
     "./frontend/templates/**/*.{html,js}",
     "./frontend/assets/css/**/*.{html,js}",
-    "./node_modules/flowbite/**/*.js"
+    "./node_modules/flowbite/dist/flowbite.{modal,dropdown}.js"
   ],
   theme: {
     extend: {
