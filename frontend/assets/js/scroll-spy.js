@@ -5,7 +5,8 @@
  */
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize scrollspy both on page load and when content changes (HTMX)
-  initScrollSpy();
+  // Small delay to ensure HTMX has time to start loading the TOC
+  setTimeout(initScrollSpy, 100);
   
   // Also listen for HTMX content swap events to reinitialize when navigating between blogs
   document.body.addEventListener('htmx:afterSwap', function(event) {
@@ -14,6 +15,15 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('HTMX content swap detected, reinitializing scroll spy');
       // Give some time for content to render fully
       setTimeout(initScrollSpy, 200);
+    }
+  });
+  
+  // Specifically listen for the TOC being loaded
+  document.body.addEventListener('htmx:afterSettle', function(event) {
+    // If the swap target is the sidebar container where TOC is loaded
+    if (event.detail.target.id === 'variable-sidebar-container') {
+      console.log('TOC loaded via HTMX, initializing scroll spy');
+      setTimeout(initScrollSpy, 50);
     }
   });
 });

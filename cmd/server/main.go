@@ -53,7 +53,12 @@ func main() {
 	logger.SetLogLevel(config.Logging.Level)
 	logger.LogDebug("Environment set to: " + config.Server.Environment)
 
-	GenerateTableOfContents()
+	if config.Server.Environment == "production" {
+		logger.LogDebug("Production mode enabled")
+		GenerateTableOfContents()
+	} else {
+		logger.LogDebug("Development mode enabled")
+	}
 
 	htmlFiles := getHtmlFiles(config.Paths.Templates)
 	handler.InitializeTemplates(htmlFiles)
