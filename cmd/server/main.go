@@ -53,6 +53,8 @@ func main() {
 	logger.SetLogLevel(config.Logging.Level)
 	logger.LogDebug("Environment set to: " + config.Server.Environment)
 
+	GenerateTableOfContents()
+
 	htmlFiles := getHtmlFiles(config.Paths.Templates)
 	handler.InitializeTemplates(htmlFiles)
 

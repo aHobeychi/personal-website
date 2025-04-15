@@ -30,24 +30,6 @@ func (p *BlogProviderImpl) GetBlogContent(blogId string) (string, error) {
 	return GetBlogHTMLContent(blogId)
 }
 
-// GenerateAndSaveTableOfContents generates the table of contents for a blog post and saves it to a file
-func (p *BlogProviderImpl) GenerateAndSaveTableOfContents(blogId string) error {
-	blog, err := GetBlogByID(blogId)
-	if err != nil {
-		return err
-	}
-
-	content, err := GetBlogHTMLContent(blogId)
-	if err != nil {
-		return err
-	}
-
-	return preprocessor.GenerateAndSaveTableOfContents(preprocessor.Blog{
-		Id:    blog.Id,
-		Title: blog.Title,
-	}, content)
-}
-
 // GetBlogProvider returns a new instance of BlogProviderImpl
 func GetBlogProvider() preprocessor.BlogProvider {
 	return &BlogProviderImpl{}

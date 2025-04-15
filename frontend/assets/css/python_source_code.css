@@ -1,0 +1,25 @@
+/* Python Syntax Highlighting */
+.sourceCode .python .im { color: #8839ef; font-weight: bold; } /* import */
+.sourceCode .python .kw { color: #d20f39; font-weight: bold; } /* keyword */
+.sourceCode .python .cf { color: #fe640b; font-weight: bold; } /* control flow */
+.sourceCode .python .op { color: #04a5e5; } /* operator */
+.sourceCode .python .bu { color: #1e66f5; } /* builtin */
+.sourceCode .python .va { color: #7287fd; } /* variable */
+.sourceCode .python .st { color: #40a02b; } /* string */
+.sourceCode .python .dv { color: #fe640b; } /* decimal value */
+.sourceCode .python .co { color: #9ca0b0; font-style: italic; } /* comment */
+.sourceCode .python .fu { color: #1e66f5; } /* function */
+
+/* Dark theme overrides */
+@media(prefers-color-scheme: dark) {
+  .sourceCode .python .im { color: #c4a7e7; }
+  .sourceCode .python .kw { color: #eb6f92; }
+  .sourceCode .python .cf { color: #f6c177; }
+  .sourceCode .python .op { color: #31748f; }
+  .sourceCode .python .bu { color: #9ccfd8; }
+  .sourceCode .python .va { color: #c4a7e7; }
+  .sourceCode .python .st { color: #a3be8c; }
+  .sourceCode .python .dv { color: #f6c177; }
+  .sourceCode .python .co { color: #6e6a86; }
+  .sourceCode .python .fu { color: #9ccfd8; }
+}

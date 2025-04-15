@@ -2,17 +2,13 @@
 package preprocessor
 
 import (
+	"aHobeychi/personal-website/internal/config"
 	"aHobeychi/personal-website/internal/util/logger"
 	"bytes"
 	"fmt"
 	"os"
 	"regexp"
 	"strings"
-)
-
-const (
-	PATH_TOWARDS_BLOG_HTML = "static/blog-posts/html/content/"
-	PATH_TOWARDS_TOC_HTML  = "static/blog-posts/html/table-of-contents/"
 )
 
 // Blog represents the basic structure needed for table of contents generation
@@ -99,7 +95,7 @@ func GenerateTableOfContents(htmlContent string) (string, error) {
 
 // GetBlogTableOfContentsPath returns the path to the table of contents file for a blog post
 func GetBlogTableOfContentsPath(blogId string) string {
-	return PATH_TOWARDS_TOC_HTML + blogId + "-toc.html"
+	return config.Get().Paths.TocHTML + "/" + blogId + "-toc.html"
 }
 
 // GenerateAndSaveTableOfContents generates the table of contents for a blog post and saves it to a file
@@ -114,7 +110,7 @@ func GenerateAndSaveTableOfContents(blog Blog, content string) error {
 	tocHTML := fmt.Sprintf(`<div class="blog-toc"><h2>Table of Contents</h2>%s</div>`, toc)
 
 	// Ensure the directory exists
-	err = os.MkdirAll(PATH_TOWARDS_TOC_HTML, 0755)
+	err = os.MkdirAll(config.Get().Paths.TocHTML, 0755)
 	if err != nil {
 		return err
 	}

@@ -2,7 +2,7 @@
   {
     "jobTitle": "Backend Cloud Developer",
     "companyName": "Wealth Management - Banking Client | CGI",
-    "description": "Developed and deployed APIs using Spring Boot, AWS, Docker, and EKS to aggregate customer asset and liability data from multiple business domains. Built CI/CD pipelines with Jenkins and implemented automated testing using Cucumber and Postman to ensure system reliability.",
+    "description": "Developed Spring Batch jobs on AWS Batch to process large-scale customer account deletions. Built Lambda functions in Python and TypeScript for data orchestration with Step Functions, and implemented a DynamoDB-based persistence layer.",
     "startDate": "March 2025",
     "endDate": "Current",
     "tags": [
