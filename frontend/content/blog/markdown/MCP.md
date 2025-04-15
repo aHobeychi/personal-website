@@ -26,6 +26,34 @@ MCP structures interactions around these components:
 
 Here is a simplified code sample that shows how an MCP-compliant system might handle a conversation with a tool call:
 
+```go
+ fileServer := http.FileServer(http.Dir(config.Paths.AssetFiles))
+ mux.Handle("/static/", http.StripPrefix("/static/", fileServer))
+
+ // Routes
+ mux.HandleFunc("/", handler.ServeHomepage)
+ mux.HandleFunc("/home", handler.ServeHomepage)
+ mux.HandleFunc("/resume", handler.ServeResume)
+ mux.HandleFunc("/project", handler.ServeProjectsList)
+ mux.HandleFunc("/blog", handler.ServeBlogList)
+ mux.HandleFunc("/blog/", func(w http.ResponseWriter, r *http.Request) {
+  // Check if the request is for the table of contents
+  if strings.Contains(r.URL.Path, "/table-of-contents") {
+   handler.ServeBlogTableOfContents(w, r)
+   return
+  }
+  // Otherwise, serve the regular blog content
+  handler.ServeBlogContent(w, r)
+ })
+
+ // Apply middleware chain
+ var handler http.Handler = mux
+
+ if !config.Features.CacheEnabled {
+  handler = middleware.NoCacheMiddleware(handler)
+ }
+```
+
 ```json
 {
   "context": {
@@ -71,7 +99,7 @@ Here is a simplified code sample that shows how an MCP-compliant system might ha
 }
 ```
 
-## Core Concepts
+## Sample Header for testing
 
 MCP structures interactions around these components:
 
@@ -79,7 +107,6 @@ MCP structures interactions around these components:
 - **Turns**: Logical groupings of actions triggered by a single input.
 - **Context**: The evolving record of state over time.
 - **Updates**: Explicit deltas to the context, often triggered by events or decisions.
-
 
 ```python
 from datetime import datetime

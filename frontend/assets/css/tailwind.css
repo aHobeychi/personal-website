@@ -71,7 +71,7 @@ article hr {
     background-color: #e5e7eb; /* Light gray for light mode */
 }
 
-/* Code blocks */
+/* Code blocks - Consolidated with dark mode */
 article pre {
     margin: 1.5rem 0;
     padding: 15px;
@@ -84,7 +84,7 @@ article pre {
     line-height: 1.4;
 }
 
-/* Inline code */
+/* Inline code - Consolidated with dark mode */
 article code {
     font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
     padding: 2px 5px;
@@ -93,7 +93,7 @@ article code {
     border: 0;
 }
 
-/* Blockquotes */
+/* Blockquotes - Consolidated with dark mode */
 article blockquote {
     border-left: 5px solid #3b82f6; /* Blue accent for both modes */
     padding: 10px 20px;
@@ -103,7 +103,7 @@ article blockquote {
     color: #4b5563;
 }
 
-/* Tables */
+/* Tables - Consolidated with dark mode */
 article table {
     width: 100%;
     margin-bottom: 1.5rem;
@@ -121,7 +121,7 @@ article table th {
     font-weight: 600;
 }
 
-/* Links */
+/* Links - Consolidated with dark mode */
 article a {
     color: #2563eb;
     text-decoration: underline;
@@ -139,14 +139,11 @@ article img {
     border-radius: 5px;
 }
 
-/* Table of Contents Styling */
+/* Table of Contents Styling - Consolidated with dark mode */
 .blog-toc {
-    /* margin: 1.5rem 0; */
     margin: 0 0;
-    /* padding: 1.5rem; */
     padding: 0;
     background-color: #f6f8fa; /* Updated to match sidebar light background */
-    /* font-family: 'Inter', sans-serif; */
 }
 
 .blog-toc h2 {
@@ -154,8 +151,6 @@ article img {
     font-weight: 600;
     margin-bottom: 1rem;
     color: #111827;
-    /* border-bottom: 2px solid #e5e7eb;
-    padding-bottom: 0.5rem; */
 }
 
 .blog-toc .toc-list {
@@ -192,6 +187,7 @@ article img {
     transform: translateX(2px);
 }
 
+/* Dark mode styling consolidated with elements */
 @media (prefers-color-scheme: dark) {
     article h1 {
         color: #f3f4f6;
@@ -228,7 +224,6 @@ article img {
         background-color: #1e293b;
         color: #e5e7eb;
         border: 0;
-
     }
 
     article blockquote {
@@ -274,4 +269,56 @@ article img {
         background-color: #1f2937;
         color: #93c5fd;
     }
+}
+
+/* Component classes for reusable UI patterns */
+@layer components {
+  /* Card component */
+  .card {
+    @apply block p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200;
+  }
+  
+  .card-light {
+    @apply bg-white text-gray-700 border border-gray-200;
+  }
+  
+  .card-dark {
+    @apply dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700;
+  }
+  
+  /* Text style components */
+  .text-adaptive {
+    @apply text-gray-700 dark:text-gray-200;
+  }
+  
+  .text-subtle {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+  
+  /* Section component */
+  .section {
+    @apply mb-8;
+  }
+  
+  /* Header components */
+  .section-header {
+    @apply text-2xl font-semibold mb-4 text-gray-900 dark:text-white;
+  }
+  
+  .card-title {
+    @apply text-xl font-semibold text-gray-700 dark:text-gray-200;
+  }
+  
+  /* Button components */
+  .btn {
+    @apply px-4 py-2 rounded transition-colors duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600;
+  }
 }
