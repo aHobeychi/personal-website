@@ -135,3 +135,47 @@ context["turns"].append({
 import json
 print(json.dumps(context, indent=2))
 ```
+
+## The Ultimate Guide to Boosting Your Productivity in 2025
+
+In the age of constant notifications and remote work, staying productive is more challenging than ever. Here’s a practical guide to help you optimize your time and energy.
+
+## Set Clear Goals
+
+Start each day with 2–3 major goals. Focus on results, not just tasks.
+
+## Use the 80/20 Rule
+
+Identify the 20% of tasks that generate 80% of your results. Prioritize those.
+
+## Create a Morning Routine
+
+A solid morning routine sets the tone for the rest of the day. Include exercise, planning, and quiet time.
+
+## Minimize Distractions
+
+Silence your phone, close unnecessary tabs, and use apps like Focus@Will or Freedom to stay on track.
+
+## Batch Similar Tasks
+
+Group similar tasks like emails, calls, or admin work. This reduces context switching and saves time.
+
+## Take Regular Breaks
+
+Use techniques like Pomodoro (25 min focus, 5 min break) to maintain energy throughout the day.
+
+## Leverage Automation Tools
+
+Automate repetitive tasks with tools like Zapier, IFTTT, or Notion workflows.
+
+## Weekly
+
+Spend 15 minutes each week reviewing what worked and what didn’t. Adjust accordingly.
+
+## Declutter Your Digital Space
+
+A messy desktop or overflowing inbox drains mental energy. Clear it weekly.
+
+## Protect Your Time
+
+Learn to say no. Block off focus hours and treat them like meetings with yourself.

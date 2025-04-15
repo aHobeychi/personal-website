@@ -1,0 +1,17 @@
+/* Scroll Spy: Styles for active TOC links */
+.blog-toc .toc-list li a.active {
+  color: #2563eb;
+  background-color: #eff6ff;
+  font-weight: 500;
+  border-left: 2px solid #3b82f6;
+  transform: translateX(4px);
+}
+
+/* Dark mode for active TOC links */
+@media (prefers-color-scheme: dark) {
+  .blog-toc .toc-list li a.active {
+    color: #60a5fa;
+    background-color: #1e293b;
+    border-left: 2px solid #60a5fa;
+  }
+}
