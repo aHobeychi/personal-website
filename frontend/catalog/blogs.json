@@ -1,8 +1,8 @@
 [
   {
     "id": "MCP",
-    "title": "Understanding MCP, and how it fits with modern development",
-    "description": "",
+    "title": "Understanding MCP",
+    "description": "Explore the new features and improvements in the latest version of our API, including enhanced performance and new endpoints.",
     "tags": [
       "Agentic AI",
       "LLM",

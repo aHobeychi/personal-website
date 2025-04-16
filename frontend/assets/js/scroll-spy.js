@@ -48,6 +48,9 @@ function initScrollSpy() {
     if (!tocLinks.length || !article) {
       return;
     }
+    
+    // Setup mobile handlers for TOC links
+    setupTocLinksMobileHandler();
       
     // Create a map of headings used in the TOC
     const tocHeadings = {};

@@ -33,7 +33,7 @@
         <h2 id="work-experience-heading" class="text-4xl mb-4 text-gray-800 dark:text-white">Work Experience</h2>
         <div class="space-y-6">
             {{ range .WorkExperience }}
-            <article class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md">
+            <div class="dark:bg-dark-card bg-light-card p-6 rounded-lg shadow-md">
                 <div class="flex justify-between items-start flex-wrap">
                     <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200">{{ .JobTitle }}</h3>
                     <span class="text-sm text-gray-700 dark:text-gray-300">{{ .StartDate }} - {{ .EndDate }}</span>
@@ -49,7 +49,7 @@
                         . }}</span>
                     {{ end }}
                 </div>
-            </article>
+            </div>
             {{ end }}
         </div>
     </section>

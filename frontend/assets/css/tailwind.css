@@ -1,26 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Custom font size variables based on specified values */
+:root {
+  --font-size-sm: 0.750rem;
+  --font-size-base: 1rem;
+  --font-size-xl: 1.333rem;
+  --font-size-2xl: 1.777rem;
+  --font-size-3xl: 2.369rem;
+  --font-size-4xl: 3.158rem;
+  --font-size-5xl: 4.210rem;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-family-heading: 'Inter Tight', sans-serif;
+  --font-family-body: 'Inter', sans-serif;
+}
+
 /* Article styling with dark mode support */
 article {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-family-body);
     line-height: 1.6;
-    color: #333; /* Default text color for light mode */
+    color: #060507; /* Default text color for light mode */
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
 }
 
 /* Adding scroll-margin-top to all headers to account for fixed navbar */
 article h1, article h2, article h3, article h4, article h5, article h6 {
     scroll-margin-top: 4.5rem; /* Adjust this value to match your navbar height */
+    line-height: 1.2;
+    font-family: var(--font-family-heading);
 }
 
 article h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.75rem;
-    font-weight: 700;
+    margin: 2rem 0rem;
     color: #111827; /* Dark text for light mode */
+    font-family: 'Inter Tight', sans-serif;
+    text-align: center;
+    font-size: clamp(var(--font-size-3xl), 3vw + 1rem, 4rem);
+    line-height: 1.2;
 }
 
 article .sourceCode {
@@ -28,40 +49,52 @@ article .sourceCode {
 }
 
 article h2 {
-    font-size: 2rem;
-    margin-bottom: 1.2rem;
-    font-weight: 600;
+    font-size: clamp(var(--font-size-3xl), 2vw + 1rem, 3rem);
+    margin: 1.4rem 0rem;
     color: #1f2937;
+    font-family: 'Inter Tight', sans-serif;
 }
 
 article h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
+    font-size: var(--font-size-2xl);
+    margin: 1.4rem 0rem;
     color: #374151;
+    font-family: 'Inter Tight', sans-serif;
+}
+
+article h4 {
+    font-size: var(--font-size-xl);
+    margin: 1.4rem 0rem;
+    color: #374151;
+    font-family: 'Inter Tight', sans-serif;
 }
 
 article p {
     color: #374151; /* Dark gray for light mode */
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
+    line-height: 1.8;
+    font-size: var(--font-size-base);
 }
 
 article ul, article ol {
     color: #374151;
     padding-left: 20px;
     margin-bottom: 1.5rem;
+    font-size: var(--font-size-base);
 }
 
 article ul li {
     list-style-type: disc;
     margin-left: 20px;
     margin-bottom: 0.5rem;
+    line-height: normal;
 }
 
 article ol li {
     list-style-type: decimal;
     margin-left: 20px;
     margin-bottom: 0.5rem;
+    line-height: normal;
 }
 
 article hr {
@@ -144,13 +177,15 @@ article img {
     margin: 0 0;
     padding: 0;
     background-color: #f6f8fa; /* Updated to match sidebar light background */
+    font-family: var(--font-family-body);
 }
 
 .blog-toc h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
     margin-bottom: 1rem;
     color: #111827;
+    font-family: var(--font-family-heading);
 }
 
 .blog-toc .toc-list {
@@ -164,21 +199,28 @@ article img {
     margin-bottom: 0.5rem;
     line-height: 1.4;
     position: relative;
+    font-size: var(--font-size-sm);
 }
 
 .blog-toc .toc-list li a {
-    color: #4b5563;
+    color: #282e35;
     text-decoration: none;
     padding: 0.25rem 0.5rem;
     display: inline-block;
     transition: all 0.2s;
     position: relative;
     padding-left: 1.25rem;
+    font-size: var(--font-size-base);
+    min-width: 100%;
 }
 
 .blog-toc .toc-list li a::before {
     position: absolute;
     color: #3b82f6;
+}
+
+.blog-toc .toc-list li .active {
+    min-width: 100%
 }
 
 .blog-toc .toc-list li a:hover {
@@ -269,56 +311,4 @@ article img {
         background-color: #1f2937;
         color: #93c5fd;
     }
-}
-
-/* Component classes for reusable UI patterns */
-@layer components {
-  /* Card component */
-  .card {
-    @apply block p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200;
-  }
-  
-  .card-light {
-    @apply bg-white text-gray-700 border border-gray-200;
-  }
-  
-  .card-dark {
-    @apply dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700;
-  }
-  
-  /* Text style components */
-  .text-adaptive {
-    @apply text-gray-700 dark:text-gray-200;
-  }
-  
-  .text-subtle {
-    @apply text-gray-500 dark:text-gray-400;
-  }
-  
-  /* Section component */
-  .section {
-    @apply mb-8;
-  }
-  
-  /* Header components */
-  .section-header {
-    @apply text-2xl font-semibold mb-4 text-gray-900 dark:text-white;
-  }
-  
-  .card-title {
-    @apply text-xl font-semibold text-gray-700 dark:text-gray-200;
-  }
-  
-  /* Button components */
-  .btn {
-    @apply px-4 py-2 rounded transition-colors duration-200;
-  }
-  
-  .btn-primary {
-    @apply bg-primary text-white hover:bg-primary-dark;
-  }
-  
-  .btn-secondary {
-    @apply bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600;
-  }
 }

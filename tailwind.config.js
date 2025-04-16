@@ -10,7 +10,22 @@ module.exports = {
     extend: {
       fontFamily: {
         'sans': ['Inter', 'sans-serif'],
+        'heading': ['Inter Tight', 'sans-serif'],
+        'body': ['Inter', 'sans-serif'],
         'mono': ['Consolas', 'Monaco', 'Courier New', 'monospace'],
+      },
+      fontSize: {
+        'sm': '0.750rem',    // --font-size-sm
+        'base': '1rem',      // --font-size-base
+        'xl': '1.333rem',    // --font-size-xl
+        '2xl': '1.777rem',   // --font-size-2xl
+        '3xl': '2.369rem',   // --font-size-3xl
+        '4xl': '3.158rem',   // --font-size-4xl
+        '5xl': '4.210rem',   // --font-size-5xl
+      },
+      fontWeight: {
+        'normal': 400,       // --font-weight-normal
+        'bold': 700,         // --font-weight-bold
       },
       colors: {
         primary: {
