@@ -20,7 +20,7 @@
     "debugMode": false
   },
   "logging": {
-    "level": "debug",
+    "level": "warning",
     "file": "logs/app.log",
     "maxSize": 10485760,
     "maxFiles": 5
