@@ -22,7 +22,7 @@ run: build
 	./$(BUILD_DIR)/$(APP_NAME)
 
 # Production build and run
-prod:
+prod-build:
 	@echo "Checking for Markdown files..."
 	@if [ -z "$$(ls -A $(MARKDOWN_DIR)/*.md 2>/dev/null)" ]; then \
 		echo "No Markdown files found. Skipping conversion."; \
@@ -39,6 +39,11 @@ prod:
 	make minify
 	@echo "Building application..."
 	go build -o $(BUILD_DIR)/$(APP_NAME) $(PKG)
+	export APP_ENV=production
+
+# Production build and run
+prod:
+	make prod-build
 	export APP_ENV=production && ./$(BUILD_DIR)/$(APP_NAME)
 
 # Clean build artifacts

@@ -1,50 +1,52 @@
 # Build stage
-FROM golang:1.24-alpine AS builder
+FROM golang:1.24.2 AS builder
+
+# Install Node.js and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_23.x | bash - && \
+    apt-get update && apt-get install -y nodejs
+
+# Install pandoc for Markdown to HTML conversion
+RUN apt-get install -y pandoc
+
+# Install minify tool
+RUN go install github.com/tdewolff/minify/v2/cmd/minify@latest
 
 # Set working directory
 WORKDIR /app
-
-# Install dependencies for building
-RUN apk add --no-cache gcc musl-dev
 
 # Copy go mod and sum files
 COPY go.mod ./
 
-# Download dependencies
-RUN go mod download
-
 # Copy the source code
 COPY . .
 
-# Build the application
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags="-w -s" -o personalwebsite ./cmd/server/main.go
+# Install Node.js dependencies
+RUN npm install
 
-# Runtime stage
-FROM alpine:3.18
+# Build the application with CGO_ENABLED=0 for static linking
+ENV CGO_ENABLED=0
+RUN make prod-build
+
+# Runtime stage - using Alpine Linux
+FROM alpine:latest
+
+# Install CA certificates for HTTPS requests
+RUN apk add --no-cache ca-certificates
 
 # Set working directory
 WORKDIR /app
 
-# Set production environment variable
-ENV APP_ENV=production
-
-# Install runtime dependencies
-RUN apk --no-cache add ca-certificates tzdata
-
-# Copy the binary from builder stage
-COPY --from=builder /app/personalwebsite /app/personalwebsite
-
-# Copy necessary files
-COPY --from=builder /app/config/production.json /app/config/production.json
+# Copy the built application and all necessary directories
+COPY --from=builder /app/app/personalwebsite /app/personalwebsite
+COPY --from=builder /app/app /app/app
+COPY --from=builder /app/config /app/config
 COPY --from=builder /app/frontend /app/frontend
 
-# Create app directory for outputs
-RUN mkdir -p /app/app/html/blog
-RUN mkdir -p /app/app/html/templates
-RUN mkdir -p /app/app/html/toc
+# Set environment variable for production
+ENV APP_ENV=production
 
-# Expose port
+# Expose the port the app runs on
 EXPOSE 8080
 
-# Run the application
-CMD ["/app/personalwebsite"]
+# Command to run the executable
+CMD ["./personalwebsite"]
