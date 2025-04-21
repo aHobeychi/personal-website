@@ -1,7 +1,6 @@
 /* Scroll Spy: Styles for active TOC links */
 .blog-toc .toc-list li a.active {
   color: #2563eb;
-  background-color: #eff6ff;
   font-weight: 500;
   border-left: 2px solid #3b82f6;
   transform: translateX(4px);

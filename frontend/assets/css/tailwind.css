@@ -28,7 +28,7 @@ article {
     font-weight: var(--font-weight-normal);
     /* max-width: var(--content-width); */
     margin: 0 auto; /* Center content */
-    padding: 0 1rem;
+    padding: 0 0rem;
 }
 
 /* Adding scroll-margin-top to all headers to account for fixed navbar */
@@ -315,13 +315,11 @@ article a:hover {
     }
     
     article code {
-        background-color: #1e293b;
         color: #e5e7eb;
         border: 0;
     }
     
     article blockquote {
-        background-color: #1f2937;
         color: #d1d5db;
     }
     
@@ -345,10 +343,6 @@ article a:hover {
     
     article figcaption {
         color: rgba(255, 255, 255, 0.7);
-    }
-    
-    .blog-toc {
-        background-color: rgba(255, 255, 255, 0.05);
     }
     
     .blog-toc h2 {

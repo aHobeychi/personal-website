@@ -1,7 +1,7 @@
 {{ define "navbar" }}
 <!-- Skip to main content link -->
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-2 focus:bg-blue-600 focus:text-white focus:z-50">Skip to main content</a>
-<nav class="hidden lg:block lg:w-auto" id="navbar-default" role="navigation" aria-label="Main navigation">
+<nav class="hidden lg:block lg:w-auto bg-opacity-70 backdrop-blur-md" id="navbar-default" role="navigation" aria-label="Main navigation">
     <div class="grid {{ if .DisplayBlogs }}grid-cols-3{{ else }}grid-cols-2{{ end }} gap-2">
         <div class="text-center">
             <a hx-get="/project" hx-target="#content-section" hx-push-url="true" hx-swap="innerHTML show:window:top"

@@ -26,6 +26,9 @@ module.exports = {
         'normal': 400,       // --font-weight-normal
         'bold': 700,         // --font-weight-bold
       },
+      maxWidth: {
+        'prose': '80ch',     // Custom prose width of 75ch instead of default 65ch
+      },
       colors: {
         primary: {
           light: "#6366F1",
