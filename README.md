@@ -5,96 +5,31 @@ A modern personal portfolio website built with Go, HTMX, and TailwindCSS. This p
 ## Project Structure
 
 ```text
-├── go.mod                 # Go module definition and dependencies
-├── go.sum                 # Go module checksums
-├── Makefile               # Makefile for build automation
-├── package.json           # Node.js dependencies
-├── tailwind.config.js     # TailwindCSS configuration
-├── fly.toml               # Fly.io deployment configuration
 ├── app/                   # Application binary and server templates
-│   ├── personalwebsite    # Compiled application binary
+│   ├── assets/            # Compiled assets (css, js, images)
 │   ├── html/              # Compiled HTML templates
-│       ├── blog/          # Compiled blog HTML files
-│       ├── templates/     # Compiled template files
-│       ├── toc/           # Compiled table of contents files
 ├── build/                 # Build-related resources
 │   ├── ci/                # Continuous Integration configuration
 │   ├── docker/            # Docker configuration
-│   │   └── Dockerfile     # Docker build definition
 │   ├── scripts/           # Build and utility scripts
-│       ├── compress_image.sh  # Script for image compression
-│       ├── minify.sh      # Script for asset minification
-│       └── run-server.sh  # Development server script
 ├── cmd/                   # Application entrypoints
 │   └── server/            # Server entry point
-│       └── main.go        # Main application entry point
 ├── config/                # Configuration files
-│   ├── development.json   # Development environment configuration
-│   └── production.json    # Production environment configuration
 ├── frontend/              # Frontend assets and content
-│   ├── assets/            # Frontend static assets
-│   │   ├── css/           # CSS stylesheets
-│   │   │   ├── styles.css # Compiled styles
-│   │   │   └── tailwind.css # Tailwind configuration
-│   │   ├── images/        # Image assets
-│   │   ├── js/            # JavaScript files
-│   │   │   ├── sidebar.js # Sidebar navigation script
-│   │   │   └── scroll-spy.js # Scroll spy script
+│   ├── assets/            # Frontend static assets (css, js, images)
 │   ├── catalog/           # Content catalog in JSON format
-│   │   ├── blogs.json     # Blog data
-│   │   ├── certifications.json # Certification data
-│   │   ├── favorites.json # Favorites data
-│   │   ├── projects.json  # Project data
-│   │   └── work-experience.json # Work experience data
-│   ├── content/           # Content files
-│   │   └── blog/          # Blog content
-│   │       ├── html/      # Generated HTML blog content
-│   │       │   ├── content/  # HTML content files
-│   │       │   └── table-of-contents/ # Table of contents files
-│   │       └── markdown/  # Source markdown files
+│   ├── content/           # Content files (blog posts, etc.)
 │   ├── templates/         # HTML templates
-│       ├── index.html     # Main template layout
 │       ├── components/    # Reusable UI components
-│       │   ├── footer.html
-│       │   ├── header.html
-│       │   ├── navbar.html
-│       │   └── sidebar.html
 │       ├── pages/         # Page-specific templates
-│           ├── blog-content.html
-│           ├── blog-list.html
-│           ├── home.html
-│           ├── projects.html
-│           └── resume.html
 ├── internal/              # Internal application packages
-│   ├── cache/             # Caching mechanisms
-│   │   └── cache.go       # Generic caching functionality
-│   ├── config/            # Configuration handling
-│   │   └── config.go      # Configuration loading and processing
-│   ├── domain/            # Domain models
-│   │   ├── blog.go        # Blog domain models
-│   │   ├── certification.go # Certification models
-│   │   ├── project.go     # Project models
-│   │   └── work_experience.go # Work experience models
-│   ├── handler/           # HTTP request handlers
-│   │   ├── blog.go        # Blog route handlers
-│   │   ├── common.go      # Common handler utilities
-│   │   ├── home.go        # Home route handlers
-│   │   ├── projects.go    # Projects route handlers
-│   │   └── resume.go      # Resume route handlers
-│   ├── parser/            # Data parsing utilities
-│   │   ├── blog_provider.go # Blog provider interface
-│   │   ├── blog.go        # Blog data parsing
-│   │   ├── certification.go # Certification data parsing
-│   │   ├── project.go     # Project data parsing
-│   │   └── work_experience.go # Work experience parsing
-│   ├── preprocessor/      # Content preprocessing
-│   │   └── table_of_contents.go # Table of contents generation
-│   └── util/              # Utility packages
-│       ├── logger/        # Logging utilities
-│       │   ├── logger.go  # Logging configuration
-│       │   └── logger_middleware.go # HTTP logging middleware
-│       └── middleware/    # HTTP middleware
-│           └── no_cache.go # Cache control middleware
+    ├── cache/             # Caching mechanisms
+    ├── config/            # Configuration handling
+    ├── domain/            # Domain models
+    ├── handler/           # HTTP request handlers
+    ├── parser/            # Data parsing utilities
+    ├── preprocessor/      # Content preprocessing
+    └── util/              # Utility packages
 ```
 
 ## Features
@@ -147,11 +82,12 @@ The handlers check for the `HX-Request` header to determine if a request is comi
 
 ## TailwindCSS Integration
 
-[TailwindCSS](https://tailwindcss.com/) is used for styling through a CDN for simplicity. It provides:
+[TailwindCSS](https://tailwindcss.com/) is used for styling. It provides:
 
 - Utility-first CSS framework for rapid UI development
 - Consistent design system
 - Responsive design out of the box
+- Support for translucent UI elements with opacity and backdrop blur utilities
 
 ## Configuration System
 
@@ -314,4 +250,3 @@ The `frontend/assets/js/scroll-spy.js` provides an intelligent table of contents
 - **Error Handling**: Gracefully handles edge cases and prevents script errors
 
 This enhances the reading experience by providing visual feedback about the reader's current position in longer articles.
-

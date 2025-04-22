@@ -1,22 +1,21 @@
 {{ define "navbar" }}
-<!-- Skip to main content link -->
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-2 focus:bg-blue-600 focus:text-white focus:z-50">Skip to main content</a>
-<nav class="hidden lg:block lg:w-auto bg-opacity-70 backdrop-blur-md" id="navbar-default" role="navigation" aria-label="Main navigation">
+<nav class="hidden lg:block lg:w-auto" id="navbar-default" role="navigation"aria-label="Main navigation">
     <div class="grid {{ if .DisplayBlogs }}grid-cols-3{{ else }}grid-cols-2{{ end }} gap-2">
         <div class="text-center">
             <a hx-get="/project" hx-target="#content-section" hx-push-url="true" hx-swap="innerHTML show:window:top"
-                class="block py-1 sm:py-2 px-1 sm:px-2 dark:text-gray-200 rounded-sm hover:bg-gray-800 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:hover:text-blue-400 hover:text-blue-700 cursor-pointer text-lg font-medium focus:outline-none focus:underline focus-visible:ring-2 focus-visible:ring-blue-500"
+                class="block py-1 sm:py-2 px-1 sm:px-2 dark:text-gray-200 lg:p-0 dark:hover:text-blue-400 hover:text-blue-700 cursor-pointer text-lg font-medium focus:outline-none focus:underline focus-visible:ring-2 focus-visible:ring-blue-500"
                 aria-current="page">Projects</a>
         </div>
         {{ if .DisplayBlogs }}
         <div class="text-center">
             <a hx-get="/blog" hx-target="#content-section" hx-push-url="true" hx-swap="innerHTML show:window:top"
-                class="block py-1 sm:py-2 px-1 sm:px-2 dark:text-gray-200 rounded-sm hover:bg-gray-800 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:hover:text-blue-400 hover:text-blue-700 cursor-pointer text-lg font-medium focus:outline-none focus:underline focus-visible:ring-2 focus-visible:ring-blue-500">Notes</a>
+                class="block py-1 sm:py-2 px-1 sm:px-2 dark:text-gray-200 lg:p-0 dark:hover:text-blue-400 hover:text-blue-700 cursor-pointer text-lg font-medium focus:outline-none focus:underline focus-visible:ring-2 focus-visible:ring-blue-500">Notes</a>
         </div>
         {{ end }}
         <div class="text-center">
             <a hx-get="/resume" hx-target="#content-section" hx-push-url="true" hx-swap="innerHTML show:window:top"
-                class="block py-1 sm:py-2 px-1 sm:px-2 dark:text-gray-200 rounded-sm hover:bg-gray-800 lg:hover:bg-transparent lg:border-0 lg:p-0 dark:hover:text-blue-400 hover:text-blue-700 cursor-pointer text-lg font-medium focus:outline-none focus:underline focus-visible:ring-2 focus-visible:ring-blue-500">About Me</a>
+                class="block py-1 sm:py-2 px-1 sm:px-2 dark:text-gray-200 lg:p-0 dark:hover:text-blue-400 hover:text-blue-700 cursor-pointer text-lg font-medium focus:outline-none focus:underline focus-visible:ring-2 focus-visible:ring-blue-500">About
+                Me</a>
         </div>
     </div>
 </nav>
