@@ -7,17 +7,13 @@ import (
 	"time"
 )
 
-const (
-	WORK_EXPERIENCE_CACHE_TTL = 60 * time.Minute
-)
-
 var workExperienceCache *cache.Cache[models.WorkExperience]
 
 func init() {
 	// Initialize the work experience cache
 	workExperienceCache = cache.NewCache[models.WorkExperience](
 		config.Get().Paths.WorkExperienceJSON,
-		WORK_EXPERIENCE_CACHE_TTL,
+		time.Duration(config.Get().Features.CacheTTL*int(time.Minute)),
 		"work experience",
 	)
 }

@@ -9,17 +9,13 @@ import (
 	"time"
 )
 
-const (
-	BLOG_CACHE_TTL = 60 * time.Minute
-)
-
 var blogCache *cache.Cache[models.Blog]
 
 func init() {
 	// Initialize the blog cache
 	blogCache = cache.NewCache[models.Blog](
 		config.Get().Paths.BlogsJSON,
-		BLOG_CACHE_TTL,
+		time.Duration(config.Get().Features.CacheTTL*int(time.Minute)),
 		"blog",
 	)
 }

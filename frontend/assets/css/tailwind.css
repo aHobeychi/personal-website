@@ -3,7 +3,6 @@
 @tailwind base;
 @tailwind utilities;
 
-/* Custom font size variables based on specified values */
 :root {
   --font-size-sm: 0.875rem;
   --font-size-base: 1.125rem; /* Increased base font size */

@@ -27,6 +27,7 @@ type Config struct {
 	} `json:"paths"`
 	Features struct {
 		CacheEnabled bool `json:"cacheEnabled"`
+		CacheTTL     int  `json:"cacheTTL"`
 		DebugMode    bool `json:"debugMode"`
 		DisplayBlogs bool `json:"displayBlogs"`
 	} `json:"features"`
@@ -40,7 +41,6 @@ var cfg *Config
 
 // Load loads the configuration from files and environment variables
 func Load() (*Config, error) {
-
 	if cfg != nil {
 		return cfg, nil
 	}
@@ -72,7 +72,6 @@ func Load() (*Config, error) {
 // loadConfigFile loads config from a JSON file
 func loadConfigFile(path string, c *Config) error {
 	data, err := os.ReadFile(path)
-
 	if err != nil {
 		return err
 	}
@@ -109,7 +108,6 @@ func makeAbsolute(path string, basePath string) string {
 
 // getProjectRoot attempts to determine the project root directory
 func getProjectRoot() string {
-
 	// Use working directory
 	workDir, err := os.Getwd()
 	if err != nil {

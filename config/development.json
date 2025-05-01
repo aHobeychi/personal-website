@@ -17,6 +17,7 @@
   },
   "features": {
     "cacheEnabled": false,
+    "cacheTTL": 60,
     "debugMode": true,
     "displayBlogs": true
   },

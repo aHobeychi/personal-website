@@ -7,18 +7,13 @@ import (
 	"time"
 )
 
-const (
-	PATH_TOWARDS_PROJECTS_JSON = "static/content-catalog/projects.json"
-	PROJECT_CACHE_TTL          = 60 * time.Minute
-)
-
 var projectCache *cache.Cache[models.Project]
 
 func init() {
 	// Initialize the project cache
 	projectCache = cache.NewCache[models.Project](
 		config.Get().Paths.ProjectsJSON,
-		PROJECT_CACHE_TTL,
+		time.Duration(config.Get().Features.CacheTTL*int(time.Minute)),
 		"project",
 	)
 }

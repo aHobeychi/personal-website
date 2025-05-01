@@ -7,18 +7,13 @@ import (
 	"time"
 )
 
-const (
-	PATH_TOWARDS_CERTIFICATIONS = "static/content-catalog/certifications.json"
-	CERTIFICATION_CACHE_TTL     = 60 * time.Minute
-)
-
 var certificationCache *cache.Cache[models.Certification]
 
 func init() {
 	// Initialize the certification cache
 	certificationCache = cache.NewCache[models.Certification](
 		config.Get().Paths.CertificationsJSON,
-		CERTIFICATION_CACHE_TTL,
+		time.Duration(config.Get().Features.CacheTTL*int(time.Minute)),
 		"certification",
 	)
 }

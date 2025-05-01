@@ -1,5 +1,16 @@
 [
   {
+    "name": "Badminton-Booker",
+    "description": "An automated badminton court notification tool. This project uses Playwright to scrape the booking website and sends notifications via a Telegram Bot. It leverages Firebase for persistence and GitHub Actions for CI/CD.",
+    "tags": [
+      "Python",
+      "Playwright",
+      "Github Actions",
+      "Firebase"
+    ],
+    "link": "https://github.com/aHobeychi/Badminton-Booker"
+  },
+  {
     "name": "Personal Website",
     "description": "A modern portfolio website built with Go, HTMX, and Tailwind CSS. This project showcases a dynamic, lightweight website architecture with minimal JavaScript, deployed on Fly.io.",
     "tags": [
