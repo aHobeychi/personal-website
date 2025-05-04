@@ -1,5 +1,18 @@
 [
   {
+    "id": "Badminton-Booker",
+    "title": "Building a Telegram Notification System for Badminton Court Availabilities",
+    "description": "How I automated the process of checking for open badminton courts using GitHub Actions, Playwright, and the Telegram Bot API. This project scrapes the city’s booking site, filters availability by preferences, and sends real-time Telegram alerts to subscribed users.",
+    "tags": [
+      "Python",
+      "Playwright",
+      "GitHub Actions",
+      "Telegram Bot API"
+    ],
+    "publishedDate": "2025-05-04",
+    "externalLink": ""
+  },
+  {
     "id": "Personal-Website",
     "title": "Building my Personal Website With Go, Htmx and TailwindCSS",
     "description": "A high-level walkthrough of how I built a fast, minimal, and fully customizable personal website using Go, HTMX, and TailwindCSS without external frameworks.",

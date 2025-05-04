@@ -1,0 +1,121 @@
+<h1
+id="building-a-telegram-notification-system-for-badminton-court-availabilities">Building
+a Telegram Notification System for Badminton Court Availabilities</h1>
+<p>Finding available badminton courts can be frustrating—especially when
+slots get taken quickly. To solve this, I built an automated system that
+checks the website for open badminton court slots and sends instant
+notifications via Telegram.</p>
+<p>This post walks through how I implemented this using <strong>GitHub
+Actions</strong>, <strong>Playwright</strong> for web scraping, and
+<strong>Telegram</strong> for push notifications.</p>
+<h2 id="system-overview">System Overview</h2>
+<p>The system consists of two GitHub Actions that run on a schedule:</p>
+<ol type="1">
+<li><p><strong>Update Chat IDs</strong><br />
+Queries the Telegram API for chat IDs of users who’ve messaged the bot
+and stores them in Firestore.</p></li>
+<li><p><strong>Badminton Booking Notification</strong><br />
+Scrapes the City’s booking site, filters results based on user
+preferences, and sends a Telegram message if any courts are
+available.</p></li>
+</ol>
+<h2 id="collecting-telegram-chat-ids">Collecting Telegram Chat IDs</h2>
+<p>Before we can send messages, we need the chat IDs of users who’ve
+interacted with the Telegram bot.</p>
+<ul>
+<li><p>The GitHub Action calls:<br />
+<code>https://api.telegram.org/bot&lt;token&gt;/getUpdates</code></p></li>
+<li><p>It extracts each user’s <code>chat.id</code> and
+<code>username</code>.</p></li>
+<li><p>The list of chat IDs is saved in a Firestore collection named
+<code>chat_ids</code>.</p></li>
+</ul>
+<p>This step ensures that every user who sends a message to the bot
+becomes eligible for notifications.</p>
+<h2 id="scraping-the-booking-website">Scraping the Booking Website</h2>
+<p>A Playwright script performs the following:</p>
+<ul>
+<li>Navigates to the badminton court booking site.</li>
+<li>Selects filters like <strong>location</strong>, <strong>time
+range</strong>, <strong>days</strong>, and <strong>price</strong>.</li>
+<li>Scrapes the results for available courts.</li>
+</ul>
+<p>Playwright was selected because of its ability to handle modern
+JavaScript-heavy web pages.</p>
+<h2 id="filtering-and-detection">Filtering and Detection</h2>
+<p>After gathering raw availability data, we filter based on
+environment-configured search criteria:</p>
+<ul>
+<li><strong>Time range</strong> (e.g., 6:00 PM – 9:00 PM)</li>
+<li><strong>Preferred days</strong> (e.g., Friday, Saturday)</li>
+<li><strong>Specific locations</strong> (e.g., Ahuntsic,
+Saint-Laurent)</li>
+<li><strong>Maximum price</strong></li>
+</ul>
+<p>Only matching court availabilities are considered for
+notifications.</p>
+<h2 id="sending-telegram-notifications">Sending Telegram
+Notifications</h2>
+<p>If any courts match the filter criteria, the script sends messages to
+users via the Telegram Bot API:</p>
+<p>Endpoint used:</p>
+<pre><code>https://api.telegram.org/bot/sendMessage</code></pre>
+<p>Each message includes:</p>
+<ul>
+<li>Date and time of availability</li>
+<li>Location</li>
+<li>A direct link to the booking site</li>
+</ul>
+<p>Messages are sent in batch using the chat IDs stored in
+Firestore.</p>
+<h2 id="tech-stack">Tech Stack</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scraping</td>
+<td>Playwright</td>
+</tr>
+<tr>
+<td>Messaging</td>
+<td>Telegram Bot API</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>Firebase Firestore</td>
+</tr>
+<tr>
+<td>Automation</td>
+<td>GitHub Actions</td>
+</tr>
+<tr>
+<td>Config/Secrets</td>
+<td>GitHub Secrets</td>
+</tr>
+</tbody>
+</table>
+<h2 id="why-this-matters">Why This Matters</h2>
+<ul>
+<li><strong>Time Saver</strong>: No more manually checking the booking
+site.</li>
+<li><strong>Real-time Alerts</strong>: Be the first to know when a court
+is free.</li>
+<li><strong>Extensible</strong>: Can easily support other sports or
+locations.</li>
+</ul>
+<h2 id="source-code">Source Code</h2>
+<p>You can find the source code <a
+href="https://github.com/aHobeychi/Badminton-Booker">on
+GitHub</a>.<br />
+Follow the instructions in the <code>README.md</code> to deploy your own
+copy.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This project demonstrates how you can build a simple yet powerful
+automation system using cloud-native tools. With minimal effort, you can
+turn a tedious manual task into a real-time personal assistant that
+delivers actionable information directly to your phone.</p>
