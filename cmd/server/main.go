@@ -91,6 +91,10 @@ func main() {
 		handler = middleware.NoCacheMiddleware(handler)
 	}
 
+	if config.Server.Environment == "production" {
+		handler = middleware.DomainRedirectMiddleware(handler)
+	}
+
 	handler = logger.CustomLoggerMiddleware(handler)
 
 	// Start the server

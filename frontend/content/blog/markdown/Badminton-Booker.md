@@ -4,8 +4,6 @@ Finding available badminton courts can be frustrating—especially when slots ge
 
 This post walks through how I implemented this using **GitHub Actions**, **Playwright** for web scraping, and **Telegram** for push notifications.
 
-
-
 ## System Overview
 
 The system consists of two GitHub Actions that run on a schedule:
@@ -16,22 +14,21 @@ The system consists of two GitHub Actions that run on a schedule:
 2. **Badminton Booking Notification**  
    Scrapes the City's booking site, filters results based on user preferences, and sends a Telegram message if any courts are available.
 
-
-
 ## Collecting Telegram Chat IDs
 
 Before we can send messages, we need the chat IDs of users who’ve interacted with the Telegram bot.
 
 - The GitHub Action calls:  
-  `https://api.telegram.org/bot<token>/getUpdates`
+
+  ```text
+  https://api.telegram.org/bot<token>/getUpdates
+  ```
 
 - It extracts each user's `chat.id` and `username`.
 
 - The list of chat IDs is saved in a Firestore collection named `chat_ids`.
 
 This step ensures that every user who sends a message to the bot becomes eligible for notifications.
-
-
 
 ## Scraping the Booking Website
 
@@ -43,8 +40,6 @@ A Playwright script performs the following:
 
 Playwright was selected because of its ability to handle modern JavaScript-heavy web pages.
 
-
-
 ## Filtering and Detection
 
 After gathering raw availability data, we filter based on environment-configured search criteria:
@@ -55,8 +50,6 @@ After gathering raw availability data, we filter based on environment-configured
 - **Maximum price**
 
 Only matching court availabilities are considered for notifications.
-
-
 
 ## Sending Telegram Notifications
 
@@ -76,8 +69,6 @@ Each message includes:
 
 Messages are sent in batch using the chat IDs stored in Firestore.
 
-
-
 ## Tech Stack
 
 | Component         | Technology          |
@@ -88,23 +79,18 @@ Messages are sent in batch using the chat IDs stored in Firestore.
 | Automation       | GitHub Actions      |
 | Config/Secrets   | GitHub Secrets      |
 
-
-
 ## Why This Matters
 
 - **Time Saver**: No more manually checking the booking site.
 - **Real-time Alerts**: Be the first to know when a court is free.
 - **Extensible**: Can easily support other sports or locations.
 
-
-
 ## Source Code
 
 You can find the source code [on GitHub](https://github.com/aHobeychi/Badminton-Booker).  
 Follow the instructions in the `README.md` to deploy your own copy.
 
-
-
 ## Conclusion
 
 This project demonstrates how you can build a simple yet powerful automation system using cloud-native tools. With minimal effort, you can turn a tedious manual task into a real-time personal assistant that delivers actionable information directly to your phone.
+

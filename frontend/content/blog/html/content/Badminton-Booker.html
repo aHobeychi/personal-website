@@ -23,8 +23,8 @@ available.</p></li>
 <p>Before we can send messages, we need the chat IDs of users who’ve
 interacted with the Telegram bot.</p>
 <ul>
-<li><p>The GitHub Action calls:<br />
-<code>https://api.telegram.org/bot&lt;token&gt;/getUpdates</code></p></li>
+<li><p>The GitHub Action calls:</p>
+<pre class="text"><code>https://api.telegram.org/bot&lt;token&gt;/getUpdates</code></pre></li>
 <li><p>It extracts each user’s <code>chat.id</code> and
 <code>username</code>.</p></li>
 <li><p>The list of chat IDs is saved in a Firestore collection named
