@@ -1,10 +1,31 @@
 {{ define "sidebar" }}
-<aside id="logo-sidebar"
-    class="fixed top-0 left-0 z-50 w-72 h-screen duration-300 pt-4 px-4 transition-transform -translate-x-full lg:translate-x-0 dark:bg-dark-secondary bg-light-secondary"
+<aside 
+    x-data="{ 
+        windowWidth: window.innerWidth,
+        isDesktop() { 
+            return this.windowWidth >= 1024; 
+        },
+        get isVisible() { 
+            return this.isDesktop() || $store.sidebar.open; 
+        },
+        init() {
+            this.windowWidth = window.innerWidth;
+        }
+    }"
+    x-show="isVisible"
+    x-transition:enter="transform transition ease-in-out duration-300"
+    x-transition:enter-start="-translate-x-full"
+    x-transition:enter-end="translate-x-0"
+    x-transition:leave="transform transition ease-in-out duration-300"
+    x-transition:leave-start="translate-x-0"
+    x-transition:leave-end="-translate-x-full"
+    @resize.window="windowWidth = window.innerWidth; if (isDesktop()) $store.sidebar.open = false"
+    class="fixed top-0 left-0 z-50 w-72 h-screen pt-4 px-4 dark:bg-dark-secondary bg-light-secondary lg:translate-x-0"
     aria-label="Sidebar" role="complementary">
     <div class="h-full px-3 pb-4 overflow-y-auto">
     <a hx-get="/home" hx-target="#content-section" hx-push-url="true" hx-swap="innerHTML show:window:top"
-    class="sidebar-close flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded select-none cursor-pointer"
+    @click="if (window.innerWidth < 1024) $store.sidebar.open = false"
+    class="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded select-none cursor-pointer"
     aria-label="Home page - Alex Hobeychi">
         <h1 class="dark:text-white text-2xl mb-6">Alex Hobeychi</h1>
     </a>
@@ -13,7 +34,8 @@
                 <li class="lg:hidden" role="none">
                     <div class="flex flex-col">
                         <a hx-get="/project" hx-target="#content-section" hx-push-url="true" hx-swap="innerHTML show:window:top"
-                            class="sidebar-close flex items-center text-gray-700 hover:text-blue-600 hover:dark:text-blue-400 dark:text-gray-200 mb-1 text-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
+                            @click="if (window.innerWidth < 1024) $store.sidebar.open = false"
+                            class="flex items-center text-gray-700 hover:text-blue-600 hover:dark:text-blue-400 dark:text-gray-200 mb-1 text-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
                             role="menuitem">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
@@ -22,7 +44,8 @@
                         </a>
                         {{ if .DisplayBlogs }}
                         <a hx-get="/blog" hx-target="#content-section" hx-push-url="true" hx-swap="innerHTML show:window:top"
-                            class="sidebar-close flex items-center text-gray-700 hover:text-blue-600 hover:dark:text-blue-400 dark:text-gray-200 mb-1 text-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
+                            @click="if (window.innerWidth < 1024) $store.sidebar.open = false"
+                            class="flex items-center text-gray-700 hover:text-blue-600 hover:dark:text-blue-400 dark:text-gray-200 mb-1 text-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
                             role="menuitem">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
@@ -31,7 +54,8 @@
                         </a>
                         {{ end }}
                         <a hx-get="/resume" hx-target="#content-section" hx-push-url="true" hx-swap="innerHTML show:window:top"
-                            class="sidebar-close flex items-center text-gray-700 hover:text-blue-600 hover:dark:text-blue-400 dark:text-gray-200 mb-1 text-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
+                            @click="if (window.innerWidth < 1024) $store.sidebar.open = false"
+                            class="flex items-center text-gray-700 hover:text-blue-600 hover:dark:text-blue-400 dark:text-gray-200 mb-1 text-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
                             role="menuitem">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zm-4 7a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -49,7 +73,9 @@
                     <h2 class="dark:text-white pb-4 text-lg">About Me</h2>
                     <div class="cursor-pointer">
                         <p class="text-gray-800 rounded-lg dark:text-gray-200">
-                            I'm <a hx-get="/resume" hx-target="#content-section" hx-push-url="true" hx-swap="innerHTML show:window:top" class="sidebar-close font-medium text-blue-700 dark:text-blue-400 hover:no-underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded" aria-label="View my resume">Alex</a> a full stack software developer and consultant with expertise in building modern web applications and cloud technologies. Bilingual in both English and French, I bring a diverse perspective to my development work.
+                            I'm <a hx-get="/resume" hx-target="#content-section" hx-push-url="true" hx-swap="innerHTML show:window:top" 
+                            @click="if (window.innerWidth < 1024) $store.sidebar.open = false"
+                            class="font-medium text-blue-700 dark:text-blue-400 hover:no-underline cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded" aria-label="View my resume">Alex</a> a full stack software developer and consultant with expertise in building modern web applications and cloud technologies. Bilingual in both English and French, I bring a diverse perspective to my development work.
                         </p>
                     </div>
                 </li>

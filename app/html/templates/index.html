@@ -1,5 +1,17 @@
-<!doctype html><html lang=en class=h-full><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Alex Hobeychi's personal website showcasing projects, blog posts, and resume"><script src=https://unpkg.com/htmx.org@2.0.4></script><link rel=stylesheet href=/static/css/styles.css><link rel=icon type=image/x-icon href=/static/images/favicon.ico><body class="min-h-full flex flex-col bg-light-base dark:bg-dark-base dark:text-gray-00">{{ template "header" . }}
-{{ template "sidebar" . }}<main id=content-section class="flex-grow lg:ml-72 lg:px-20 p-6 mt-12 lg:mt-16">{{ if eq .Content "resume" }}
+<!doctype html><html lang=en class=h-full><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Alex Hobeychi's personal website showcasing projects, blog posts, and resume"><script src=https://unpkg.com/htmx.org@2.0.4></script><script defer src=https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js></script><link rel=stylesheet href=/static/css/styles.css><link rel=icon type=image/x-icon href=/static/images/favicon.ico><body class="min-h-full flex flex-col bg-light-base dark:bg-dark-base dark:text-gray-00" x-data="{ 
+        init() {
+          Alpine.store('sidebar', { 
+            open: false,
+            toggle() {
+              this.open = !this.open;
+            },
+            close() {
+              this.open = false;
+            }
+          })
+        }
+      }">{{ template "header" . }}
+{{ template "sidebar" . }}<div x-data="{ windowWidth: window.innerWidth }" x-show="$store.sidebar.open && windowWidth < 1024" x-transition:enter="transition-opacity ease-linear duration-300" x-transition:enter-start=opacity-0 x-transition:enter-end=opacity-100 x-transition:leave="transition-opacity ease-linear duration-300" x-transition:leave-start=opacity-100 x-transition:leave-end=opacity-0 @resize.window="windowWidth = window.innerWidth" @click="$store.sidebar.open = false" class="fixed inset-0 z-40 bg-black bg-opacity-25 lg:hidden"></div><main id=content-section x-data="{ windowWidth: window.innerWidth }" class="flex-grow lg:ml-72 lg:px-20 p-6 mt-12 lg:mt-16" @resize.window="windowWidth = window.innerWidth" @click="if (windowWidth < 1024) $store.sidebar.open = false">{{ if eq .Content "resume" }}
 {{ template "resume" . }}
 {{ else if eq .Content "projects" }}
 {{ template "projects" . }}
