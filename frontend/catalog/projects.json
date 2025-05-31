@@ -1,14 +1,14 @@
 [
   {
-    "name": "Badminton-Booker",
-    "description": "An automated badminton court notification tool. This project uses Playwright to scrape the booking website and sends notifications via a Telegram Bot. It leverages Firebase for persistence and GitHub Actions for CI/CD.",
+    "name": "AllCaughtUp.tech - WIP",
+    "description": "A weekly newsletter that curates the best Ai & tech stories all automatically without human intervention. It is built with Go and Next.js, hosted on GCP using Cloud Run and Cloud Functions, and utilizes Firebase for persistence.",
     "tags": [
-      "Python",
-      "Playwright",
-      "Github Actions",
+      "Go",
+      "Next.js",
+      "GCP - Cloud Run & Cloud Functions",
       "Firebase"
     ],
-    "link": "https://github.com/aHobeychi/Badminton-Booker"
+    "link": "https://www.allcaughtup.tech"
   },
   {
     "name": "Personal Website",
@@ -21,6 +21,18 @@
       "Fly.io"
     ],
     "link": "https://github.com/aHobeychi/Personal-Website"
+  },
+  {
+    "name": "Badminton-Booker",
+    "description": "An automated badminton court notification tool. This project uses Playwright to scrape the booking website and sends notifications via a Telegram Bot. It leverages Firebase for persistence and GitHub Actions for CI/CD.",
+    "tags": [
+      "Python",
+      "Playwright",
+      "Github Actions",
+      "Telegram Bot",
+      "Firebase"
+    ],
+    "link": "https://github.com/aHobeychi/Badminton-Booker"
   },
   {
     "name": "Go Compiler",
