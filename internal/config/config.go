@@ -29,7 +29,6 @@ type Config struct {
 		CacheEnabled bool `json:"cacheEnabled"`
 		CacheTTL     int  `json:"cacheTTL"`
 		DebugMode    bool `json:"debugMode"`
-		DisplayBlogs bool `json:"displayBlogs"`
 	} `json:"features"`
 	Logging struct {
 		Level string `json:"level"`

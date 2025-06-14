@@ -50,7 +50,6 @@
    </div>
 </section>
 
-{{ if .DisplayBlogs }}
 <section class="grid grid-cols-1">
    <div class="flex justify-between items-center pb-2">
       <h1 class="text-4xl text-gray-900 dark:text-white">My Notes</h1>
@@ -81,6 +80,5 @@
       {{ end }}
    </div>
 </section>
-{{ end }}
 {{ template "sidebar-bio" . }}
 {{ end }}

@@ -18,8 +18,7 @@
   "features": {
     "cacheEnabled": true,
     "cacheTTL": 60,
-    "debugMode": false,
-    "displayBlogs": true
+    "debugMode": false
   },
   "logging": {
     "level": "warning",

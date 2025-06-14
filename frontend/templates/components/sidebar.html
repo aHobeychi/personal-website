@@ -42,7 +42,6 @@
                             </svg>
                             <span>Projects</span>
                         </a>
-                        {{ if .DisplayBlogs }}
                         <a hx-get="/blog" hx-target="#content-section" hx-push-url="true" hx-swap="innerHTML show:window:top"
                             @click="if (window.innerWidth < 1024) $store.sidebar.open = false"
                             class="flex items-center text-gray-700 hover:text-blue-600 hover:dark:text-blue-400 dark:text-gray-200 mb-1 text-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"
@@ -52,7 +51,6 @@
                             </svg>
                             <span>Notes</span>
                         </a>
-                        {{ end }}
                         <a hx-get="/resume" hx-target="#content-section" hx-push-url="true" hx-swap="innerHTML show:window:top"
                             @click="if (window.innerWidth < 1024) $store.sidebar.open = false"
                             class="flex items-center text-gray-700 hover:text-blue-600 hover:dark:text-blue-400 dark:text-gray-200 mb-1 text-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-2 py-1"

@@ -3,8 +3,6 @@ package handler
 import (
 	"html/template"
 	"net/http"
-
-	"aHobeychi/personal-website/internal/config"
 )
 
 // HTMX_HEADER is the header name that HTMX sends to indicate an HTMX request
@@ -31,10 +29,6 @@ func RenderTemplate(w http.ResponseWriter, r *http.Request, templateName string,
 	if data == nil {
 		data = PageData{}
 	}
-
-	// Add displayBlogs configuration to all templates
-	cfg := config.Get()
-	data["DisplayBlogs"] = cfg.Features.DisplayBlogs
 
 	if r.Header.Get(HTMX_HEADER) == "true" {
 		// HTMX request - render just the partial template

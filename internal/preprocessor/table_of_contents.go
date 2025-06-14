@@ -80,7 +80,7 @@ func GenerateTableOfContents(htmlContent string) (string, error) {
 		}
 
 		// Write the list item
-		buffer.WriteString(fmt.Sprintf("<li><a href=\"#%s\" class=\"sidebar-close\">%s</a>", id, headingText))
+		buffer.WriteString(fmt.Sprintf("<li><a href=\"#%s\" class=\"sidebar-close\" @click=\"if (window.innerWidth < 1024) $store.sidebar.close()\">%s</a>", id, headingText))
 
 		currentLevel = level
 	}
