@@ -1,7 +1,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 
 app = 'personal-website-ah'
-primary_region = 'yul'
+primary_region = 'yyz'
 
 [build]
 dockerfile = 'build/docker/Dockerfile'

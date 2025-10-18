@@ -1,5 +1,18 @@
 [
   {
+    "jobTitle": "Full-Stack Developer",
+    "companyName": "Personal Lines - Intact Insurance",
+    "description": "At Intact Insurance, I am collaborating with a team of developers and QA specialists to enhance an existing solution in order to meet new regulatory requirements. The project leverages Spring Boot and Angular, with a Spring Batch component to handle data processing. Our services are deployed on OpenShift, ensuring scalability and compliance within the enterprise environment.",
+    "startDate": "August 2025",
+    "endDate": "Current",
+    "tags": [
+      "Spring Boot",
+      "Angular",
+      "Openshift",
+      "Spring Batch"
+    ]
+  },
+  {
     "jobTitle": "Backend Cloud Developer",
     "companyName": "Wealth Management - National Bank of Canada | CGI",
     "description": "Developed Spring Batch jobs on AWS Batch to process large-scale customer account deletions. Built Lambda functions in Python and TypeScript for data orchestration with Step Functions, and implemented a DynamoDB-based persistence layer.",
