@@ -1,17 +1,18 @@
 package main
 
 import (
+	"net/http"
+	"os"
+	"path/filepath"
+	"strconv"
+	"strings"
+
 	"aHobeychi/personal-website/internal/config"
 	"aHobeychi/personal-website/internal/handler"
 	"aHobeychi/personal-website/internal/parser"
 	"aHobeychi/personal-website/internal/preprocessor"
 	"aHobeychi/personal-website/internal/util/logger"
 	"aHobeychi/personal-website/internal/util/middleware"
-	"net/http"
-	"os"
-	"path/filepath"
-	"strconv"
-	"strings"
 )
 
 // returns an array of all html files under the templates folder

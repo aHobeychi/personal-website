@@ -1,9 +1,9 @@
 # Build stage
-FROM golang:1.24.2 AS builder
+FROM golang:1.25.5 AS builder
 
 # Install Node.js and npm
 RUN curl -fsSL https://deb.nodesource.com/setup_23.x | bash - && \
-    apt-get update && apt-get install -y nodejs
+  apt-get update && apt-get install -y nodejs
 
 # Install pandoc for Markdown to HTML conversion
 RUN apt-get install -y pandoc

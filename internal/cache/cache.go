@@ -2,12 +2,13 @@
 package cache
 
 import (
-	"aHobeychi/personal-website/internal/util/logger"
 	"encoding/json"
 	"fmt"
 	"os"
 	"sync"
 	"time"
+
+	"aHobeychi/personal-website/internal/util/logger"
 )
 
 // Cache provides a generic caching mechanism for any type of data
